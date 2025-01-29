@@ -43,7 +43,7 @@ export default function Footer(){
         </div>
     </div>
     <div className="bg-white">
-        <p className="text-black font-normal  text-center pt-8 pb-28 nun">© Copyright by SPARK– All rights reserved.</p>
+        <p className="text-black font-normal  text-center pt-4 pb-4 nun">© Copyright by SPARK – All rights reserved.</p>
     </div>
    </div>
     </>
