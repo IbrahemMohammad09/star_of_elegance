@@ -1,0 +1,48 @@
+import { GrFacebookOption } from "react-icons/gr";
+import { MdOutlineEmail } from "react-icons/md";
+import { FaInstagram } from "react-icons/fa";
+import { SlLocationPin } from "react-icons/sl";
+import { RiWhatsappFill } from "react-icons/ri";
+export default function Footer(){
+    return<>
+    <div>
+    <div className="flex flex-col flex-wrap  justify-between bg-[#B47F3E] px-4 pt-28  pb-36 md:flex-row md:pl-8 md:pr-80 md:pt-28  lg:px-20">
+        <div className="flex items-center mb-10 md:mb-0">
+            <img src="./Images/logo-2.png.svg" alt="logo" className="w-32 h-auto object-cover md:w-56 md:h-44"/>
+            <p className="ml-4 text-[#000000] font-black text-3xl w-60 md:text-5xl inter ">
+                STAR OF <span className="text-[#FFFFFF] inter">ELEGANCE INC</span>
+            </p>
+        </div>
+        <div className="mb-10 md:mb-0">
+            < p className="text-[#000000] font-bold text-xl mb-4 dm">Pages</p>
+            <div className="flex flex-col"> 
+            <a href="#home" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Home</a>
+            <a href="#about" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">About Us</a>
+            <a href="#services" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Services</a>
+            <a href="#our project"className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Our Project</a>
+            <a href="#contact us" className="text-[#FFFFFF] font-normal text-lg  hover:text-black dm">Contact Us</a>
+            </div>
+        </div>
+        <div>
+            <p className="text-[#000000] font-bold text-xl mb-4 dm">Contact us</p>
+            <div className="flex items-center text-white mb-4">
+                <MdOutlineEmail className="text-xl  hover:text-black" />
+                <a href="mailto:stivalo@gmail.com" className="ml-2 font-normal text-lg  hover:text-black dm">info@starofelegance.com</a>
+            </div>
+            <div className="flex items-center text-white mb-4">
+                <SlLocationPin className="text-xl  hover:text-black" />
+                <a href="https://maps.app.goo.gl/WPtv3ir4bm2RDDxY7" className="ml-2 font-normal text-lg dm hover:text-black">1901 Toronto - Canada</a>
+            </div>
+            <div className="flex gap-4 mt-4">
+                <a href="#" className="text-white text-2xl  hover:text-black"><GrFacebookOption /></a>
+                <a href="#" className="text-white text-2xl  hover:text-black"><RiWhatsappFill /></a>
+                <a href="#" className="text-white text-2xl  hover:text-black"><FaInstagram /></a>
+            </div>
+        </div>
+    </div>
+    <div className="bg-white">
+        <p className="text-black font-normal  text-center pt-8 pb-28 nun">© Copyright by SPARK– All rights reserved.</p>
+    </div>
+   </div>
+    </>
+}
