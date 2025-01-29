@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/Footer";
 import HeroSection from "./sections/HeroSection";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <div>
         <HeroSection />
+        <Footer />
       </div>
     </>
   );
