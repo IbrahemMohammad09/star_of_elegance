@@ -1,10 +1,11 @@
 import "./App.css";
+import HeroSection from "./sections/HeroSection";
 
 function App() {
   return (
     <>
       <div>
-        <h1 className="text-black">This is The First Page</h1>
+        <HeroSection />
       </div>
     </>
   );
