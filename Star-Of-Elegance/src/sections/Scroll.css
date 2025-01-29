@@ -1,0 +1,115 @@
+.circle-container {
+  position: relative;
+  width: 200px; /* حجم الدائرة */
+  height: 200px; /* حجم الدائرة */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* الشكل الدائري */
+  padding: 10px;
+}
+
+.circle-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.letter {
+  position: absolute;
+  font-size: 14px;
+  transform-origin: 50% 50%; /* جعل التدوير يبدأ من مركز الحرف */
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.letter:nth-child(1) {
+  transform: rotate(0deg) translateY(-90px);
+}
+.letter:nth-child(2) {
+  transform: rotate(15deg) translateY(-90px);
+}
+.letter:nth-child(3) {
+  transform: rotate(30deg) translateY(-90px);
+}
+.letter:nth-child(4) {
+  transform: rotate(45deg) translateY(-90px);
+}
+.letter:nth-child(5) {
+  transform: rotate(60deg) translateY(-90px);
+}
+.letter:nth-child(6) {
+  transform: rotate(75deg) translateY(-90px);
+}
+.letter:nth-child(7) {
+  transform: rotate(90deg) translateY(-90px);
+}
+.letter:nth-child(8) {
+  transform: rotate(105deg) translateY(-90px);
+}
+.letter:nth-child(9) {
+  transform: rotate(120deg) translateY(-90px);
+}
+.letter:nth-child(10) {
+  transform: rotate(135deg) translateY(-90px);
+}
+.letter:nth-child(11) {
+  transform: rotate(150deg) translateY(-90px);
+}
+.letter:nth-child(12) {
+  transform: rotate(165deg) translateY(-90px);
+}
+.letter:nth-child(13) {
+  transform: rotate(180deg) translateY(-90px);
+}
+.letter:nth-child(14) {
+  transform: rotate(195deg) translateY(-90px);
+}
+.letter:nth-child(15) {
+  transform: rotate(210deg) translateY(-90px);
+}
+.letter:nth-child(16) {
+  transform: rotate(225deg) translateY(-90px);
+}
+.letter:nth-child(17) {
+  transform: rotate(240deg) translateY(-90px);
+}
+.letter:nth-child(18) {
+  transform: rotate(255deg) translateY(-90px);
+}
+.letter:nth-child(19) {
+  transform: rotate(270deg) translateY(-90px);
+}
+.letter:nth-child(20) {
+  transform: rotate(285deg) translateY(-90px);
+}
+.letter:nth-child(21) {
+  transform: rotate(300deg) translateY(-90px);
+}
+.letter:nth-child(22) {
+  transform: rotate(315deg) translateY(-90px);
+}
+.letter:nth-child(23) {
+  transform: rotate(330deg) translateY(-90px);
+}
+.letter:nth-child(24) {
+  transform: rotate(345deg) translateY(-90px);
+}
+
+.group:hover .circle-text {
+  animation: spin 2s infinite; /* تدوير الأحرف حول السهم عند التمرير */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
