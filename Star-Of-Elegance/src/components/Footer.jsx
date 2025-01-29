@@ -3,13 +3,14 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa";
 import { SlLocationPin } from "react-icons/sl";
 import { RiWhatsappFill } from "react-icons/ri";
-import {logo} from "../assets/image/HomePage"
+import logo from "../assets/image/logo.png"
+
 export default function Footer(){
     return<>
     <div>
     <div className="flex flex-col flex-wrap  justify-between bg-[#B47F3E] px-4 pt-28  pb-36 md:flex-row md:pl-8 md:pr-80 md:pt-28  lg:px-20">
         <div className="flex items-center mb-10 md:mb-0">
-            <img src="./Images/logo-2.png.svg" alt="logo" className="w-32 h-auto object-cover md:w-56 md:h-44"/>
+            <img src={logo} alt="logo" className="w-32 h-auto object-cover md:w-56 md:h-44"/>
             <p className="ml-4 text-[#000000]  font-black text-3xl w-56 md:text-5xl inter ">
                 STAR OF <span className="text-[#FFFFFF] inter">ELEGANCEINC</span>
             </p>
