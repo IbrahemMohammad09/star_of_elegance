@@ -34,7 +34,7 @@ const Navbar = () => {
             (item) => (
               <li key={item}>
                  <Link
-            to={`/${item.toLowerCase().replace(/ /g, "")}`}
+            to={item === "Home" ? "/" : `/${item.toLowerCase().replace(/ /g, "")}`}
             className="text-black text-2xl hover:text-brown-700 transition"
           >
             {item}
@@ -56,13 +56,12 @@ const Navbar = () => {
           {["Home", "About Us", "Services", "Contact Us", "Our Projects"].map(
             (item) => (
               <li key={item}>
-                <a
-                  href={`#${item.toLowerCase().replace(/ /g, "")}`}
-                  className="text-black  hover:text-brown-700 transition"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item}
-                </a>
+                <Link
+            to={item === "Home" ? "/" : `/${item.toLowerCase().replace(/ /g, "")}`}
+            className="text-black text-2xl hover:text-brown-700 transition"
+          >
+            {item}
+          </Link>
               </li>
             )
           )}
