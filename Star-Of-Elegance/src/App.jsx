@@ -1,19 +1,23 @@
 import "./App.css";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import { BrowserRouter , Routes , Route } from "react-router-dom"
 
-import HeroSection from "./sections/HeroSection";
-import ProjectsSection from "./sections/ProjectsSection";
-import ServicesSection from "./sections/ServicesSection";
+
+
 
 
 function App() {
   return (
     <>
 
-      <div>
-        <HeroSection />
-        <ServicesSection />
-        <ProjectsSection />
-      </div>
+    <BrowserRouter>
+               <Routes>
+                 <Route index element={<Home/>}/>
+                 <Route path="/aboutus" element={<About/>} />
+               </Routes>
+            
+            </BrowserRouter>
 
     </>
   );

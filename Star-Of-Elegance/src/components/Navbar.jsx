@@ -1,21 +1,29 @@
 
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import Logo from "../assets/image/HomePage/0ee3342a2f15112216948762df2356e3.png";
+import Logo from "../assets/image/logo.png";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/aboutus" },
+    { name: "Services", path: "/services" },
+    { name: "Contact Us", path: "/contactus" },
+    { name: "Our Projects", path: "/ourprojects" }
+  ];
 
   return (
-    <nav className=" w-full top-0 left-0 z-50 bg-transparent p-4 ">
+    <nav className="fixed w-full top-0 left-0 z-50 bg-transparent p-4 ">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="flex items-center space-x-2">
-          <img src={Logo} alt="Logo" className="h-28 w-32 z-50" />
+          <img src={Logo} alt="Logo" className="h-28 w-32" />
           <div className="leading-tight">
             <p className="text-black font-bold text-lg">STAR OF</p>
-            <p className="text-[#8B5715] font-semibold text-md">
+            <p className="text-[#8B5715] font-semibold  text-md">
               ELEGANCE <span className="text-[#B37E3C]">INC</span>
             </p>
           </div>
@@ -26,12 +34,12 @@ const Navbar = () => {
           {["Home", "About Us", "Services", "Contact Us", "Our Projects"].map(
             (item) => (
               <li key={item}>
-                <a
-                  href={`#${item.toLowerCase().replace(/ /g, "")}`}
-                  className="text-black text-2xl  hover:text-brown-700 transition"
-                >
-                  {item}
-                </a>
+                 <Link
+            to={item === "Home" ? "/" : `/${item.toLowerCase().replace(/ /g, "")}`}
+            className="text-black text-2xl hover:text-brown-700 transition"
+          >
+            {item}
+          </Link>
               </li>
             )
           )}
@@ -49,13 +57,12 @@ const Navbar = () => {
           {["Home", "About Us", "Services", "Contact Us", "Our Projects"].map(
             (item) => (
               <li key={item}>
-                <a
-                  href={`#${item.toLowerCase().replace(/ /g, "")}`}
-                  className="text-black  hover:text-brown-700 transition"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item}
-                </a>
+                <Link
+            to={item === "Home" ? "/" : `/${item.toLowerCase().replace(/ /g, "")}`}
+            className="text-black text-2xl hover:text-brown-700 transition"
+          >
+            {item}
+          </Link>
               </li>
             )
           )}
@@ -66,4 +73,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
