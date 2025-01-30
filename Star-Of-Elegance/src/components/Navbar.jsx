@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import Logo from "../assets/image/logo.png";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/aboutus" },
+    { name: "Services", path: "/services" },
+    { name: "Contact Us", path: "/contactus" },
+    { name: "Our Projects", path: "/ourprojects" }
+  ];
 
   return (
     <nav className="fixed w-full top-0 left-0 z-50 bg-transparent p-4 ">
@@ -14,7 +22,7 @@ const Navbar = () => {
           <img src={Logo} alt="Logo" className="h-28 w-32" />
           <div className="leading-tight">
             <p className="text-black font-bold text-lg">STAR OF</p>
-            <p className="text-[#8B5715] font-semibold text-md">
+            <p className="text-[#8B5715] font-semibold  text-md">
               ELEGANCE <span className="text-[#B37E3C]">INC</span>
             </p>
           </div>
@@ -25,12 +33,12 @@ const Navbar = () => {
           {["Home", "About Us", "Services", "Contact Us", "Our Projects"].map(
             (item) => (
               <li key={item}>
-                <a
-                  href={`#${item.toLowerCase().replace(/ /g, "")}`}
-                  className="text-black text-2xl  hover:text-brown-700 transition"
-                >
-                  {item}
-                </a>
+                 <Link
+            to={`/${item.toLowerCase().replace(/ /g, "")}`}
+            className="text-black text-2xl hover:text-brown-700 transition"
+          >
+            {item}
+          </Link>
               </li>
             )
           )}
