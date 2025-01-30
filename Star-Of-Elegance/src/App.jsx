@@ -1,10 +1,20 @@
 import "./App.css";
-import Home from "./pages/Home";
+
+import HeroSection from "./sections/HeroSection";
+import ProjectsSection from "./sections/ProjectsSection";
+import ServicesSection from "./sections/ServicesSection";
+
 
 function App() {
   return (
     <>
-      <Home />
+
+      <div>
+        <HeroSection />
+        <ServicesSection />
+        <ProjectsSection />
+      </div>
+
     </>
   );
 }

@@ -1,17 +1,18 @@
+
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import Logo from "../assets/image/logo.png";
+import Logo from "../assets/image/HomePage/0ee3342a2f15112216948762df2356e3.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="fixed w-full top-0 left-0 z-50 bg-transparent p-4 ">
+    <nav className=" w-full top-0 left-0 z-50 bg-transparent p-4 ">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="flex items-center space-x-2">
-          <img src={Logo} alt="Logo" className="h-28 w-32" />
+          <img src={Logo} alt="Logo" className="h-28 w-32 z-50" />
           <div className="leading-tight">
             <p className="text-black font-bold text-lg">STAR OF</p>
             <p className="text-[#8B5715] font-semibold text-md">
@@ -65,3 +66,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
