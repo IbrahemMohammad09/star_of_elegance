@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import Logo from "../assets/image/logo.png";
@@ -72,3 +73,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

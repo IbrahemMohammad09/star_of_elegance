@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -28,7 +29,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-gray-100 overflow-hidden">
+    <div className="relative w-full h-screen bg-gray-100 overflow-hidden shadow-lg shadow-gray-500/50">
       {/* Curtains Animation */}
       <motion.img
         src={CurtainLeft}
@@ -39,7 +40,7 @@ const HeroSection = () => {
           duration: 3,
           ease: "easeInOut",
         }}
-        className="absolute top-0 left-0 h-full object-cover z-50"
+        className="absolute top-0 left-0 h-full object-cover z-49"
       />
       <motion.img
         src={CurtainRight}
@@ -50,7 +51,7 @@ const HeroSection = () => {
           duration: 3,
           ease: "easeInOut",
         }}
-        className="absolute top-0 right-0 h-full object-cover z-50"
+        className="absolute top-0 right-0 h-full object-cover z-49"
       />
 
       {/* Furniture Animation */}
@@ -213,14 +214,14 @@ const HeroSection = () => {
 
         {/* Icons */}
         <div className="flex justify-center space-x-4 mt-14">
-          <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full">
-            <FaFacebook className="text-2xl text-black" />
+          <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
+            <FaFacebook className="text-2xl" />
           </div>
-          <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full">
-            <FaTwitter className="text-2xl text-black" />
+          <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
+            <FaTwitter className="text-2xl" />
           </div>
-          <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full">
-            <FaInstagram className="text-2xl text-black" />
+          <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
+            <FaInstagram className="text-2xl" />
           </div>
         </div>
       </motion.div>
@@ -280,3 +281,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

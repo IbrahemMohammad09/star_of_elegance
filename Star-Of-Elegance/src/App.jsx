@@ -4,9 +4,13 @@ import About from "./pages/About";
 import { BrowserRouter , Routes , Route } from "react-router-dom"
 
 
+
+
+
 function App() {
   return (
     <>
+
     <BrowserRouter>
                <Routes>
                  <Route index element={<Home/>}/>
@@ -14,7 +18,7 @@ function App() {
                </Routes>
             
             </BrowserRouter>
-     
+
     </>
   );
 }
