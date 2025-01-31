@@ -1,4 +1,5 @@
 import "./App.css";
+import ClientsReviews from "./sections/ClientsReviews";
 import HeroSection from "./sections/HeroSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ServicesSection from "./sections/ServicesSection";
@@ -6,10 +7,11 @@ import ServicesSection from "./sections/ServicesSection";
 function App() {
   return (
     <>
-      <div>
+      <div className="w-[1896px]">
         <HeroSection />
         <ServicesSection />
         <ProjectsSection />
+        <ClientsReviews />
       </div>
     </>
   );
