@@ -40,7 +40,7 @@ const HeroSection = () => {
           duration: 3,
           ease: "easeInOut",
         }}
-        className="absolute top-0 left-0 h-full object-cover z-49"
+        className="absolute top-0 left-0 h-screen object-cover z-49"
       />
       <motion.img
         src={CurtainRight}
@@ -51,7 +51,7 @@ const HeroSection = () => {
           duration: 3,
           ease: "easeInOut",
         }}
-        className="absolute top-0 right-0 h-full object-cover z-49"
+        className="absolute top-0 right-0 h-screen object-cover z-49"
       />
 
       {/* Furniture Animation */}
@@ -74,9 +74,9 @@ const HeroSection = () => {
           className={`absolute`}
           initial={{ width: "300px", top: "500px", marginLeft: "0px" }}
           animate={{
-            width: animationComplete ? "200px" : "300px", // التغيير  عند التبديل
-            top: animationComplete ? "380px" : "500px", // الموقع عند التبديل
-            marginLeft: animationComplete ? "190px" : "0px", // المسافة اليسرى عند التبديل
+            width: animationComplete ? "18%" : "23%", // التغيير  عند التبديل
+            top: animationComplete ? "47%" : "44%", // الموقع عند التبديل
+            marginLeft: animationComplete ? "17%" : "0px", // المسافة اليسرى عند التبديل
           }}
           transition={{
             duration: 1, // مدة التأثير
@@ -106,9 +106,9 @@ const HeroSection = () => {
           className={`absolute`}
           initial={{ width: "300px", top: "500px", marginRight: "0px" }}
           animate={{
-            width: animationComplete ? "200px" : "300px",
-            top: animationComplete ? "370px" : "500px",
-            marginLeft: animationComplete ? "1060px" : "1190px",
+            width: animationComplete ? "18%" : "23%",
+            top: animationComplete ? "46%" : "44%",
+            marginLeft: animationComplete ? "94%" : "92%",
           }}
           transition={{
             duration: 1,
@@ -125,8 +125,8 @@ const HeroSection = () => {
         animate={{
           y: 0, // لا تغيير في y
           opacity: 1, // لا تغيير في opacity
-          width: animationComplete ? "250px" : "280px", // تغيير الـ width فقط بعد تفعيل animationComplete
-          top: animationComplete ? "250px" : "208px", // تغيير الـ top فقط بعد تفعيل animationComplete
+          width: animationComplete ? "13%" : "15%", // تغيير الـ width فقط بعد تفعيل animationComplete
+          top: animationComplete ? "25%" : "20%", // تغيير الـ top فقط بعد تفعيل animationComplete
         }}
         transition={{
           delay: 4,
@@ -142,12 +142,12 @@ const HeroSection = () => {
       <motion.img
         src={Light}
         alt="Right Light"
-        initial={{ y: "-100%", opacity: 0, width: "280px", top: "208px" }} // البداية كما هي
+        initial={{ y: "-100%", opacity: 0, width: "280px", top: "25%" }} // البداية كما هي
         animate={{
           y: 0, // لا تغيير في y
           opacity: 1, // لا تغيير في opacity
-          width: animationComplete ? "250px" : "280px", // تغيير الـ width فقط بعد تفعيل animationComplete
-          top: animationComplete ? "250px" : "208px", // تغيير الـ top فقط بعد تفعيل animationComplete
+          width: animationComplete ? "13%" : "15%", // تغيير الـ width فقط بعد تفعيل animationComplete
+          top: animationComplete ? "25%" : "20%", // تغيير الـ top فقط بعد تفعيل animationComplete
         }}
         transition={{
           delay: 4,
@@ -239,9 +239,9 @@ const HeroSection = () => {
           stiffness: 100,
           damping: 12,
         }}
-        className="absolute bottom-10 left-[44%] transform -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-[3%] left-[48.5%] transform -translate-x-1/2 flex flex-col items-center"
       >
-        <div className="circle-container w-40 h-40 flex items-center justify-center border-2 rounded-full p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">
+        <div className="circle-container  flex items-center justify-center border-2 rounded-full p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">
           <div className="circle-text group-hover:animate-spin">
             <span className="letter">S</span>
             <span className="letter">C</span>
