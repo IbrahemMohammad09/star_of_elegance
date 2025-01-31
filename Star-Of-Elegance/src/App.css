@@ -9,10 +9,30 @@
   .comme{
     font-family: 'Comme', sans-serif;
   }
+  .crimson{
+    font-family: 'Crimson Pro', serif;
+  }
+  .roboto{
+    font-family: 'Roboto', sans-serif;
+  }
   .line-width{
     width: 623px;
   }
   .width-line{
     width: 623px;
   }
+  .width-590{
+    width: 590px;
+  }
+  .width550{
+    width: 550px;
+  }
+  .width-408{
+    width: 408px;
+  }
+  .width-328{
+    width: 328px;
+  }
+ 
+ 
   

@@ -19,10 +19,8 @@ export default function Footer(){
         <div className="mb-10 md:mb-0">
             < p className="text-[#000000] font-bold text-xl mb-4 dm">Pages</p>
             <div className="flex flex-col"> 
-            <a href="#home" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Home</a>
-            
+            <Link to="/" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Home</Link>
             <Link to="/aboutus" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">About Us </Link>
-            
             <a href="#services" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Services</a>
             <a href="#our project"className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Our Project</a>
             <a href="#contact us" className="text-[#FFFFFF] font-normal text-lg  hover:text-black dm">Contact Us</a>

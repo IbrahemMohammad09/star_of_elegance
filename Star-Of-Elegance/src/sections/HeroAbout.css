@@ -1,0 +1,8 @@
+.border-5px{
+    border: 5px solid;
+      }
+@media (max-width:1024px){
+    .Container-HeroAbout{
+        flex-direction: column-reverse;
+    }
+}
