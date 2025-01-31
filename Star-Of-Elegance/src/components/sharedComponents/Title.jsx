@@ -1,4 +1,4 @@
-import Line from "../assets/image/Line.svg"
+import Line from "../../assets/image/Line.svg"
 export default function Title(){
     return<>
     <div className="mb-52">

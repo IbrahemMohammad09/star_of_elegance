@@ -1,4 +1,4 @@
-import Title from "../components/Title"
+import Title from "../components/sharedComponents/Title"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 const About =() =>{
