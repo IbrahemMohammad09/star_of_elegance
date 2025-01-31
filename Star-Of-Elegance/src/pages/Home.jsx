@@ -6,7 +6,9 @@ import ProjectsSection from '../sections/ProjectsSection'
 
 const Home = () => {
   return (
-    <div>
+    <div  
+      className="w-[1896px]"
+      >
         <HeroSection />
         <ServicesSection />
         <ProjectsSection />

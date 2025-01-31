@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -68,6 +67,7 @@ const HeroSection = () => {
         className="absolute top-44 left-56 transform -translate-x-1/2 flex items-center"
       >
         {/* Left Chair */}
+
         <motion.img
           src={Ch}
           alt="Left Chair"
@@ -157,7 +157,7 @@ const HeroSection = () => {
           damping: 10,
         }}
         className="absolute right-1/4 "
-      />
+       />
 
       {/* Final Reveal Animation (Navbar, Text, and Scroll Indicator) */}
       <motion.div
@@ -174,7 +174,7 @@ const HeroSection = () => {
           damping: 12,
         }}
         className="absolute top-0 w-full"
-      >
+        >
         <Navbar />
       </motion.div>
 
@@ -191,8 +191,8 @@ const HeroSection = () => {
           stiffness: 100,
           damping: 12,
         }}
-        className="absolute top-48 left-1/3 ml-10 transform -translate-x-1/2 text-center"
-      >
+        className="absolute  top-48 left-1/3 ml-10 transform -translate-x-1/2 text-center"
+        >
         {/* Title */}
         <h1 className="text-7xl font-bold text-gray-800">Star of Elegance</h1>
 
@@ -240,7 +240,7 @@ const HeroSection = () => {
           damping: 12,
         }}
         className="absolute bottom-[3%] left-[48.5%] transform -translate-x-1/2 flex flex-col items-center"
-      >
+        >
         <div className="circle-container  flex items-center justify-center border-2 rounded-full p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">
           <div className="circle-text group-hover:animate-spin">
             <span className="letter">S</span>
@@ -276,6 +276,7 @@ const HeroSection = () => {
           <FaChevronDown className="text-3xl text-[#8B5715] group-hover:text-white transition-all duration-300 mt-4 animate-bounce" />
         </div>
       </motion.div>
+
     </div>
   );
 };
