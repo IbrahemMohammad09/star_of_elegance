@@ -18,7 +18,7 @@ const HeroSection = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
-    // Trigger animation completion after 5 secondss
+    // Trigger animation completion after 5 seconds
     const timer = setTimeout(() => {
       setAnimationComplete(true);
     }, 5000);
