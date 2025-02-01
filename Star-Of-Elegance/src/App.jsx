@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import OrderSuccessful from "./pages/OrderSuccessful";
 import MessageSuccessful from "./pages/MessageSuccessful";
+import ServiceCard from "./pages/Services";
 import { BrowserRouter , Routes , Route } from "react-router-dom"
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
                  <Route path="/aboutus" element={<About/>} />
                  <Route path="/ordersuccessful" element={<OrderSuccessful/>} />
                  <Route path="/messagesuccessful" element={<MessageSuccessful/>} />
+                 <Route path="/services" element={<ServiceCard/>} />
+                 
                </Routes>
             
             </BrowserRouter>

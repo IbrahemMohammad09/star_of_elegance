@@ -21,7 +21,7 @@ export default function Footer(){
             <div className="flex flex-col"> 
             <Link to="/" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Home</Link>
             <Link to="/aboutus" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">About Us </Link>
-            <a href="#services" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Services</a>
+            <Link to="/services" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Services</Link>
             <a href="#our project"className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Our Project</a>
             <a href="#contact us" className="text-[#FFFFFF] font-normal text-lg  hover:text-black dm">Contact Us</a>
             </div>

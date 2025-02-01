@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function HeroAbout(){
     return<>
-        <div className="flex Container-HeroAbout  flex-col-reverse gap-14 md:gap-36 pl-14 pr-8 md:pl-24 md:pr-16 text-black crimson md:flex-row mt-44 mb-32">
+        <div className="flex Container-HeroAbout items-center justify-items-center flex-col-reverse gap-14 md:gap-36 pl-14 pr-8 md:pl-24 md:pr-16 text-black crimson md:flex-row mt-44 mb-32">
         <div className="flex flex-col gap-4 ">
           <p className=" font-normal text-4xl ">ABOUT US </p>
           <p className="font-light md:font-medium max-w-[550px]  py-6 text-4xl md:text-6xl  ">We help you turn your vision into reality.</p>
