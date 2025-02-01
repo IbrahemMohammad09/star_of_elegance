@@ -4,6 +4,7 @@ import About from "./pages/About";
 import OrderSuccessful from "./pages/OrderSuccessful";
 import MessageSuccessful from "./pages/MessageSuccessful";
 import { BrowserRouter , Routes , Route } from "react-router-dom"
+import ServiceCard from "./components/sharedComponents/ServiceCard";
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
           <Route path="/aboutus" element={<About/>} />
           <Route path="/ordersuccessful" element={<OrderSuccessful/>} />
           <Route path="/messagesuccessful" element={<MessageSuccessful/>} />
+          <Route path="/services" element={<ServiceCard/>} />
         </Routes>
       </BrowserRouter>
     </>
