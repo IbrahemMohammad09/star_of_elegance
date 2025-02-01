@@ -4,12 +4,6 @@ import About from "./pages/About";
 import OrderSuccessful from "./pages/OrderSuccessful";
 import MessageSuccessful from "./pages/MessageSuccessful";
 import { BrowserRouter , Routes , Route } from "react-router-dom"
-
-
-
-
-
-
 function App() {
   return (
     <>
