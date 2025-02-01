@@ -7,7 +7,7 @@ import ServicesSection from "./sections/ServicesSection";
 function App() {
   return (
     <>
-      <div className="w-[1896px]">
+      <div className="sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1896px]">
         <HeroSection />
         <ServicesSection />
         <ProjectsSection />
