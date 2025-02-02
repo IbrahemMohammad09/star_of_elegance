@@ -23,7 +23,7 @@ const services = [
 const Services = () => {
   
   return(
-    <div>
+    <div className="">
       <Navbar/>
       <Title/>
       <div>
