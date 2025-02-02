@@ -21,16 +21,32 @@ const services = [
   { id: 7, title: "07. Curtains and blackout curtains", description: "We design and install elegant curtains and effective blackout curtains to enhance your space. Enjoy style, privacy, and light control tailored to your needs.", image: service7 },
 ];
 const Services = () => {
-  return<>
-  <Navbar/>
-  <Title/>
+  
+  return(
+    <div>
+      <Navbar/>
+      <Title/>
       <div>
-        {services.map((service) => (
-          <ServiceCard key={service.id} service={service} />
-        ))}
-      </div>
-    <Footer/>
-    </>;
+          {services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+
+          //   <div className="flex flex-col items-start gap-16 w-full px-14 md:pl-14 md:pr-36 md:flex-row  md:justify-evenly mt-28 container-CardService mb-36">
+          //   <img src={service.image}alt="photo" className={`max-w-full w-80 md:w-96 object-cover rounded-md ${
+          //       isEven ? "order-2 md:order-1" : "order-1 md:order-2"}`}/>
+          //   <div className={`flex flex-col items-center sm:items-center md:items-start gap-6 md:gap-11 text-black md:text-start container-text ${
+          //     isEven ? "order-1 md:order-2" : "order-2 md:order-1"}`}>
+          //     <p className="text-xl md:text-4xl text-center container-text md:text-start font-normal kanit">{service.title}</p>
+          //     <p className="text-lg md:text-2xl max-w-full w-80 md:w-96 nun font-normal ">{service.description}</p>
+          //     <Link to="/">
+          //     <button className="flex gap-3 border border-1px border-[#B47F3D] w-60 py-2 px-10  md:w-72 md:py-4 md:px-12 mt-7 text-[#B47F3D] font-normal text-xl right-4 rounded-lg  hover:bg-[#B47F3D] letter-spacing kanit hover:text-white kanit">Book Now <img src={Vector} className='mt-4 md:mt-1' alt='icon'/></button>
+          //     </Link>
+          //   </div>
+          // </div>
+          ))}
+        </div>
+      <Footer/>
+    </div>
+    );
 };
 
 export default Services;
