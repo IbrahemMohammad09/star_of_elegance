@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default function HeroAbout(){
     return<>
-        <div className="flex Container-HeroAbout items-center justify-items-center flex-col-reverse gap-14 md:gap-36 pl-14 pr-8 md:pl-24 md:pr-16 text-black crimson md:flex-row mt-44 mb-32">
+        <div className='flex items-center justify-center '>  
+           <div className="flex Container-HeroAbout items-center justify-items-center flex-col-reverse gap-14 md:gap-36 pl-14 pr-8 md:pl-24 md:pr-16 text-black crimson md:flex-row mt-44 mb-32">
         <div className="flex flex-col gap-4 ">
           <p className=" font-normal text-4xl ">ABOUT US </p>
           <p className="font-light md:font-medium max-w-[550px]  py-6 text-4xl md:text-6xl  ">We help you turn your vision into reality.</p>
@@ -17,6 +18,7 @@ export default function HeroAbout(){
             <img src={photoabout} alt="photo" className=" w-full  max-w-[1024px] md:max-w-[800px] lg:max-w-[600px] xl:max-w-[500px] "/>
         </div>
        
+    </div>
     </div>
     </>
 }

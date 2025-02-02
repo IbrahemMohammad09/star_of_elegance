@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import './ServiceCard.css' 
 import vector from '../../assets/image/Services/vector.svg'
+import { div } from 'framer-motion/client';
 const ServiceCard = ({ service }) => {
     const isEven = service.id % 2 !== 0;
 
     return (
-      <div className="flex flex-col items-start gap-16 w-full px-14 md:pl-14 md:pr-36 md:flex-row  md:justify-evenly mt-28 container-CardService mb-36">
+        <div className='flex items-center justify-center'>
+      <div className="flex flex-col items-start gap-16 w-full px-14 md:pl-14 md:pr-36 md:flex-row  md:justify-center mt-28 container-CardService mb-36 ">
         <img src={service.image}alt="photo" className={`max-w-full w-80 md:w-96 object-cover rounded-md ${
             isEven ? "order-2 md:order-1" : "order-1 md:order-2"}`}/>
         <div className={`flex flex-col items-center sm:items-center md:items-start gap-6 md:gap-11 text-black md:text-start container-text ${
@@ -16,6 +18,7 @@ const ServiceCard = ({ service }) => {
           <button className="flex gap-3 border border-1px border-[#B47F3D] w-60 py-2 px-10  md:w-72 md:py-4 md:px-12 mt-7 text-[#B47F3D] font-normal text-xl right-4 rounded-lg  hover:bg-[#B47F3D] letter-spacing kanit hover:text-white kanit">Book Now <img src={vector} className='mt-4 md:mt-1' alt='icon'/></button>
           </Link>
         </div>
+      </div>
       </div>
     );
 };
