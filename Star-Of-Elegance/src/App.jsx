@@ -1,18 +1,23 @@
 import "./App.css";
-import ClientsReviews from "./sections/ClientsReviews";
-import HeroSection from "./sections/HeroSection";
-import ProjectsSection from "./sections/ProjectsSection";
-import ServicesSection from "./sections/ServicesSection";
 
+import Home from "./pages/Home";
+import About from "./pages/About";
+import OrderSuccessful from "./pages/OrderSuccessful";
+import MessageSuccessful from "./pages/MessageSuccessful";
+import { BrowserRouter , Routes , Route } from "react-router-dom"
+import Services from "./pages/Services";
 function App() {
   return (
     <>
-      <div className="sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1896px]">
-        <HeroSection />
-        <ServicesSection />
-        <ProjectsSection />
-        <ClientsReviews />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />}/>
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/ordersuccessful" element={<OrderSuccessful />} />
+          <Route path="/messagesuccessful" element={<MessageSuccessful />} />
+          <Route path="/services" element={<Services />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
