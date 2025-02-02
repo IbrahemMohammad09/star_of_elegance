@@ -55,7 +55,11 @@ const ClientsReviews = () => {
   ];
 
   return (
-    <section className="py-16 mt-24 px-8 bg-white text-center relative h-screen">
+
+    <section className=" mt-20 md:px-20 bg-white text-center relative h-screen">
+
+//     <section className="py-16 mt-24 px-8 bg-white text-center relative h-screen">
+
       {/* العنوان */}
       <h2 className="text-5xl font-bold text-[#B47F3D] mb-12">
         Our Clients Reviews
@@ -65,22 +69,33 @@ const ClientsReviews = () => {
       <div className="relative max-w-[90%] mx-auto">
         {/* الأسهم خارج السلايدر */}
         <button
-          ref={swiperNavPrev} //ربط السهم الأيسر بالمرجع
-          className="absolute left-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10"
+          ref={swiperNavPrev} // ربط السهم الأيسر بالمرجع
+          className="absolute left-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
         >
-          <FaArrowLeft className="text-3xl" />
+          <FaArrowLeft className="text-sm sm:text-sm md:text-xl lg:text-3xl" />
+
+//           ref={swiperNavPrev} //ربط السهم الأيسر بالمرجع
+//           className="absolute left-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10"
+//         >
+//           <FaArrowLeft className="text-3xl" />
         </button>
 
         <button
           ref={swiperNavNext} // ربط السهم الأيمن بالمرجع
-          className="absolute right-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10"
+          className="absolute right-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
         >
-          <FaArrowRight className="text-3xl" />
+          <FaArrowRight className="text-sm sm:text-sm md:text-xl lg:text-3xl" />
+
+//           className="absolute right-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10"
+//         >
+//           <FaArrowRight className="text-3xl" />
+
         </button>
 
         <Swiper
           modules={[Navigation]}
-          spaceBetween={80}
+          spaceBetween={40}
+//           spaceBetween={80}
           slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 2 },

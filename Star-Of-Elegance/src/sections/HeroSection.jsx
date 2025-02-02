@@ -18,7 +18,7 @@ const HeroSection = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
-    // Trigger animation completion after 5 seconds
+    // Trigger animation completion after 5 secondss
     const timer = setTimeout(() => {
       setAnimationComplete(true);
     }, 5000);
@@ -240,7 +240,8 @@ const HeroSection = () => {
           damping: 12,
         }}
         className="absolute bottom-[3%] left-[48.5%] transform -translate-x-1/2 flex flex-col items-center"
-        >
+      >
+
         <div className="circle-container  flex items-center justify-center border-2 rounded-full p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">
           <div className="circle-text group-hover:animate-spin">
             <span className="letter">S</span>
