@@ -17,7 +17,7 @@ export default function Successful({ title, message, message2 }) {
     };
 
     return (
-        <div className="flex flex-col items-center text-center text-[#8B5715] crimson mb-44 mt-28 gap-1">
+        <div className="flex flex-col items-center text-center text-[#8B5715] crimson mb-44  gap-1">
             <motion.div
                 {...bounce}
                 initial={{ scale: 0 }}

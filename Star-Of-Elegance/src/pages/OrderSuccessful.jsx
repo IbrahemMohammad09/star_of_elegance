@@ -7,7 +7,7 @@ export default function OrderSuccessful(){
     return<>
     <Navbar/>
     <Title/>
-    <div>
+    <div >
             <Successful 
                 title="Order Successful" 
                 message="Your request has been sent successfully." 
