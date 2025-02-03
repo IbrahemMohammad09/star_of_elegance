@@ -17,8 +17,8 @@ export default function HeroAbout(){
         <div  className="">
             <img src={photoabout} alt="photo" className=" w-full  max-w-[1024px] md:max-w-[800px] lg:max-w-[600px] xl:max-w-[500px]  transition-transform duration-300 hover:scale-110"/>
         </div>
-       
     </div>
     </div>
+
     </>
 }
