@@ -6,7 +6,7 @@ export default function MessageSuccessful () {
     return <>
      <Navbar/>
      <Title/>
-        <div>
+        <div >
             <Successful 
                 title="message Successful" 
                 message="Thanks so much for contacting us" 
