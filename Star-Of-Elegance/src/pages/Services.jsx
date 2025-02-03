@@ -9,6 +9,7 @@ import service4 from "../assets/image/Services/service4.svg"
 import service5 from "../assets/image/Services/service5.svg"
 import service6 from "../assets/image/Services/service6.svg"
 import service7 from "../assets/image/Services/service7.svg"
+import MainTitle from "../components/sharedComponents/MainTitle";
 
 
 const services = [
@@ -24,6 +25,7 @@ const Services = () => {
   
   return(
     <div className="">
+      <MainTitle title={"Services"} />
       <Navbar/>
       <Title/>
       <div>

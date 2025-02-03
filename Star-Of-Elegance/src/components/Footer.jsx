@@ -5,6 +5,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { RiWhatsappFill } from "react-icons/ri";
 import logo from "../assets/image/logo.png"
 import { Link } from 'react-router-dom';
+
 export default function Footer(){
     return<>
     <div className="mt-16">
@@ -45,7 +46,7 @@ export default function Footer(){
         </div>
     </div>
     <div className="bg-white">
-        <p className="text-black font-normal  text-center pt-4 pb-4 nun">© Copyright by SPARK – All rights reserved.</p>
+        <p className="text-black font-normal  text-center pt-4 pb-4 nun">© Copyright by <a className="" style={{ color: "#2fb0cd" }} target="_blank" href="https://sparkengdev.com/">SPARK</a>  – All rights reserved.</p>
     </div>
    </div>
     </>

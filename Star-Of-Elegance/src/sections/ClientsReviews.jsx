@@ -55,7 +55,7 @@ const ClientsReviews = () => {
   ];
 
   return (
-    <section className=" mt-20 md:px-20 bg-white text-center relative h-screen">
+    <section className=" mt-20 md:px-20 bg-white text-center relative ">
       {/* العنوان */}
       <h2 className="text-5xl font-bold text-[#B47F3D] mb-12">
         Our Clients Reviews
@@ -86,7 +86,7 @@ const ClientsReviews = () => {
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          className="pb-10 h-[700px]"
+          className="pb-10 h-[600px]"
           navigation={{
             prevEl: swiperNavPrev.current, // ربط السهم الأيسر
             nextEl: swiperNavNext.current, // ربط السهم الأيمن
@@ -95,7 +95,7 @@ const ClientsReviews = () => {
           {reviews.map((review, index) => (
             <SwiperSlide key={index}>
               <div
-                className="border-4 mt-10 border-[#B47F3D] p-8 rounded-xl text-center bg-white mx-auto max-w-[550px] h-[600px] flex flex-col justify-between"
+                className="border-4 mt-10 border-[#B47F3D] p-8 rounded-xl text-center bg-white mx-auto max-w-[400px] h-[500px] flex flex-col justify-between"
                 style={{
                   boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)",
                 }}
