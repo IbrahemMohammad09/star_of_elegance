@@ -1,4 +1,3 @@
-
 .circle-container {
   position: relative;
   width: 352%; /* حجم الدائرة */
@@ -29,6 +28,10 @@
   text-transform: uppercase;
 }
 
+.letter:nth-child(1) {
+  transform: rotate(0deg) translateY(-430%);
+}
+/* باقي الحروف بنفس النمط */
 .letter:nth-child(1) {
   transform: rotate(0deg) translateY(-430%);
 }
@@ -101,7 +104,6 @@
 .letter:nth-child(24) {
   transform: rotate(345deg) translateY(-430%);
 }
-
 .group:hover .circle-text {
   animation: spin 2s infinite; /* تدوير الأحرف حول السهم عند التمرير */
 }
@@ -115,3 +117,14 @@
   }
 }
 
+/* استعلام وسائط لتغيير حجم الدائرة في الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .circle-container {
+    width: 100px; /* تغيير حجم الدائرة في الشاشات الصغيرة */
+    height: 100px; /* تقليل ارتفاع الدائرة */
+  }
+
+  .letter {
+    font-size: 7px; /* تقليل حجم الخط للأحرف */
+  }
+}
