@@ -1,11 +1,11 @@
 .circle-container {
   position: relative;
-  width: 352%; /* حجم الدائرة */
-  height: 200px; /* حجم الدائرة */
+  width: 370%;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%; /* الشكل الدائري */
+  border-radius: 50%;
   padding: 10px;
 }
 
@@ -23,7 +23,7 @@
 .letter {
   position: absolute;
   font-size: 14px;
-  transform-origin: 50% 50%; /* جعل التدوير يبدأ من مركز الحرف */
+  transform-origin: 50% 50%;
   display: inline-block;
   text-transform: uppercase;
 }
@@ -105,7 +105,7 @@
   transform: rotate(345deg) translateY(-430%);
 }
 .group:hover .circle-text {
-  animation: spin 2s infinite; /* تدوير الأحرف حول السهم عند التمرير */
+  animation: spin 2s infinite;
 }
 
 @keyframes spin {
@@ -117,14 +117,23 @@
   }
 }
 
-/* استعلام وسائط لتغيير حجم الدائرة في الشاشات الصغيرة */
 @media (max-width: 768px) {
   .circle-container {
-    width: 100px; /* تغيير حجم الدائرة في الشاشات الصغيرة */
-    height: 100px; /* تقليل ارتفاع الدائرة */
+    width: 100px;
+    height: 100px;
   }
 
   .letter {
-    font-size: 7px; /* تقليل حجم الخط للأحرف */
+    font-size: 7px;
+  }
+}
+@media (max-width: 1024px) {
+  .circle-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .letter {
+    font-size: 10px;
   }
 }
