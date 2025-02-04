@@ -2,9 +2,10 @@ import Successful from '../components/sharedComponents/Successful';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Title from '../components/sharedComponents/Title';
-
+import MainTitle from "../components/sharedComponents/MainTitle";
 export default function OrderSuccessful(){
     return<>
+    <MainTitle title={'OrderSuccessful'} />
     <Navbar/>
     <Title/>
     <div>

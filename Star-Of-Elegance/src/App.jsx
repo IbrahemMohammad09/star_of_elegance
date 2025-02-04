@@ -5,6 +5,7 @@ import OrderSuccessful from "./pages/OrderSuccessful";
 import MessageSuccessful from "./pages/MessageSuccessful";
 import { BrowserRouter , Routes , Route } from "react-router-dom"
 import Services from "./pages/Services";
+import ContactInformation from "./pages/ContactInformation";
 function App() {
   return (
     <>
@@ -15,6 +16,8 @@ function App() {
           <Route path="/ordersuccessful" element={<OrderSuccessful />} />
           <Route path="/messagesuccessful" element={<MessageSuccessful />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/contactinformation" element={<ContactInformation/>} />
+
         </Routes>
       </BrowserRouter>
     </>
