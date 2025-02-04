@@ -16,7 +16,7 @@ function App() {
           <Route path="/ordersuccessful" element={<OrderSuccessful />} />
           <Route path="/messagesuccessful" element={<MessageSuccessful />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/contactinformation" element={<ContactInformation/>} />
+          <Route path="/contact-us" element={<ContactInformation/>} />
 
         </Routes>
       </BrowserRouter>
