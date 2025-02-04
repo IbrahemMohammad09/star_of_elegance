@@ -159,11 +159,12 @@
 }
 @media (min-width: 1536px) {
   .circle-container {
-    width: 175px;
-    height: 170px;
+    width: 150px;
+    height: 150px;
+    margin-top: -20px;
   }
 
   .letter {
-    font-size: 12px;
+    font-size: 10px;
   }
 }

@@ -152,7 +152,7 @@ const HeroSection = () => {
                   stiffness: 100,
                   damping: 12,
                 }}
-                className=" md:flex md:mt-[200px] md:ml-[-360px] lg:mt-[200px] lg:ml-[50px] 2xl:ml-[-200px] 2xl:mt-[190px] xl:ml-[200px] transform -translate-x-1/2  "
+                className=" md:flex md:mt-[200px] md:ml-[-360px] lg:mt-[200px] lg:ml-[50px] 2xl:ml-[-200px] 2xl:mt-[140px] xl:ml-[200px] transform -translate-x-1/2  "
               >
                 {/* Left Chair */}
                 <motion.img
@@ -313,7 +313,7 @@ const HeroSection = () => {
                       ? {
                           y: 0,
                           opacity: 1,
-                          width: animationComplete ? "250px" : "250px",
+                          width: animationComplete ? "220px" : "250px",
                           marginLeft: animationComplete ? "0px" : "-50px",
                           top: animationComplete ? "25%" : "20%",
                         }
@@ -330,7 +330,7 @@ const HeroSection = () => {
                     stiffness: 90,
                     damping: 10,
                   }}
-                  className="absolute left-[150px] mt-[100px] md:block md:ml-[0px] lg:w-[13%]  lg:top-[25%] lg:mt-0 lg:left-[230px] xl:left-[18%] xl:mt-[-50px]  2xl:left-[28%] 2xl:mt-[3%]"
+                  className="absolute left-[150px] mt-[100px] md:block md:ml-[0px] lg:w-[13%]  lg:top-[25%] lg:mt-0 lg:left-[230px] xl:left-[18%] xl:mt-[-50px]  2xl:left-[28%] 2xl:mt-[2%]"
                 />
 
                 {/* Right Light */}
@@ -369,7 +369,7 @@ const HeroSection = () => {
                       ? {
                           y: 0,
                           opacity: 1,
-                          width: animationComplete ? "250px" : "250px",
+                          width: animationComplete ? "220px" : "250px",
                           marginLeft: animationComplete ? "0px" : "50px",
                           top: animationComplete ? "25%" : "20%",
                         }
@@ -386,7 +386,7 @@ const HeroSection = () => {
                     stiffness: 90,
                     damping: 10,
                   }}
-                  className="absolute right-[19%] mt-[100px]  md:block md:mr-[0px] lg:w-[13%] lg:top-[25%] lg:mt-0 lg:right-[225px] xl:left-[65%] xl:mt-[-50px] 2xl:left-[60%] 2xl:mt-[3%]"
+                  className="absolute right-[19%] mt-[100px]  md:block md:mr-[0px] lg:w-[13%] lg:top-[25%] lg:mt-0 lg:right-[225px] xl:left-[65%] xl:mt-[-50px] 2xl:left-[60%] 2xl:mt-[2%]"
                 />
               </motion.div>
             </motion.div>
@@ -402,10 +402,10 @@ const HeroSection = () => {
 
             {/* Title & Icons بدون Motion */}
             <div className="flex items-center justify-center ">
-              <div className="absolute top-[192px] ml-[165px]  transform -translate-x-1/2 text-center">
+              <div className="absolute top-[25%] left-[50%]   transform -translate-x-1/2 text-center">
                 {/* صورة قبل النص */}
                 <div className="flex items-center justify-center ">
-                  <div className="absolute w-[100%] top-[-50px] left-1/2 transform -translate-x-1/2">
+                  <div className="absolute w-[100%] top-[-50px] left-[50%] transform -translate-x-1/2">
                     <img
                       src={Logo}
                       alt="Logo"
@@ -413,7 +413,7 @@ const HeroSection = () => {
                     />
                   </div>
 
-                  <h1 className="text-5xl text-gray-800">
+                  <h1 className="text-4xl sm:text-5xl text-gray-800">
                     Star of <br /> Elegance
                   </h1>
                 </div>
@@ -431,14 +431,14 @@ const HeroSection = () => {
                 </div>
 
                 {/* Line with Circle */}
-                <div className="mt-2 ml-8 mx-auto relative">
-                  <div className="h-1 bg-gray-800 w-[120px]"></div>
-                  <div className="absolute right-6 top-[-4px] w-3 h-3 bg-gray-800 rounded-full"></div>
+                <div className="mt-2 sm:ml-8 ml-[20%] mx-auto relative">
+                  <div className="h-1 bg-gray-800 w-[70%] "></div>
+                  <div className="absolute right-[20%] sm:right-10 top-[-4px] w-3 h-3 bg-gray-800 rounded-full"></div>
                 </div>
               </div>
 
               {/* Scroll Indicator بدون Motion */}
-              <div className=" -mt-[100px] mr-[20px] ">
+              <div className="mt-[-50px] sm:-mt-[100px] mr-[20px] ">
                 <Link to="Services" smooth={true} duration={1500} offset={0}>
                   <div className="circle-container flex items-center justify-center border-2 rounded-full hover:cursor-pointer p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">
                     <div className="circle-text">
@@ -508,7 +508,7 @@ const HeroSection = () => {
                 stiffness: 100,
                 damping: 12,
               }}
-              className=" ml-[0px] mt-[-500px] lg:ml-[0px] lg:mt-[-550px] xl:left-1/3 xl:mt-[-750px] 2xl:mt-[-850px] transform -translate-x-1/2 text-center lg:z-50 xl:z-50 2xl:z-40"
+              className=" ml-[0px] mt-[-500px] lg:ml-[0px] lg:mt-[-550px] xl:left-1/3 xl:mt-[-750px] 2xl:mt-[-800px] transform -translate-x-1/2 text-center lg:z-50 xl:z-50 2xl:z-40"
             >
               <h1 className="  md:text-5xl lg:text-5xl xl:text-7xl font-bold text-gray-800">
                 Star of Elegance
@@ -557,7 +557,7 @@ const HeroSection = () => {
                 stiffness: 100,
                 damping: 12,
               }}
-              className=" ml-[0%]  sm:mt-[200px] md:mt-[250px] lg:mt-[300px] xl:mt-[330px] 2xl:mt-[370px]  transform -translate-x-1/2 flex flex-col items-center"
+              className=" ml-[0%]  sm:mt-[200px] md:mt-[250px] lg:mt-[300px] xl:mt-[330px] 2xl:mt-[320px]  transform -translate-x-1/2 flex flex-col items-center"
             >
               <Link to="Services" smooth={true} duration={1500} offset={0}>
                 <div className="circle-container flex items-center justify-center border-2 rounded-full hover:cursor-pointer p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">

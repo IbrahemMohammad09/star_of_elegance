@@ -17,7 +17,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full top-0 left-0 z-50 bg-transparent p-4">
+    <nav className="w-full top-0 left-0 z-50 bg-transparent p-4 fixed">
       {/* Desktop Navbar */}
       <div className="hidden lg:flex justify-center">
         <div className="bg-white shadow-lg rounded-2xl 2xl:px-10 2xl:py-4 flex items-center justify-between lg:px-2 lg:py-2 w-[90%] max-w-[1200px]">
@@ -38,7 +38,7 @@ const Navbar = () => {
               <li key={item.name}>
                 <Link
                   to={item.path}
-                  className={`text-black text-2xl transition ${
+                  className={` text-2xl transition ${
                     location.pathname === item.path
                       ? "text-[#8B5715] font-bold" // Active
                       : "hover:text-[#8B5715]"

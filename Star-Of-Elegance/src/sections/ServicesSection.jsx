@@ -5,8 +5,11 @@ import image3 from "../assets/image/HomePage/OurServices/image3.jpeg";
 
 const ServicesSection = () => {
   return (
-    <div id="Services" className="mx-auto  flex items-center justify-center ">
-      <section className=" bg-white px-8 py-16">
+    <div
+      id="Services"
+      className="mx-auto lg:mt-6 md:mt-[-20%]  flex items-center justify-center "
+    >
+      <section className="  px-8 py-16 ">
         <div className="mx-screen flex flex-col-reverse  items-center gap-36 sm:flex-col lg:flex-row  ">
           {/* القسم الأيسر: قائمة المستطيلات */}
           <div className="flex flex-1 flex-col items-start w-[100%] gap-32 sm:space-y-10 xl:space-y-16 sm:w-auto sm:mt-0 lg:space-y-0 lg:pl-16 xl:mt-6 xl:p-0 xl:relative xl:-ml-28 xl:gap-10">
