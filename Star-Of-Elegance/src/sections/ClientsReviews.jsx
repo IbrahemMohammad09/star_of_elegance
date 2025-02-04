@@ -8,8 +8,8 @@ import {
   FaArrowLeft,
   FaArrowRight,
   FaTimes,
-  FaEnvelope,
   FaComment,
+  FaUserAlt
 } from "react-icons/fa";
 const ClientsReviews = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -169,10 +169,10 @@ const ClientsReviews = () => {
             {/* إدخال البريد والتعليق */}
             <div className="space-y-4">
               <div className="relative">
-                <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <FaUserAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
-                  type="email"
-                  placeholder="Your Email"
+                  type="text"
+                  placeholder="Your Name"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"

@@ -17,7 +17,7 @@ export default function Footer(){
             </p>
         </div>
         <div className="flex gap-4">
-        <div className="mb-10 md:mb-0">
+        <div className="mb-10 md:mb-0 mr-7">
             < p className="text-[#000000] font-bold text-xl mb-4 dm">Pages</p>
             <div className="flex flex-col"> 
             <Link to="/" className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm">Home</Link>
