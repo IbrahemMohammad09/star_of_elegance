@@ -5,7 +5,6 @@ import { SlLocationPin } from "react-icons/sl";
 import { RiWhatsappFill } from "react-icons/ri";
 import logo from "../assets/image/logo.png"
 import { Link } from 'react-router-dom';
-
 export default function Footer(){
     return<>
     <div className="mt-16">
@@ -31,14 +30,14 @@ export default function Footer(){
             <p className="text-[#000000] font-bold text-xl mb-4 dm">Contact us</p>
             <div className="flex items-center text-white mb-4">
                 <MdOutlineEmail className="text-xl  hover:text-black" />
-                <a href="mailto:stivalo@gmail.com" className="ml-2 font-normal text-lg  hover:text-black dm">info@starofelegance.com</a>
+                <a href="mailto:starofelegance@gmail.com" className="ml-2 font-normal text-lg  hover:text-black dm">info@starofelegance.com</a>
             </div>
             <div className="flex items-center text-white mb-4">
                 <SlLocationPin className="text-xl  hover:text-black" />
                 <a href="https://maps.app.goo.gl/WPtv3ir4bm2RDDxY7" className="ml-2 font-normal text-lg dm hover:text-black">1901 Toronto - Canada</a>
             </div>
             <div className="flex gap-4 mt-4">
-                <a href="#" className="text-white text-2xl  hover:text-black"><GrFacebookOption /></a>
+                <a href="#" className="text-white text-2xl  hover:text-black "><GrFacebookOption /></a>
                 <a href="#" className="text-white text-2xl  hover:text-black"><RiWhatsappFill /></a>
                 <a href="#" className="text-white text-2xl  hover:text-black"><FaInstagram /></a>
             </div>

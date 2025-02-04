@@ -18,4 +18,12 @@
   .width-line{
     width: 623px;
   }
-  
+.source{
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  .montserrat{
+    font-family: 'Montserrat';
+  }
+  .syne{
+    font-family: 'Syne';
+  }
