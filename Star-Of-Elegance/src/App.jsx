@@ -6,6 +6,7 @@ import MessageSuccessful from "./pages/MessageSuccessful";
 import { BrowserRouter , Routes , Route } from "react-router-dom"
 import Services from "./pages/Services";
 import ContactInformation from "./pages/ContactInformation";
+import NotFoundPage from "./pages/Error";
 function App() {
   return (
     <>
@@ -17,7 +18,7 @@ function App() {
           <Route path="/messagesuccessful" element={<MessageSuccessful />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact-us" element={<ContactInformation/>} />
-
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
