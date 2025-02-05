@@ -2,10 +2,14 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Title from "../components/sharedComponents/Title";
 import Footer from "../components/Footer";
+import { useState
+ } from "react";
 export default function Form() {
     
     const { "service-name": serviceName } = useParams(); 
     const serviceNameFinal = encodeURIComponent(serviceName.replace(/-/g, " ").replace(/\s+/g, " ")).replace(/%20/g, " ");
+    const [text, setText] = useState(`I need to book this service (${serviceNameFinal})`);
+
 
 
 
@@ -48,7 +52,7 @@ export default function Form() {
                         </div>
                         <div className="w-full flex flex-col mt-2">
                             <label htmlFor="serviceName" className="font-medium text-lg text-black crimson">Select Service Name</label>
-                            <select className="w-full md:max-w-[341px] text-[#949494] source font-light text-2xl mt-1 bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3"
+                            <select className="w-full  text-[#949494] source font-light text-2xl mt-1 bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3"
                                defaultValue={decodeURIComponent(serviceName)} >
                                 <option value={decodeURIComponent(serviceName)}>{decodeURIComponent(serviceName)}</option>
                                 <option value="Custom Furniture manufacturing">Custom Furniture manufacturing</option>
@@ -62,9 +66,12 @@ export default function Form() {
                         </div>
                         <div className="mt-10">
                             <label className="font-medium text-lg text-black crimson">Description (Optional)</label>
-                            <textarea placeholder="Please provide the name of the service you wish to book along with its details." className="bg-white border border-[#8B5715] rounded-lg h-40 p-3 w-full">
-                                {`I need to book this service (${serviceNameFinal})`}
-                            </textarea>
+                            <textarea
+                                value={text}
+                                onChange={(e) => setText(e.target.value)}
+                                placeholder="Please provide the name of the service you wish to book along with its details."
+                                className="bg-white border border-[#8B5715] rounded-lg h-40 p-3 w-full"
+                                />
                         </div>
                     </form>
                 </div>
