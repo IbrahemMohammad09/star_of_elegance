@@ -12,6 +12,7 @@ const Services = lazy(() => import("./pages/Services"));
 const ContactInformation = lazy(() => import("./pages/ContactInformation"));
 const NotFoundPage = lazy(() => import("./pages/Error"));
 const Form = lazy(() => import("./pages/Form"));
+const OurProjects = lazy(() => import('./pages/OurProjects'))
 function App() {
 
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/book-your-service/:service-name" element={<Form />} />
           <Route path="*/" element={<Navigate to={'/error'} />} />
           <Route path="/error" element={<NotFoundPage />} />
+          <Route path="/our-projects" element={<OurProjects />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

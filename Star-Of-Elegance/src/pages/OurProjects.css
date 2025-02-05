@@ -1,0 +1,51 @@
+.container {
+  perspective: 1000px;
+}
+
+.front,
+.back {
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.container:hover .front {
+  transform: rotateY(-180deg);
+}
+
+.container:hover .back {
+  transform: rotateY(0deg);
+}
+
+.container .back {
+  transform: rotateY(180deg);
+}
+
+.inner {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  transform: translateY(-50%) translateZ(60px) scale(0.94);
+  z-index: 2;
+}
+
+.front .inner p {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.front .inner p:after {
+  content: "";
+  width: 4rem;
+  height: 2px;
+  background: #c6d4df;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -0.75rem;
+}
