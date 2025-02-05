@@ -3,8 +3,10 @@ import "./ServiceCard.css";
 import vector from "../../assets/image/Services/vector.svg";
 
 const ServiceCard = ({ service }) => {
+
     const isEven = service.id % 2 !== 0;
     const formattedTitle = encodeURIComponent(service.title.replace(/\s+/g, "-"));//delete 20%
+    
     return (
       <div className="flex items-center justify-center">
         <div className="flex flex-col items-start gap-16 max-w-[600px] px-14 md:pl-14 md:px-36 md:flex-row  md:justify-center  container-CardService mb-32">

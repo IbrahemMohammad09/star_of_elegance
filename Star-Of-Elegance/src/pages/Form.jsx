@@ -3,11 +3,16 @@ import Navbar from "../components/Navbar";
 import Title from "../components/sharedComponents/Title";
 import Footer from "../components/Footer";
 export default function Form() {
+    
     const { "service-name": serviceName } = useParams(); 
+    const serviceNameFinal = encodeURIComponent(serviceName.replace(/-/g, " ").replace(/\s+/g, " ")).replace(/%20/g, " ");
+
+
+
     return (
         <>
             <Navbar />
-            <div className="mt-56">
+            <div className="mt-52">
                 <Title />
             </div>
             <div className="flex flex-col items-center">
@@ -16,7 +21,7 @@ export default function Form() {
                     Please fill the form below, it will only take 3 minutes
                 </p>
                 <div className="flex justify-between items-center p-4">
-                    <form className="mt-6">
+                    <form className="mt-4">
                         <div className="flex flex-col md:flex-row gap-8">
                             <div className="w-full">
                                 <label className="font-medium text-lg text-black crimson">Your Name</label>
@@ -55,9 +60,11 @@ export default function Form() {
                                 <option value="Curtains and blackout curtains">Curtains and blackout curtains</option>
                             </select>
                         </div>
-                        <div className="mt-20">
+                        <div className="mt-10">
                             <label className="font-medium text-lg text-black crimson">Description (Optional)</label>
-                            <textarea className="bg-white border border-[#8B5715] rounded-lg h-40 p-3 w-full"></textarea>
+                            <textarea placeholder="Please provide the name of the service you wish to book along with its details." className="bg-white border border-[#8B5715] rounded-lg h-40 p-3 w-full">
+                                {`I need to book this service (${serviceNameFinal})`}
+                            </textarea>
                         </div>
                     </form>
                 </div>
