@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import Title from "../components/sharedComponents/Title";
 const NotFoundPage = () => {
   return (
-    <div className=" h-screen bg-gray-100">
+    <div className="pt-20 h-screen bg-gray-100">
       <Navbar />
       <div className="flex flex-col items-center justify-center  text-center py-20 p-4">
         <Title />

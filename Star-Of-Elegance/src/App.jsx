@@ -1,27 +1,35 @@
 import "./App.css";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import OrderSuccessful from "./pages/OrderSuccessful";
-import MessageSuccessful from "./pages/MessageSuccessful";
-import { BrowserRouter , Routes , Route } from "react-router-dom"
-import Services from "./pages/Services";
-import ContactInformation from "./pages/ContactInformation";
-import NotFoundPage from "./pages/Error";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React, { Suspense, lazy } from 'react';
+import Loading from "./pages/Loading";
+
+
+// استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const OrderSuccessful = lazy(() => import("./pages/OrderSuccessful"));
+const MessageSuccessful = lazy(() => import("./pages/MessageSuccessful"));
+const Services = lazy(() => import("./pages/Services"));
+const ContactInformation = lazy(() => import("./pages/ContactInformation"));
+const NotFoundPage = lazy(() => import("./pages/Error"));
+
 function App() {
+
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Suspense fallback={<Loading />}>
         <Routes>
-          <Route index element={<Home />}/>
+          <Route index element={<Home />} />
           <Route path="/aboutus" element={<About />} />
-          <Route path="/ordersuccessful" element={<OrderSuccessful />} />
-          <Route path="/messagesuccessful" element={<MessageSuccessful />} />
+          <Route path="/order-successful" element={<OrderSuccessful />} />
+          <Route path="/message-successful" element={<MessageSuccessful />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/contact-us" element={<ContactInformation/>} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/contact-us" element={<ContactInformation />} />
+          <Route path="*" element={<Navigate to={"/error"} />} />
+          <Route path="/error" element={<NotFoundPage />} />
         </Routes>
-      </BrowserRouter>
-    </>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 

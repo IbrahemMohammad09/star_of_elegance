@@ -6,9 +6,9 @@ import MainTitle from "../components/sharedComponents/MainTitle";
 export default function OrderSuccessful(){
     return<>
     <MainTitle title={'OrderSuccessful'} />
-    <Navbar/>
-    <Title/>
-    <div>
+    <div className='pt-40'>
+        <Navbar/>
+        <Title/>
         <Successful 
             title="Order Successful" 
             message="Your request has been sent successfully." 

@@ -24,7 +24,7 @@ const services = [
 const Services = () => {
   
   return(
-    <div className="">
+    <div className="pt-40 flex justfiy-center flex-col">
       <MainTitle title={"Services"} />
       <Navbar/>
       <Title/>

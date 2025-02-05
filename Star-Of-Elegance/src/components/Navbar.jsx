@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="bg-white shadow-lg rounded-2xl 2xl:px-10 2xl:py-4 flex items-center justify-between lg:px-2 lg:py-2 w-[90%] max-w-[1200px]">
           {/* Logo Section */}
           <div className="flex items-center space-x-2">
-            <img src={Logo} alt="Logo" className="h-16 w-16 md:h-28 md:w-32" />
+            <img src={Logo} alt="Logo" className="h-10 w-10 md:h-24 md:w-32" />
             <div className="hidden lg:block leading-tight">
               <p className="text-black font-bold text-lg">STAR OF</p>
               <p className="text-[#8B5715] font-semibold text-md">

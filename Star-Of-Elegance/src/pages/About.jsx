@@ -5,7 +5,7 @@ import HeroAbout from "../sections/HeroAbout"
 import MainTitle from "../components/sharedComponents/MainTitle"
 const About =() =>{
     return(
-        <div>
+        <div className="pt-40">
             <MainTitle title={"About us"} />
             <Navbar/>
             <Title/>

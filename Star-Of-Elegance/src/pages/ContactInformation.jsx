@@ -12,12 +12,13 @@ import './ContactInformation.css'
 
 export default function ContactInformation(){
    return<>
+   <div className="pt-40"></div>
       <MainTitle title={'Contact Us'} />
       <Navbar/>
       <Title/>
-      <div className="flex justify-center"> 
-         <div className="flex flex-col md:flex-row gap-10 md:gap-8  md:px-12 mt-6 pr-6  container-contact-information">
-            <div className="flex flex-col items-start gap-6 border border-[#8B5715] rounded-lg md:p-12 pt-24 pb-60 px-6 md:px-16">
+      <div className="flex justify-center "> 
+         <div className="flex w-[90%] 2xl:w-[60%] flex-col md:flex-row gap-10 md:gap-8  md:px-12 mt-6 container-contact-information">
+            <div className="flex flex-col items-start gap-6 border border-[#8B5715] rounded-lg md:p-12 pt-24 pb-24 sm:pb-60 px-6 md:px-16">
                <p className="text-[#8B5715] font-semibold text-2xl md:text-4xl  syne">Contact Information</p>
                <div className="flex gap-2 items-center">
                   <a href="https://maps.app.goo.gl/WPtv3ir4bm2RDDxY7" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">

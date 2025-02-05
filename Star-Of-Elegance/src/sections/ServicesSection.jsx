@@ -63,7 +63,7 @@ const ServicesSection = () => {
 
           {/* القسم اليميني: العنوان والرابط */}
           <div className=" flex text-center space-y-16 w-[100%] px-[6rem]  md:mt-80  sm:px-44  sm:mt-70  md:px-52 lg:mt-10 lg:pl-0 lg:order-none xl:pl-40 xl:text-left sm:order-first xl:order-none">
-            <SectionHeader title="Our Services" linkText="Show all" />
+            <SectionHeader link={"/services"} title="Our Services" linkText="Show all" />
           </div>
         </div>
       </section>
