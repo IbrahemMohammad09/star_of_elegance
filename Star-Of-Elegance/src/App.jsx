@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
 import Loading from "./pages/Loading";
 
-
 // استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -12,7 +11,7 @@ const MessageSuccessful = lazy(() => import("./pages/MessageSuccessful"));
 const Services = lazy(() => import("./pages/Services"));
 const ContactInformation = lazy(() => import("./pages/ContactInformation"));
 const NotFoundPage = lazy(() => import("./pages/Error"));
-
+const Form = lazy(() => import("./pages/Form"));
 function App() {
 
   return (
@@ -25,8 +24,7 @@ function App() {
           <Route path="/message-successful" element={<MessageSuccessful />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact-us" element={<ContactInformation />} />
-          <Route path="*" element={<Navigate to={"/error"} />} />
-          <Route path="/error" element={<NotFoundPage />} />
+          <Route path="/book-your-service/:service-name" element={<Form />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

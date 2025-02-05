@@ -10,10 +10,11 @@ import service5 from "../assets/image/Services/service5.svg"
 import service6 from "../assets/image/Services/service6.svg"
 import service7 from "../assets/image/Services/service7.svg"
 import MainTitle from "../components/sharedComponents/MainTitle";
+import { button } from "framer-motion/client";
 
 
 const services = [
-  { id: 1, title: "Custom Furniture manufacturing", description: "We create unique, high-quality furniture tailored to your style and needs. Whether it's for your home or office, we bring your vision to life with precision and craftsmanship.", image: service1 },
+  { id: 1, title: "Custom Furniture manufacturing", description: "We create unique, high-quality furniture tailored to your style and needs. Whether it's for your home or office, we bring your vision to life with precision and craftsmanship.", image: service1  },
   { id: 2, title: "3D Desgin and CNC FAbrication", description: "We provide professional 3D design services and precision CNC fabrication to turn your ideas into reality. From concept to final product, we ensure accuracy and high-quality finishes.!", image:service2 },
   { id: 3, title: "Custom headboard design and Implemntation ", description: "We design and create bespoke headboards that match your style and comfort preferences. From concept to installation, we ensure a perfect fit for your bedroom.", image:service3 },
   { id: 4, title: "Furniture restoration and Reupholstery", description: "We bring new life to your old furniture through expert restoration and reupholstery services. Preserve your cherished pieces while giving them a fresh, updated look.", image: service4 },
