@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import MainTitle from "../components/sharedComponents/MainTitle";
 import Title from "../components/sharedComponents/Title";
 import "./OurProjects.css";
+import TitleProject from "../components/TitleProject";
 
 const Card = ({ frontImage, title }) => (
   <div className="col w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-2rem)] m-4 cursor-pointer">
@@ -72,6 +73,7 @@ const OurProjects = () => {
         {/* <h1 className="text-center text-5xl  font-bold mt-8 mb-8">
         </h1> */}
         <Title />
+        <TitleProject/>
         <div className="cols flex flex-wrap justify-center">
           {cards.map((card, index) => (
             <Card key={index} frontImage={card.frontImage} title={card.title} />

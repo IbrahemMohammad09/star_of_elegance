@@ -1,0 +1,7 @@
+@media(max-width:830px){
+    .container-title-project{
+    flex-direction: column;
+    justify-content: center;
+    }
+  }
+  
