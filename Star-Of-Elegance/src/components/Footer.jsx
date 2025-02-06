@@ -5,6 +5,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { RiWhatsappFill } from "react-icons/ri";
 import logo from "../assets/image/logo.png"
 import { Link } from 'react-router-dom';
+import './Footer.css'
 export default function Footer(){
     return<>
     <div className="mt-16 w-full">
