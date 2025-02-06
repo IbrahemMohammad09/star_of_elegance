@@ -23,9 +23,9 @@ const HeroSection = () => {
     const width = window.innerWidth;
     return width < 768
       ? "small"
-      : width <= 1024
+      : width < 1024
       ? "medium"
-      : width <= 1280
+      : width < 1280
       ? "large"
       : width < 1536
       ? "xl"
