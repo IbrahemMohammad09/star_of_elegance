@@ -8,7 +8,7 @@ export default function Form() {
     
     const { "service-name": serviceName } = useParams(); 
     const serviceNameFinal = encodeURIComponent(serviceName.replace(/-/g, " ").replace(/\s+/g, " ")).replace(/%20/g, " ");
-    const [text, setText] = useState(`I need to book this service (${serviceNameFinal})`);
+    const [text, setText] = useState(`I need to book this service (${serviceNameFinal})...`);
 
 
 

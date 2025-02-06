@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
 import Loading from "./pages/Loading";
+import ScrollToTop from "./components/sharedComponents/ScrollToTop";
 
 // استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
 const Home = lazy(() => import("./pages/Home"));
@@ -18,6 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
+        <ScrollToTop />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/aboutus" element={<About />} />
