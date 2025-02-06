@@ -7,8 +7,8 @@ import projectImg3 from "../assets/image/HomePage/OurProjects/image3.jpeg";
 const ProjectsSection = () => {
   return (
     <div className="">
-      <section className="xl:py-16  px-8 h-screen bg-white overflow-hidden">
-        <div className="container mx-auto xl:flex flex md:block flex-col items-center xl:gap-16 relative  md:flex-row">
+      <section className="xl:py-16  px-8 mb-36 bg-white overflow-hidden">
+        <div className=" container mx-auto xl:flex flex md:block flex-col items-center xl:gap-16 relative  md:flex-row">
           {/* القسم الأيمن: العنوان والرابط */}
           <div className="flex-1 text-left space-y-6 mt-60 md:mt-20 xl:mt-0">
             <SectionHeader title="Our Projects" linkText="Show all" />

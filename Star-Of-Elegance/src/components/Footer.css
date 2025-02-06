@@ -1,0 +1,13 @@
+@media(max-width:1053px){
+    .container-footer{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+    .child2{
+        justify-content: center;
+        
+        
+    }
+}
