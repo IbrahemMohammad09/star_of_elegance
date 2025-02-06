@@ -10,7 +10,7 @@ import service5 from "../assets/image/Services/service5.svg"
 import service6 from "../assets/image/Services/service6.svg"
 import service7 from "../assets/image/Services/service7.svg"
 import MainTitle from "../components/sharedComponents/MainTitle";
-import { button } from "framer-motion/client";
+
 
 
 const services = [

@@ -70,8 +70,6 @@ const OurProjects = () => {
       <Navbar />
       <MainTitle title={"Our Projects"} />
       <div className="wrapper mt-16 sm:pt-36 w-[90%] mx-auto max-w-[80rem]">
-        {/* <h1 className="text-center text-5xl  font-bold mt-8 mb-8">
-        </h1> */}
         <Title />
         <TitleProject/>
         <div className="cols flex flex-wrap justify-center">

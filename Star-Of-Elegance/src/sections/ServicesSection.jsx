@@ -9,7 +9,7 @@ const ServicesSection = () => {
       id="Services"
       className="mx-auto lg:mt-6 md:mt-[-20%]  flex items-center justify-center "
     >
-      <section className="  px-8 py-16 ">
+      <section className="  px-0  py-16 ">
         <div className="mx-screen flex flex-col-reverse  items-center gap-36 sm:flex-col lg:flex-row  ">
           {/* القسم الأيسر: قائمة المستطيلات */}
           <div className="flex flex-1 flex-col items-start w-[100%] gap-32 sm:space-y-10 xl:space-y-16 sm:w-auto sm:mt-0 lg:space-y-0 lg:pl-16 xl:mt-6 xl:p-0 xl:relative xl:-ml-28 xl:gap-10">
@@ -62,7 +62,7 @@ const ServicesSection = () => {
           </div>
 
           {/* القسم اليميني: العنوان والرابط */}
-          <div className=" flex text-center space-y-16 w-[100%] px-[6rem]  md:mt-80  sm:px-44  sm:mt-70  md:px-52 lg:mt-10 lg:pl-0 lg:order-none xl:pl-40 xl:text-left sm:order-first xl:order-none">
+          <div className=" flex text-center space-y-12 w-[100%] px-[6rem]  md:mt-80  sm:px-44  sm:mt-70  md:px-32 lg:mt-10 lg:pl-0 lg:order-none xl:pl-40 xl:text-left sm:order-first xl:order-none">
             <SectionHeader link={"/services"} title="Our Services" linkText="Show all" />
           </div>
         </div>
