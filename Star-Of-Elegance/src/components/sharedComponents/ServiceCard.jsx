@@ -5,13 +5,13 @@ import vector from "../../assets/image/Services/vector.svg";
 const ServiceCard = ({ service }) => {
 
     const isEven = service.id % 2 !== 0;
-    const formattedTitle = encodeURIComponent(service.title.replace(/\s+/g, "-"));//delete 20%
+    const formattedTitle = encodeURIComponent(service.name.replace(/\s+/g, "-"));//delete 20%
     
     return (
       <div className="flex items-center justify-center">
         <div className="flex flex-col items-start gap-16 max-w-[600px] px-14 md:pl-14 md:px-36 md:flex-row  md:justify-center  container-CardService mb-32">
-          <img src={service.image} alt="photo" className={`max-w-full w-80 md:w-96 object-cover rounded-md transition-transform duration-300 hover:scale-110 ${
-            isEven ? "order-2 md:order-1" : "order-1 md:order-2"}`}/>
+          {/* <img src={service.picture} alt="photo" className={`max-w-full w-80 md:w-96 object-cover rounded-md transition-transform duration-300 hover:scale-110 ${ */}
+            {/* isEven ? "order-2 md:order-1" : "order-1 md:order-2"}`}/> */}
           <div className={`flex flex-col items-center sm:items-center md:items-start space-y-0 md:gap-11 text-black md:text-start container-text ${
             isEven ? "order-1 md:order-2" : "order-2 md:order-1" }`}>
             <p className="text-xl md:text-4xl text-center container-text md:text-start font-normal kanit">
