@@ -9,7 +9,7 @@ import './Footer.css'
 export default function Footer(){
     return<>
     <div className="mt-16 ">
-    <div className="flex  flex-col w-full  justify-between bg-[#B47F3E] px-4 pt-28  pb-36 md:flex-row md:pl-8 md:pr-80 md:pt-28  lg:px-20 container-footer">
+    <div className="flex flex-col w-full  justify-between bg-[#B47F3E] px-4 pt-28  pb-36 md:flex-row md:pl-8 md:pr-80 md:pt-28  lg:px-20 container-footer">
         <div className="flex items-center justify-center  mb-10 md:mb-0">
             <img src={logo} alt="logo" className="w-32 h-auto object-cover md:w-56 md:h-44"/>
             <p className="ml-4 text-[#000000] w-40  font-black text-xl md:w-64 md:text-5xl inter lg:text-3xl ">
