@@ -7,15 +7,15 @@ import projectImg3 from "../assets/image/HomePage/OurProjects/image3.jpeg";
 const ProjectsSection = () => {
   return (
     <div className="">
-      <section className="xl:py-16  px-8 mb-36 bg-white overflow-hidden">
+      <section className="xl:py-16  px-8 mb-0 sm:h-screen  bg-white  overflow-hidden">
         <div className=" container mx-auto xl:flex flex md:block flex-col items-center xl:gap-16 relative  md:flex-row">
           {/* القسم الأيمن: العنوان والرابط */}
-          <div className="flex-1 text-left space-y-6 mt-60 md:mt-20 xl:mt-0">
+          <div className="flex-1 text-left space-y-6 mt-20 md:mt-20 xl:mt-0">
             <SectionHeader title="Our Projects" linkText="Show all" />
           </div>
 
           {/* القسم الأيسر: الصور */}
-          <div className="flex-1 relative flex justify-center items-center">
+          <div className="flex-1 relative mb-32 flex justify-center items-center">
             {/* المربع الرمادي الخلفي */}
             <div className="absolute xl:top-[-40px] sm:w-[200px] sm:h-[140px] sm:right-[300px] md:top-[200px] lg:h-[200px]  lg:top-[50px] top-[140px] lg:right-[600px] md:right-[450px] xl:right-[-600px] right-[200px]  xl:w-[702px] w-[100px] xl:h-[224px] h-[100px] bg-gray-200 rounded-xl z-0"></div>
 

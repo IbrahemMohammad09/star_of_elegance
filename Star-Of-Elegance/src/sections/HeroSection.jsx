@@ -39,9 +39,9 @@ const HeroSection = () => {
 
       if (width < 768) {
         setScreenSize("small");
-      } else if (width <= 1024) {
+      } else if (width < 1024) {
         setScreenSize("medium");
-      } else if (width <= 1280) {
+      } else if (width < 1280) {
         setScreenSize("large");
       } else if (width < 1536) {
         setScreenSize("xl");
@@ -84,6 +84,7 @@ const HeroSection = () => {
           }}
           className="absolute w-full top-0 left-0 h-screen object-cover z-40"
         />
+
         <motion.img
           src={CurtainRight}
           alt="Right Curtain"
@@ -96,14 +97,14 @@ const HeroSection = () => {
             duration: 3,
             ease: "easeInOut",
           }}
-          className="absolute w-full top-0 right-0 h-screen object-cover z-40"
+          className=" w-full absolute top-0 right-0 h-screen object-cover z-40 "
         />
 
         {/* Apply animation for all screens */}
         <div className="flex items-center justify-center">
           {screenSize === "small" ? (
             // إذا كانت الشاشة صغيرة، عرض العناصر بدون Motion
-            <div className=" flex justify-center items-center w-[70%]   mt-[300px] mr-[15px] sm:w-[80%] sm:mt-[300px] sm:mr-[10px] ">
+            <div className=" flex justify-center items-center w-[70%]   mt-[350px] mr-[15px] sm:w-[80%] sm:mt-[300px] sm:mr-[10px] ">
               {/* Left Chair */}
               <img
                 src={Ch}
@@ -129,14 +130,14 @@ const HeroSection = () => {
                   src={Light}
                   alt="Left Light"
                   className="absolute left-[18%] "
-                  style={{ width: "15%", top: "38%" }}
+                  style={{ width: "15%", top: "370px" }}
                 />
                 {/* Right Light */}
                 <img
                   src={Light}
                   alt="Right Light"
                   className="absolute right-[18%] "
-                  style={{ width: "15%", top: "38%" }}
+                  style={{ width: "15%", top: "370px" }}
                 />
               </div>
             </div>
@@ -152,7 +153,7 @@ const HeroSection = () => {
                   stiffness: 100,
                   damping: 12,
                 }}
-                className=" md:flex md:mt-[200px] md:ml-[-360px] lg:mt-[200px] lg:ml-[50px] 2xl:ml-[-200px] 2xl:mt-[140px] xl:ml-[200px] transform -translate-x-1/2  "
+                className=" md:flex md:mt-[350px] md:ml-[-360px] lg:mt-[220px] lg:ml-[50px] 2xl:ml-[-200px] 2xl:mt-[140px] xl:ml-[200px] transform -translate-x-1/2  "
               >
                 {/* Left Chair */}
                 <motion.img
@@ -162,9 +163,9 @@ const HeroSection = () => {
                   animate={
                     screenSize === "medium"
                       ? {
-                          width: animationComplete ? "13vh" : "13vh",
+                          width: animationComplete ? "10vh" : "10vh",
                           marginLeft: animationComplete ? "280px" : "280px",
-                          top: animationComplete ? "250px" : "250px",
+                          top: animationComplete ? "48%" : "48%",
                         }
                       : screenSize === "large"
                       ? {
@@ -203,8 +204,8 @@ const HeroSection = () => {
                   animate={
                     screenSize === "medium"
                       ? {
-                          width: "55vh",
-                          height: "500px",
+                          width: "40vh",
+                          height: "50%",
                           marginLeft: "350px",
                           top: "0px",
                         }
@@ -242,9 +243,9 @@ const HeroSection = () => {
                   animate={
                     screenSize === "medium"
                       ? {
-                          width: "13vh",
-                          marginLeft: "820px",
-                          top: "250px",
+                          width: "10vh",
+                          marginLeft: "95%",
+                          top: "47%",
                         }
                       : screenSize === "large"
                       ? {
@@ -293,7 +294,7 @@ const HeroSection = () => {
                           y: 0,
                           opacity: 1,
                           width: animationComplete ? "120px" : "120px",
-                          top: animationComplete ? "170px" : "20%",
+                          top: animationComplete ? "120px" : "10%",
                         }
                       : screenSize === "large"
                       ? {
@@ -330,7 +331,7 @@ const HeroSection = () => {
                     stiffness: 90,
                     damping: 10,
                   }}
-                  className="absolute left-[150px] mt-[100px] md:block md:ml-[0px] lg:w-[13%]  lg:top-[25%] lg:mt-0 lg:left-[230px] xl:left-[18%] xl:mt-[-50px]  2xl:left-[28%] 2xl:mt-[2%]"
+                  className="absolute left-[150px] mt-[100px] md:block md:ml-[3%] lg:ml-[0] xl:ml-[0] 2xl:ml-[0] lg:w-[13%] md:mt-[250px] lg:top-[25%] lg:mt-0 lg:left-[230px] xl:left-[18%] xl:mt-[-50px]  2xl:left-[28%] 2xl:mt-[2%]"
                 />
 
                 {/* Right Light */}
@@ -349,7 +350,7 @@ const HeroSection = () => {
                           y: 0,
                           opacity: 1,
                           width: animationComplete ? "120px" : "120px",
-                          top: animationComplete ? "170px" : "20%",
+                          top: animationComplete ? "120px" : "10%",
                         }
                       : screenSize === "large"
                       ? {
@@ -386,7 +387,7 @@ const HeroSection = () => {
                     stiffness: 90,
                     damping: 10,
                   }}
-                  className="absolute right-[19%] mt-[100px]  md:block md:mr-[0px] lg:w-[13%] lg:top-[25%] lg:mt-0 lg:right-[225px] xl:left-[65%] xl:mt-[-50px] 2xl:left-[60%] 2xl:mt-[2%]"
+                  className="absolute right-[19%] mt-[100px]  md:block md:mr-[0] lg:mr-[0] xl:mr-[0] 2xl:mr-[0] md:mt-[250px] lg:w-[13%] lg:top-[25%] lg:mt-0 lg:right-[225px] xl:left-[65%] xl:mt-[-50px] 2xl:left-[60%] 2xl:mt-[2%]"
                 />
               </motion.div>
             </motion.div>
@@ -508,7 +509,7 @@ const HeroSection = () => {
                 stiffness: 100,
                 damping: 12,
               }}
-              className=" ml-[0px] mt-[-500px] lg:ml-[0px] lg:mt-[-550px] xl:left-1/3 xl:mt-[-750px] 2xl:mt-[-800px] transform -translate-x-1/2 text-center lg:z-50 xl:z-50 2xl:z-40"
+              className=" ml-[0px] mt-[-500px] sm:mt-[-65%] md:mt-[-61%] lg:ml-[0px] lg:mt-[-550px] xl:left-1/3 xl:mt-[-750px] 2xl:mt-[-800px] transform -translate-x-1/2 text-center lg:z-50 xl:z-50 2xl:z-40"
             >
               <h1 className="  md:text-5xl lg:text-5xl xl:text-7xl font-bold text-gray-800">
                 Star of Elegance
@@ -557,7 +558,7 @@ const HeroSection = () => {
                 stiffness: 100,
                 damping: 12,
               }}
-              className=" ml-[0%]  sm:mt-[200px] md:mt-[250px] lg:mt-[300px] xl:mt-[330px] 2xl:mt-[320px]  transform -translate-x-1/2 flex flex-col items-center"
+              className=" ml-[0%]  sm:mt-[200px] md:mt-[350px] lg:mt-[300px] xl:mt-[330px] 2xl:mt-[320px]  transform -translate-x-1/2 flex flex-col items-center"
             >
               <Link to="Services" smooth={true} duration={1500} offset={0}>
                 <div className="circle-container flex items-center justify-center border-2 rounded-full hover:cursor-pointer p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">

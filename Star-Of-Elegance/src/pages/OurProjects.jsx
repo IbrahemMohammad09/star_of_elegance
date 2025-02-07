@@ -19,7 +19,7 @@ const Card = ({ frontImage, title }) => (
       </div>
       <div className="back absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#cedce7] to-[#596a72] rounded-xl flex items-center justify-center p-8 text-white">
         <a
-          href="#show-more"
+          href="/view-project"
           className="text-lg font-semibold text-white hover:underline"
         >
           View More Details
@@ -70,8 +70,6 @@ const OurProjects = () => {
       <Navbar />
       <MainTitle title={"Our Projects"} />
       <div className="wrapper mt-16 sm:pt-36 w-[90%] mx-auto max-w-[80rem]">
-        {/* <h1 className="text-center text-5xl  font-bold mt-8 mb-8">
-        </h1> */}
         <Title />
         <TitleProject/>
         <div className="cols flex flex-wrap justify-center">
