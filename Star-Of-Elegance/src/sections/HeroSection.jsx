@@ -68,7 +68,7 @@ const HeroSection = () => {
 
   return (
     <div className="w-screen lg:w-full">
-      <div className="lg:relative h-screen bg-gray-100 overflow-hidden shadow-lg shadow-gray-500/50">
+      <div className="relative h-screen bg-gray-100 overflow-hidden shadow-lg shadow-gray-500/50">
         {/* Curtains Animation */}
         <motion.img
           src={CurtainLeft}
@@ -84,7 +84,6 @@ const HeroSection = () => {
           }}
           className="absolute w-full top-0 left-0 h-screen object-cover z-40"
         />
-
         <motion.img
           src={CurtainRight}
           alt="Right Curtain"
@@ -97,7 +96,7 @@ const HeroSection = () => {
             duration: 3,
             ease: "easeInOut",
           }}
-          className=" w-full absolute top-0 right-0 h-screen object-cover z-40 "
+          className="absolute w-full top-0 right-0 h-screen object-cover z-40"
         />
 
         {/* Apply animation for all screens */}

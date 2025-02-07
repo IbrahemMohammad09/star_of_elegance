@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import MainTitle from "../components/sharedComponents/MainTitle";
-import Title from "../components/sharedComponents/Title";
 
 const OurProjects = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -34,7 +32,6 @@ const OurProjects = () => {
 
   return (
     <div className="justify-center items-center">
-      
       <Navbar />
       <motion.div
         className="relative w-full pb-20 min-h-screen bg-gray-100 overflow-hidden"
@@ -42,23 +39,16 @@ const OurProjects = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <MainTitle title={"Project Name"} />
-
         <motion.div
           className="section-title text-center mb-10 relative z-10 px-4 mt-16 lg:mt-52"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <Title />
-          <h2 className="text-4xl font-bold mb-2">Project Name</h2>
-          <p className="text-lg mx-auto text-gray-700 w-[90%] sm:w-[50%]">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
-            similique expedita veniam exercitationem maxime fuga odio ratione
-            nulla mollitia error?
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
-            similique expedita veniam exercitationem maxime fuga odio ratione
-            nulla mollitia error?
+          <h2 className="text-4xl font-bold mb-2 text-[#B47F3E]  font-Poppins">
+            Name The Project
+          </h2>
+          <p className="text-lg mx-auto text-gray-700 w-[50%]">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
             similique expedita veniam exercitationem maxime fuga odio ratione
             nulla mollitia error?
@@ -76,9 +66,11 @@ const OurProjects = () => {
 
           {/* Before Section */}
           <div className="slider-section w-full lg:w-1/2 relative text-center">
-            <h2 className="text-2xl font-bold mb-4">Before</h2>
+            <h2 className="text-2xl font-bold mb-4 text-[#B47F3E] font-Poppins">
+              Before
+            </h2>
             <motion.div
-              className="relative mx-auto w-[100%] h-[500px] bg-cover rounded-xl overflow-hidden shadow-lg cursor-pointer"
+              className="relative mx-auto w-[45vh] h-[45vh] bg-cover rounded-xl overflow-hidden shadow-lg cursor-pointer"
               style={{ backgroundImage: `url(${imagesBefore[activeImage]})` }}
               key={activeImage}
               initial={{ opacity: 0, x: -500 }}
@@ -107,9 +99,11 @@ const OurProjects = () => {
 
           {/* After Section */}
           <div className="slider-section w-full lg:w-1/2 relative text-center">
-            <h2 className="text-2xl font-bold mb-4">After</h2>
+            <h2 className="text-2xl font-bold mb-4 text-[#B47F3E] font-Poppins">
+              After
+            </h2>
             <motion.div
-              className="relative mx-auto w-[100%] h-[500px] bg-cover rounded-xl overflow-hidden shadow-lg cursor-pointer"
+              className="relative mx-auto w-[45vh] h-[45vh] bg-cover rounded-xl overflow-hidden shadow-lg cursor-pointer"
               style={{ backgroundImage: `url(${imagesAfter[activeImage]})` }}
               key={activeImage}
               initial={{ opacity: 0, x: 500 }}

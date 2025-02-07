@@ -29,10 +29,10 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact-us" element={<ContactInformation />} />
           <Route path="/book-your-service/:service-name" element={<Form />} />
-          <Route path="*/" element={<Navigate to={'/error'} />} />
-          <Route path="/error" element={<NotFoundPage />} />
           <Route path="/our-projects" element={<OurProjects />} />
           <Route path="view-project" element={<OurProject />}/>
+          <Route path="*/" element={<Navigate to={'/error'} />} />
+          <Route path="/error" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
