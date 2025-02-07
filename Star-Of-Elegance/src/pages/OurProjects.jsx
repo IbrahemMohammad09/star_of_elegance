@@ -19,7 +19,7 @@ const Card = ({ frontImage, title }) => (
       </div>
       <div className="back absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#cedce7] to-[#596a72] rounded-xl flex items-center justify-center p-8 text-white">
         <a
-          href="#show-more"
+          href="/view-project"
           className="text-lg font-semibold text-white hover:underline"
         >
           View More Details
