@@ -1,16 +1,90 @@
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Title from "../components/sharedComponents/Title";
 import Footer from "../components/Footer";
-import { useState
- } from "react";
+import { useState,useEffect} from "react";
+import axios from "axios";
+import Api from "../constant/api";
+import { useNavigate } from "react-router-dom";
+
+
 export default function Form() {
-    
+    const [serviceNames, setServiceNames] = useState([]);
+
+    const navigate = useNavigate();
+
     const { "service-name": serviceName } = useParams(); 
     const serviceNameFinal = encodeURIComponent(serviceName.replace(/-/g, " ").replace(/\s+/g, " ")).replace(/%20/g, " ");
+
+    const [services, setServices] = useState([]);
+    const [selectedId, setSelectedId] = useState("");
+    const [selectedName, setSelectedName] = useState(""); 
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
     const [text, setText] = useState(`I need to book this service (${serviceNameFinal})...`);
+    const [loading,setLoading] = useState(false);
+    
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(Api.GET.SERVICELIST);
+            setServices(response.data);
+            const extractedData = response.data.map(({ id, name }) => ({ id, name }));
+            setServiceNames(extractedData);
+          } catch {
+            navigate('/error');
+          } finally {
+            setLoading(false); 
+          }
+        };
+    
+        fetchData();
+      }, []);
+
+      const handleSelectChange = (event) => {
+        const selectedService = services.find(service => service.name === event.target.value);
+        setSelectedName(selectedService?.name || ""); 
+        setSelectedId(selectedService?.id || ""); 
+      };
 
 
+      const validateForm = () => {
+        let newErrors = {};
+        if (!name) newErrors.name = "This field is required";
+        if (!email) newErrors.email = "This field is required";
+        if (!phone) newErrors.phone = "This field is required";
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!validateForm()) return;
+        setLoading(true);
+
+        const requestData = {
+            name,
+            email,
+            phone,
+            service_name: selectedName,
+            description: text,
+            status: "new"
+        };
+
+        try {
+            const response = await axios.post(Api.POST.CREATEORDER, requestData);
+                navigate('/message-successful');
+        } catch (error) {
+                // navigate('/error');
+        } finally {
+            setLoading(false);
+        }
+    };
 
 
     return (
@@ -29,17 +103,40 @@ export default function Form() {
                         <div className="flex flex-col md:flex-row gap-8">
                             <div className="w-full">
                                 <label className="font-medium text-lg text-black crimson">Your Name</label>
-                                <input type="text" className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" placeholder="JAN" />
+                                <input 
+                                    type="text" 
+                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                                    placeholder="JAN"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required />
+                                 {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
                             </div>
                             <div className="w-full">
                                 <label className="font-medium text-lg text-black crimson">Email</label>
-                                <input type="email" className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" placeholder="Example@Example.com" />
+                                <input 
+                                    type="email" 
+                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                                    placeholder="Example@Example.com" 
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    />
+                                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                             </div>
                         </div>
                         <div className="mt-4 flex flex-col md:flex-row gap-8">
                             <div className="w-full">
                                 <label className="font-medium text-lg text-black crimson">Phone</label>
-                                <input type="tel" className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" placeholder="657-473-9783" />
+                                <input 
+                                    type="tel" 
+                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                                    placeholder="657-473-9783"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    required
+                                    />
+                                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
                             </div>
                             <div className="w-full">
                                 <label htmlFor="serviceType" className="font-medium text-lg text-black crimson">Select Your Service Type</label>
@@ -52,17 +149,20 @@ export default function Form() {
                         </div>
                         <div className="w-full flex flex-col mt-2">
                             <label htmlFor="serviceName" className="font-medium text-lg text-black crimson">Select Service Name</label>
-                            <select className="w-full  text-[#949494] source font-light text-2xl mt-1 bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3"
-                               defaultValue={decodeURIComponent(serviceName)} >
+                            
+                            <select
+                                className="w-full  text-[#949494] source font-light text-2xl mt-1 bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3"
+                                value={selectedName} 
+                                onChange={handleSelectChange} 
+                                >
                                 <option value={decodeURIComponent(serviceName)}>{decodeURIComponent(serviceName)}</option>
-                                <option value="Custom Furniture manufacturing">Custom Furniture manufacturing</option>
-                                <option value="3D Design and CNC Fabrication">3D Design and CNC Fabrication</option>
-                                <option value="Custom headboard design and Implementation">Custom headboard design and Implementation</option>
-                                <option value="Furniture restoration and Reupholstery">Furniture restoration and Reupholstery</option>
-                                <option value="Reviving old furniture with modern techniques">Reviving old furniture with modern techniques</option>
-                                <option value="Upholstery services">Upholstery services</option>
-                                <option value="Curtains and blackout curtains">Curtains and blackout curtains</option>
+                                {services.map(service => (
+                                    <option key={service.id} value={service.name}>
+                                        {service.name}
+                                    </option>
+                                    ))}
                             </select>
+                            
                         </div>
                         <div className="mt-10">
                             <label className="font-medium text-lg text-black crimson">Description (Optional)</label>
@@ -75,7 +175,11 @@ export default function Form() {
                         </div>
                     </form>
                 </div>
-                <button type="submit" className="boder-3 w-[290px] bg-white text-[#8B5715] font-semibold text-4xl border border-3 border-[#8B5715] rounded-2xl py-4 px-6 hover:text-white hover:bg-[#8B5715] my-20 crimson">
+                <button 
+                    type="submit" 
+                    className="boder-3 w-[290px] bg-white text-[#8B5715] font-semibold text-4xl border border-3 border-[#8B5715] rounded-2xl py-4 px-6 hover:text-white hover:bg-[#8B5715] my-20 crimson"
+                    onClick={handleSubmit}
+                    >
                     Book Now
                 </button>
             </div>

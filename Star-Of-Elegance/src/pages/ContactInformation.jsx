@@ -9,8 +9,57 @@ import { FaSquareFacebook } from "react-icons/fa6";
 import { RiWhatsappFill } from "react-icons/ri";
 import linecontact from '../assets/image/linecontact.svg'
 import './ContactInformation.css'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Api from "../constant/api";
+import axios from "axios";
+
 
 export default function ContactInformation(){
+   const navigate = useNavigate();
+
+   const [name,setName] = useState("");
+   const [email, setEmail] = useState("");
+   const [phone, setPhone] = useState("");
+   const [text, setText] = useState("");
+
+   const [error,setError] = useState("");
+   const [loading, setLoading]= useState(false)
+
+   const validateForm = () => {
+      let newErrors = {};
+      if (!name) newErrors.name = "This field is required";
+      if (!email) newErrors.email = "This field is required";
+      if (!phone) newErrors.phone = "This field is required";
+      if (!text) newErrors.text = "This field is required";
+
+      setError(newErrors);
+      return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+   e.preventDefault();
+   if (!validateForm()) return;
+   setLoading(true);
+
+   const requestData = {
+       name,
+       email,
+       phone,
+   };
+
+   try {
+       const response = await axios.post(Api.POST.CREATEMESSAGE, requestData);
+         navigate ('/order-successful')
+   } catch (error) {
+         navigate ('/error')
+
+   } finally {
+       setLoading(false);
+   }
+};
+
+
    return<>
    <div className="pt-40"></div>
       <MainTitle title={'Contact Us'} />
@@ -50,22 +99,51 @@ export default function ContactInformation(){
                   <div className="flex flex-col md:flex-row gap-8 ">
                      <div className="w-full">
                         <label className="font-medium text-lg text-black montserrat  ">Your Name</label>
-                        <input type="text" className="w-full md:max-w-[341px] mt-1 block  shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" placeholder="JAN" />
+                        <input 
+                           type="text" 
+                           className="w-full md:max-w-[341px] mt-1 block  shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                           placeholder="JAN" 
+                           value={name}
+                           onChange={(e) => setName(e.target.value)}
+                           required />
+                           {error.name && <p className="text-red-500 text-sm">{error.name}</p>}
                      </div>
                      <div className="w-full">
                         <label className="font-medium text-lg text-black montserrat">Email</label>
-                        <input type="email" className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" placeholder="Example@Example.com"/>
+                        <input 
+                           type="email" 
+                           className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                           placeholder="Example@Example.com"
+                           value={email}
+                           onChange={(e) => setEmail(e.target.value)}
+                           required
+                           />
+                           {error.email && <p className="text-red-500 text-sm">{error.email}</p>}
                      </div>
                   </div>
                   <div className="mt-4">
                      <label className="font-medium text-lg text-black montserrat ">Phone</label>
-                     <input type="tel" className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3 "placeholder="657-473-9783"/>
+                     <input 
+                        type="tel" 
+                        className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3 "
+                        placeholder="657-473-9783"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        required
+                        />
+                    {error.phone && <p className="text-red-500 text-sm">{error.phone}</p>}
                   </div>
                   <div className="mt-4">
                      <label className="font-medium text-lg text-black montserrat">Message</label>
-                     <textarea className="bg-white border border-[#8B5715] rounded-lg h-40 p-3 w-full  "></textarea>
+                     <textarea 
+                        className="bg-white border border-[#8B5715] rounded-lg h-40 p-3 w-full "
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="How we can help you"
+                        />
+                     {error.text && <p className="text-red-500 text-sm">{error.text}</p>}
                   </div>
-                  <button type="submit" className="w-full md:w-52 bg-white text-black font-medium text-2xl border border-[#8B5715] rounded-lg py-4 px-6 hover:text-white hover:bg-[#8B5715] mt-4 crimson"> 
+                  <button onClick={handleSubmit} type="submit" className="w-full md:w-52 bg-white text-black font-medium text-2xl border border-[#8B5715] rounded-lg py-4 px-6 hover:text-white hover:bg-[#8B5715] mt-4 crimson"> 
                      Send
                   </button>
                </form>
