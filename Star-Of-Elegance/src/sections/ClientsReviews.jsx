@@ -21,7 +21,7 @@ const ClientsReviews = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [feedback, setFeedback] = useState("");
   const [swiper, setSwiper] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -159,8 +159,8 @@ const ClientsReviews = () => {
                     <input
                       type="text"
                       placeholder="Your Name"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       className="w-full px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
                     />
                   </div>
