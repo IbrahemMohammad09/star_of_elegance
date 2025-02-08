@@ -26,6 +26,10 @@ const ClientsReviews = () => {
   const [swiper, setSwiper] = useState(null);
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] =useState([]);
+
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
   
 
 
@@ -47,6 +51,38 @@ const ClientsReviews = () => {
     fetchData();
   },[])
 
+
+   // 🟢 إرسال التقييم إلى API
+   const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !feedback || rating === 0) {
+      setError("All fields are required!");
+      return;
+    }
+
+    setSubmitting(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      const response = await axios.post(Api.POST.CREATERATE, {
+        name,
+        message: feedback,
+        rate: rating,
+      });
+
+      setSuccess("Your review has been submitted successfully!");
+      setReviews([...reviews, response.data]); // تحديث القائمة مباشرة
+      setShowPopup(false);
+      setName("");
+      setFeedback("");
+      setRating(0);
+    } catch (err) {
+      setError("An error occurred while sending.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
   
   
 
@@ -80,7 +116,7 @@ const ClientsReviews = () => {
                 640: { slidesPerView: 2 },
                 1024: { slidesPerView: 3 },
               }}
-              className="pb-10 h-[600px]"
+              className="pb-10 flex item-center h-[500px]"
               onSwiper={setSwiper}
             >
               {reviews.map((review, index) => (
@@ -93,7 +129,7 @@ const ClientsReviews = () => {
                   >
                     <h3 className="text-2xl font-semibold text-gray-900">{review.name}</h3>
                     <p className="text-gray-600 text-lg">{review.message}</p>
-                    <div className="flex justify-center text-2xl space-x-5">
+                    <div className="flex items-center justify-center text-2xl space-x-5">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <FaStar
                           key={i}
@@ -119,7 +155,7 @@ const ClientsReviews = () => {
           {/* Popup التقييم */}
           {showPopup && (
             <div className="z-50 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center animate-fadeIn">
-              <div className="bg-white p-8 rounded-3xl shadow-2xl lg:w-[400px] w-[400px] lg:h-[600px] h-auto text-center animate-slideUp relative">
+              <div className="bg-white p-8 rounded-3xl shadow-2xl lg:w-[400px] w-[400px] lg:h-[650px] h-auto text-center animate-slideUp relative">
                 {/* زر الإغلاق */}
                 <button
                   onClick={() => setShowPopup(false)}
@@ -176,9 +212,14 @@ const ClientsReviews = () => {
                 </div>
 
                 {/* زر الإرسال */}
-                <button className="mt-6 px-6 py-3 w-full border-2 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all">
-                  Submit
+                <button
+                  onClick={handleSubmit}
+                  className="mt-6 px-6 pb-4 py-3 w-full border-2 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all">
+                  {/* Submit */}
+                  {submitting ? "Submitting..." : "Submit"}
                 </button>
+                {error && <p className="text-[#B47F3D] mt-2">{error}</p>}
+                {success && <p className="text-green-500 mt-2">{success}</p>}
               </div>
             </div>
           )}

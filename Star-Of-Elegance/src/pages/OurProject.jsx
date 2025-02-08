@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Title from "../components/sharedComponents/Title";
 
 const OurProjects = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -45,6 +46,7 @@ const OurProjects = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
+          <Title />
           <h2 className="text-4xl font-bold mb-2 text-[#B47F3E]  font-Poppins">
             Name The Project
           </h2>
