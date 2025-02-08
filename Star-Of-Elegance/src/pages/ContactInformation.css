@@ -6,7 +6,7 @@ input::placeholder{
   .letter-spacing3{
     letter-spacing: 2%;
   }
-  @media(max-width:850px) {
+  @media(max-width:855px) {
     .container-contact-information{
         flex-direction: column;
     }

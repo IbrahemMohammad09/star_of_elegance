@@ -3,11 +3,12 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        
+        padding-left: 0;
+        padding-right: 0;  
     }
+}
+@media(max-width:360px){
     .child2{
-        justify-content: center;
-        
-        
+        flex-direction: column;
     }
 }
