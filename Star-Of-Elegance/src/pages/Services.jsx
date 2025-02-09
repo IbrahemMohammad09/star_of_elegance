@@ -5,14 +5,16 @@ import Footer from "../components/Footer";
 import MainTitle from "../components/sharedComponents/MainTitle";
 
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Api from "../constant/api";
 import Loading from "./Loading";
 
+
 const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true); 
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +22,7 @@ const Services = () => {
         const response = await axios.get(Api.GET.SERVICELIST);
         setServices(response.data);
       } catch {
-        <Navigate to={"/error"} />;
+        navigate('/error')
       } finally {
         setLoading(false); 
       }

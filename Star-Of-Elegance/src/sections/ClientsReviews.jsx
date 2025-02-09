@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import '../pages/Responsive.css'
+import '../pages/Responsive.css'
 import {
   FaStar,
   FaArrowLeft,
@@ -17,6 +19,8 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import Loading from "../pages/Loading";
 
+
+
 const ClientsReviews = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [rating, setRating] = useState(0);
@@ -30,6 +34,10 @@ const ClientsReviews = () => {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+
+
+  const swiperNavPrev = useRef(null); // المرجع للسهم الأيسر
+  const swiperNavNext = useRef(null); // المرجع للسهم الأيمن
   
 
 
@@ -52,7 +60,7 @@ const ClientsReviews = () => {
   },[])
 
 
-   // 🟢 إرسال التقييم إلى API
+
    const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !feedback || rating === 0) {
@@ -72,7 +80,7 @@ const ClientsReviews = () => {
       });
 
       setSuccess("Your review has been submitted successfully!");
-      setReviews([...reviews, response.data]); // تحديث القائمة مباشرة
+      setReviews([...reviews, response.data]); 
       setShowPopup(false);
       setName("");
       setFeedback("");
@@ -91,18 +99,24 @@ const ClientsReviews = () => {
       {loading ?(
         <Loading/>
       ):(
-        <section className="mt-20 md:px-20 bg-white text-center relative">
-          <h2 className="text-5xl font-bold text-[#B47F3D] mb-12">Our Clients Reviews</h2>
-          <div className="relative max-w-[90%] mx-auto">
+        <section className=" fixRespo mt-10 md:-mt-0 sm:mt-52 md:px-20 bg-white text-center relative ">
+          {/* العنوان */}
+          <h2 className="text-5xl font-bold text-[#B47F3D] mb-12">
+            Our Clients Reviews
+          </h2>
+
+          {/* السلايدر */}
+          <div className="relative sm:max-w-[50%] lg:max-w-[90%] mx-auto">
+            {/* الأسهم خارج السلايدر */}
             <button
-              onClick={() => swiper?.slidePrev()}
+              ref={swiperNavPrev} // ربط السهم الأيسر بالمرجع
               className="absolute left-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
             >
               <FaArrowLeft className="text-sm sm:text-sm md:text-xl lg:text-3xl" />
             </button>
 
             <button
-              onClick={() => swiper?.slideNext()}
+              ref={swiperNavNext} // ربط السهم الأيمن بالمرجع
               className="absolute right-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
             >
               <FaArrowRight className="text-sm sm:text-sm md:text-xl lg:text-3xl" />
@@ -111,51 +125,61 @@ const ClientsReviews = () => {
             <Swiper
               modules={[Navigation]}
               spaceBetween={40}
-              slidesPerView={1}
+              slidesPerView={reviews.length === 1 ? "auto" : 1}
+              centeredSlides={reviews.length === 1}
               breakpoints={{
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
+                768: { slidesPerView: 1 },
+                1024: { slidesPerView: 2 },
+                1280: { slidesPerView: 3 },
+                1536: { slidesPerView: 4 },
               }}
-              className="pb-10 flex item-center h-[500px]"
-              onSwiper={setSwiper}
+              className="pb-10 h-[600px] flex justify-center"
+              navigation={{
+                prevEl: swiperNavPrev.current,
+                nextEl: swiperNavNext.current,
+              }}
             >
               {reviews.map((review, index) => (
-                <SwiperSlide key={index}>
+                <SwiperSlide key={index} className="flex justify-center">
                   <div
                     className="border-4 mt-10 border-[#B47F3D] p-8 rounded-xl text-center bg-white mx-auto max-w-[300px] h-[400px] flex flex-col justify-between"
                     style={{
                       boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)",
                     }}
                   >
-                    <h3 className="text-2xl font-semibold text-gray-900">{review.name}</h3>
+                    <h3 className="text-2xl font-semibold text-gray-900">
+                      {review.name}
+                    </h3>
                     <p className="text-gray-600 text-lg">{review.message}</p>
-                    <div className="flex items-center justify-center text-2xl space-x-5">
+                    <div className="flex justify-center text-2xl space-x-5">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <FaStar
                           key={i}
                           className={
-                            i < review.rate ? "text-[#F6973F]" : "text-[#F6973F] opacity-30"
+                            i < review.rate
+                              ? "text-[#F6973F]"
+                              : "text-[#F6973F] opacity-30"
                           }
                         />
                       ))}
                     </div>
                   </div>
                 </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+                ))}
+          </Swiper>
+        </div>
             {/* زر التقييم */}
-          <button
-            onClick={() => setShowPopup(true)}
-            className="mt-4 px-6 py-3 w-[318px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
-          >
-            Rate Us
-          </button>
+            <button
+              onClick={() => setShowPopup(true)}
+              className="mt-4 px-6 py-3 w-[318px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
+            >
+              Rate Us
+            </button>
 
           {/* Popup التقييم */}
           {showPopup && (
             <div className="z-50 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center animate-fadeIn">
-              <div className="bg-white p-8 rounded-3xl shadow-2xl lg:w-[400px] w-[400px] lg:h-[650px] h-auto text-center animate-slideUp relative">
+              <div className="bg-white p-8 rounded-3xl shadow-2xl lg:w-[400px] w-[340px] lg:h-[650px]  h-auto text-center animate-slideUp relative">
                 {/* زر الإغلاق */}
                 <button
                   onClick={() => setShowPopup(false)}
@@ -189,37 +213,38 @@ const ClientsReviews = () => {
                 </div>
 
                 {/* إدخال البريد والتعليق */}
-                <div className="space-y-4">
-                  <div className="relative">
-                    <FaUserAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="w-full px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
-                    />
+                  <div className="space-y-4">
+                    <div className="relative">
+                      <FaUserAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                      <input
+                        type="text"
+                        placeholder="Your Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
+                      />
+                    </div>
+                    <div className="relative">
+                      <FaComment className="absolute left-3 top-6 transform -translate-y-1/2 text-gray-400" />
+                      <textarea
+                        maxLength={200}
+                        placeholder="Leave feedback"
+                        value={feedback}
+                        onChange={(e) => setFeedback(e.target.value)}
+                        className="w-full h-full lg:h-[250px] px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
+                      />
+                    </div>
                   </div>
-                  <div className="relative">
-                    <FaComment className="absolute left-3 top-6 transform -translate-y-1/2 text-gray-400" />
-                    <textarea
-                      placeholder="Leave feedback"
-                      value={feedback}
-                      onChange={(e) => setFeedback(e.target.value)}
-                      className="w-full h-full lg:h-[250px] px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
-                    />
-                  </div>
-                </div>
 
                 {/* زر الإرسال */}
                 <button
                   onClick={handleSubmit}
-                  className="mt-6 px-6 pb-4 py-3 w-full border-2 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all">
+                  className="mt-6 px-6 py-3 w-full border-2 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all">
                   {/* Submit */}
                   {submitting ? "Submitting..." : "Submit"}
                 </button>
                 {error && <p className="text-[#B47F3D] mt-2">{error}</p>}
-                {success && <p className="text-green-500 mt-2">{success}</p>}
+                
               </div>
             </div>
           )}

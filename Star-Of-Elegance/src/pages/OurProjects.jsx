@@ -4,8 +4,13 @@ import MainTitle from "../components/sharedComponents/MainTitle";
 import Title from "../components/sharedComponents/Title";
 import "./OurProjects.css";
 import TitleProject from "../components/TitleProject";
+import axios from "axios";
+import Api from "../constant/api";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
-const Card = ({ frontImage, title }) => (
+const Card = ({ id,frontImage, title }) => (
   <div className="col w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-2rem)] m-4 cursor-pointer">
     <div className="container transform-style preserve-3d perspective-1000 relative">
       <div
@@ -19,7 +24,7 @@ const Card = ({ frontImage, title }) => (
       </div>
       <div className="back absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#cedce7] to-[#596a72] rounded-xl flex items-center justify-center p-8 text-white">
         <a
-          href="/view-project"
+          href={`/view-project/${id}`}
           className="text-lg font-semibold text-white hover:underline"
         >
           View More Details
@@ -30,40 +35,36 @@ const Card = ({ frontImage, title }) => (
 );
 
 const OurProjects = () => {
-  const cards = [
-    {
-      frontImage: "https://unsplash.it/500/500/",
-      title: "Diligord",
-    },
-    {
-      frontImage: "https://unsplash.it/503/503/",
-      title: "Clossyo",
-    },
-    {
-      frontImage: "https://unsplash.it/504/504/",
-      title: "Rendann",
-    },
-    {
-      frontImage: "https://unsplash.it/505/505/",
-      title: "Reflupper",
-    },
-    {
-      frontImage: "https://unsplash.it/506/506/",
-      title: "Acirassi",
-    },
-    {
-      frontImage: "https://unsplash.it/508/508/",
-      title: "Sohanidd",
-    },
-    {
-      frontImage: "https://unsplash.it/508/508/",
-      title: "Sohanidd",
-    },
-    {
-      frontImage: "https://unsplash.it/508/508/",
-      title: "Sohanidd",
-    },
-  ];
+  const [loading, setLoading] = useState(true);
+  const [extractedList,setextractedList] = useState([])
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    const fetchData = async  () =>{
+      try{
+        const response = await axios.get(Api.GET.PROJECTSLIST);
+
+        const extracted = response.data.map(item => ({
+          id: item.id,
+          name: item.name,
+          first_after_picture: item.after_pictures.images[0] 
+      }));
+
+      setextractedList(extracted)
+      // console.log(extracted.name)
+      
+      } catch{
+        navigate('/error');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+
+  },[])
+  
+
 
   return (
     <div>
@@ -72,11 +73,16 @@ const OurProjects = () => {
       <div className="wrapper mt-16 sm:pt-36 w-[90%] mx-auto max-w-[80rem]">
         <Title />
         <TitleProject/>
-        <div className="cols flex flex-wrap justify-center">
-          {cards.map((card, index) => (
-            <Card key={index} frontImage={card.frontImage} title={card.title} />
+        {loading?(
+          <Loading />
+        ):(
+          <div className="cols flex flex-wrap justify-center">
+          {extractedList.map((card) => (
+            <Card key={card.id} id={card.id} frontImage={card.first_after_picture} title={card.name} />
           ))}
         </div>
+        )}
+
       </div>
       <Footer />
     </div>
