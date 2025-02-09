@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
 import Loading from "./pages/Loading";
 import ScrollToTop from "./components/sharedComponents/ScrollToTop";
+import SideBar from "./components/Dashboard/SharedComponents/SideBar";
 
 // استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
 const Home = lazy(() => import("./pages/Home"));
@@ -15,6 +16,7 @@ const NotFoundPage = lazy(() => import("./pages/Error"));
 const Form = lazy(() => import("./pages/Form"));
 const OurProjects = lazy(() => import('./pages/OurProjects'))
 const OurProject = lazy (() => import('./pages/OurProject'))
+
 function App() {
 
   return (
@@ -33,6 +35,7 @@ function App() {
           <Route path="view-project" element={<OurProject />}/>
           <Route path="*/" element={<Navigate to={'/error'} />} />
           <Route path="/error" element={<NotFoundPage />} />
+          <Route path="/side" element={<SideBar />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
