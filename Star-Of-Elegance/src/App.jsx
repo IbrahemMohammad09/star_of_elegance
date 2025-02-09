@@ -28,14 +28,7 @@ const OurProject = lazy (() => import('./pages/OurProject'))
 function App() {
 
 
-  // const NotFoundRedirect = () => {
-  //   const navigate = useNavigate();
-  //   useEffect(() => {
-  //     navigate("/error");
-  //   }, []);
-  //   return null;
-  // };
-  
+
 
   return (
     <BrowserRouter>
