@@ -47,7 +47,7 @@ const OurProjects = () => {
         const extracted = response.data.map(item => ({
           id: item.id,
           name: item.name,
-          first_after_picture: item.after_pictures.images[0] 
+          first_after_picture: item.before_pictures[0] 
       }));
 
       setextractedList(extracted)

@@ -31,8 +31,8 @@ const OurProjects = () => {
         const projects = response.data; 
         const project = projects.find((item) => item.id === Number(id)); 
         setSelectedProject(project);
-        setImagesAfter(project.after_pictures.images);
-        setImagesBefore(project.before_pictures.images);
+        setImagesAfter(project.after_pictures);
+        setImagesBefore(project.before_pictures);
 
       } catch (error) {
         navigate('./error')

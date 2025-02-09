@@ -40,6 +40,7 @@ function App() {
           <Route path="/view-project/:id" element={<OurProject />}/>
           <Route path="*/" element={<Navigate to={'/error'} />} />
           <Route path="/error" element={<NotFoundPage />} />
+          
           <Route path="/dashboard" element={<Login />} />
           <Route path="/dashboard/home" element={<HomeDashoard />} />
           <Route path="/dashboard/services" element={<Service/>} />

@@ -2,7 +2,7 @@ import SectionHeader from "../components/SectionHeaderServices";
 
 import projectImg1 from "../assets/image/HomePage/OurProjects/image1.jpeg";
 import projectImg2 from "../assets/image/HomePage/OurProjects/image2.jpeg";
-import projectImg3 from "../assets/image/HomePage/OurProjects/image3.jpeg";
+import projectImg3 from "../assets/image/HomePage/OurProjects/image3.jpg";
 import "../pages/Responsive.css";
 const ProjectsSection = () => {
   return (
