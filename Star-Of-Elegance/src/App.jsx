@@ -10,7 +10,7 @@ import Services2 from "./components/Dashboard/Pages/Service2";
 import Services3 from "./components/Dashboard/Pages/Service3";
 import Service from "./components/Dashboard/Pages/Service";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 // استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
 const Home = lazy(() => import("./pages/Home"));

@@ -7,7 +7,7 @@ import TitleProject from "../components/TitleProject";
 import axios from "axios";
 import Api from "../constant/api";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 
 const Card = ({ id,frontImage, title }) => (
@@ -23,12 +23,12 @@ const Card = ({ id,frontImage, title }) => (
         </div>
       </div>
       <div className="back absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#cedce7] to-[#596a72] rounded-xl flex items-center justify-center p-8 text-white">
-        <a
-          href={`/view-project/${id}`}
+        <Link
+          to={`/view-project/${id}`}
           className="text-lg font-semibold text-white hover:underline"
         >
           View More Details
-        </a>
+        </Link>
       </div>
     </div>
   </div>
