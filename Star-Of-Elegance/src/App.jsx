@@ -42,10 +42,10 @@ function App() {
           <Route path="/error" element={<NotFoundPage />} />
           <Route path="/dashboard" element={<Login />} />
           <Route path="/dashboard/home" element={<HomeDashoard />} />
-          <Route path="/servicesdash" element={<Services4/>} />
-          <Route path="/service2" element={<Services2/>} />
-          <Route path="/service3" element={<Services3/>} />
           <Route path="/dashboard/services" element={<Service/>} />
+          <Route path="/dashboard/services/view" element={<Services2/>} />
+          <Route path="/dashboard/service/edit" element={<Services3/>} />
+          <Route path="/dashboard/services/detalis" element={<Services4/>} />
         </Routes>
       </Suspense>
     </BrowserRouter>
