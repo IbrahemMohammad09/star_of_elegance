@@ -1,24 +1,21 @@
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import '../pages/Responsive.css'
+import "../pages/Responsive.css";
 import {
   FaStar,
   FaArrowLeft,
   FaArrowRight,
   FaTimes,
   FaComment,
-  FaUserAlt
+  FaUserAlt,
 } from "react-icons/fa";
-
 import Api from "../constant/api";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import Loading from "../pages/Loading";
-
-
 
 const ClientsReviews = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -28,37 +25,31 @@ const ClientsReviews = () => {
   const [feedback, setFeedback] = useState("");
   // const [swiper, setSwiper] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [reviews, setReviews] =useState([]);
-
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  
+  const [reviews, setReviews] = useState([]);
+
   const [isMobileView, setIsMobileView] = useState(false);
   const [isSwiperEnabled, setIsSwiperEnabled] = useState(false);
 
-  const swiperNavPrev = useRef(null); // المرجع للسهم الأيسر
-  const swiperNavNext = useRef(null); // المرجع للسهم الأيمن
-  
+  const swiperNavPrev = useRef(null);
+  const swiperNavNext = useRef(null);
 
-  
-
-
-  useEffect(()=>{
-    const fetchData= async ()=>{
+  useEffect(() => {
+    const fetchData = async () => {
       try {
         const response = await axios.get(Api.GET.RATESLIST);
         setReviews(response.data);
       } catch {
         <Navigate to={"/error"} />;
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
     fetchData();
-  },[])
-
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -80,8 +71,7 @@ const ClientsReviews = () => {
     };
   }, [reviews]);
 
-
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !feedback || rating === 0) {
       setError("All fields are required!");
@@ -100,7 +90,7 @@ const ClientsReviews = () => {
       });
 
       setSuccess("Your review has been submitted successfully!");
-      setReviews([...reviews, response.data]); 
+      setReviews([...reviews, response.data]);
       setShowPopup(false);
       setName("");
       setFeedback("");
@@ -111,16 +101,13 @@ const ClientsReviews = () => {
       setSubmitting(false);
     }
   };
-  
-  
 
   return (
     <div>
-      {loading ?(
-        <Loading/>
-      ):(
-        <section className=" fixRespo mt-10 md:-mt-0 sm:mt-52 md:px-20 bg-white text-center relative ">
-          {/* العنوان */}
+      {loading ? (
+        <Loading />
+      ) : (
+        <section className="fixRespo mt-10 md:-mt-0 sm:mt-52 md:px-20 bg-white text-center relative">
           <h2 className="text-5xl font-bold text-[#B47F3D] mb-12">
             Our Clients Reviews
           </h2>
@@ -128,7 +115,6 @@ const ClientsReviews = () => {
           {/* السلايدر */}
           <div className="relative sm:max-w-[50%] lg:max-w-[90%] mx-auto">
             {/* الأسهم خارج السلايدر */}
-
             <button
               ref={swiperNavPrev}
               className="absolute left-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
