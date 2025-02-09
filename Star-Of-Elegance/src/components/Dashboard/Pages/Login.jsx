@@ -27,8 +27,8 @@ export default function Login() {
                                 </span>
                                 <input
                                     type="text"
-                                    className=" w-full border-0 border-b-2 border-black mt-4 focus:outline-none focus:border-b-2 focus:border-[#8B5715] pl-8" // إضافة padding ليكون هناك مساحة للأيقونة
-                                    placeholder=" | demo@email.com | "style={{ paddingBottom: '20px' }}
+                                    className=" w-full border-0 border-b-2  pb-5 border-black mt-4 focus:outline-none focus:border-b-2 focus:border-[#8B5715] pl-8" 
+                                    placeholder=" | demo@email.com | "
                                 />
                             </div>
                         </div>
@@ -40,18 +40,18 @@ export default function Login() {
                                 </span>
                                 <input
                                     type={passwordVisible ? "text" : "password"}
-                                    className="border-0 w-full border-b-2 border-black mt-4 focus:outline-none focus:border-b-2 focus:border-[#8B5715] pl-8 " // إضافة padding ليكون هناك مساحة للأيقونة والعين
-                                    placeholder=" | ********* " style={{ paddingBottom: '20px' }}
+                                    className="border-0 w-full border-b-2 border-black mt-4 pb-5 focus:outline-none focus:border-b-2 focus:border-[#8B5715] pl-8 "
+                                    placeholder=" | ********* "
                                 />
                                 <span
-                                    className="absolute right-0  top-1/2 transform -translate-y-1/2 cursor-pointer p-2"
+                                    className="absolute right-0  top-1/2 transform -translate-y-1/2 cursor-pointer  p-2"
                                     onClick={togglePasswordVisibility}
                                 >
-                                    {passwordVisible ? <FaRegEye />: <LuEyeClosed />} {/* أيقونة العين لإظهار/إخفاء الباسوورد */}
+                                    {passwordVisible ? <FaRegEye />: <LuEyeClosed />} 
                                 </span>
                             </div>
                         </div>
-                        <button type="sumit" className="w-full bg-[#8B5715] mt-9 rounded-3xl text-white py-6 px-28 inter font-extrabold text-2xl hover:bg-white hover:text-[#8B5715] hover:border hover:border-[#8B5715]" >Login</button>
+                        <button type="submit" className="w-full bg-[#8B5715] mt-9 rounded-3xl text-white py-6 px-28 inter font-extrabold text-2xl hover:bg-white hover:text-[#8B5715] hover:border hover:border-[#8B5715]" >Login</button>
                     </form>
                 </div>
             </div>
