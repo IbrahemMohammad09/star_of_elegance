@@ -9,6 +9,8 @@ import Services4 from "./components/Dashboard/Pages/Service4";
 import Services2 from "./components/Dashboard/Pages/Service2";
 import Services3 from "./components/Dashboard/Pages/Service3";
 import Service from "./components/Dashboard/Pages/Service";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
 const Home = lazy(() => import("./pages/Home"));
@@ -22,7 +24,18 @@ const Form = lazy(() => import("./pages/Form"));
 const OurProjects = lazy(() => import('./pages/OurProjects'))
 const OurProject = lazy (() => import('./pages/OurProject'))
 
+
 function App() {
+
+
+  const NotFoundRedirect = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+      navigate("/error", { replace: true });
+    }, []);
+    return null;
+  };
+  
 
   return (
     <BrowserRouter>
@@ -38,15 +51,16 @@ function App() {
           <Route path="/book-your-service/:service-name" element={<Form />} />
           <Route path="/our-projects" element={<OurProjects />} />
           <Route path="/view-project/:id" element={<OurProject />}/>
-          <Route path="*/" element={<Navigate to={'/error'} />} />
-          <Route path="/error" element={<NotFoundPage />} />
-          
+
           <Route path="/dashboard" element={<Login />} />
           <Route path="/dashboard/home" element={<HomeDashoard />} />
           <Route path="/dashboard/services" element={<Service/>} />
           <Route path="/dashboard/services/view" element={<Services2/>} />
           <Route path="/dashboard/service/edit" element={<Services3/>} />
           <Route path="/dashboard/services/detalis" element={<Services4/>} />
+
+          <Route path="/error" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundRedirect />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
