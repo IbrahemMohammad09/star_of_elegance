@@ -17,43 +17,45 @@ export default function Footer() {
               className="w-32 h-auto object-cover md:w-56 md:h-44"
             />
             <p className="ml-4 text-[#000000] w-40  font-black text-xl md:w-64 md:text-5xl inter lg:text-3xl ">
-              STAR OF <span className="text-[#FFFFFF] inter">ELEGANCEINC</span>
+              STAR OF <span className="text-[#FFFFFF] inter">ELEGANCE INC</span>
             </p>
           </div>
           <div className="flex gap-4">
             <div className="mb-10 md:mb-0 mr-7">
               <p className="text-[#000000] font-bold text-xl mb-4 dm">Pages</p>
               <div className="flex flex-col">
-                <Link
-                  to="/"
+                <a
+                  href="/"
                   className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm"
                 >
                   Home
-                </Link>
-                <Link
-                  to="/aboutus"
+                  </a>
+                <a
+                  href="/about-us"
                   className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm"
                 >
                   About Us{" "}
-                </Link>
-                <Link
-                  to="/services"
+                </a>
+                <a
+                  href="/services"
                   className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm"
                 >
                   Services
-                </Link>
-                <a
-                  href="#our project"
-                  className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm"
-                >
-                  Our Project
                 </a>
                 <a
-                  href="#contact us"
-                  className="text-[#FFFFFF] font-normal text-lg  hover:text-black dm"
+                  href="/contact-us"
+                  className="text-[#FFFFFF] font-normal text-lg mb-2  hover:text-black dm"
                 >
                   Contact Us
                 </a>
+                <a
+                  href="/our-projects"
+                  className="text-[#FFFFFF] font-normal text-lg  hover:text-black dm"
+                >
+                  Our Projects
+                </a>
+
+
               </div>
             </div>
             <div className="w-58">

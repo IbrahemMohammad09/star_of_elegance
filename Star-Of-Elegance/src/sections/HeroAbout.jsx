@@ -10,7 +10,7 @@ export default function HeroAbout(){
           <p className=" font-normal text-4xl ">ABOUT US </p>
           <p className="font-light md:font-medium max-w-[550px]  py-6 text-4xl md:text-6xl  ">We help you turn your vision into reality.</p>
           <p className=" font-normal text-xl md:text-2xl max-w-lg mb-8 ">We are a team specialized in providing innovative and customized solutions for furniture design and related services. We believe that every piece of furniture tells a story, and we strive to combine high craftsmanship with modern designs to meet our clients' needs and bring their vision to life. Our vision is to turn every idea into reality, focusing on quality and excellence in every detail.</p>
-          <Link to="/contactus">
+          <Link to="/contact-us">
           <button className="border border-5px border-[#B47F3D] w-60 py-2 px-10  md:w-80 md:py-4 md:px-20 text-[#B47F3D] font-medium text-3xl right-4 rounded-3xl roboto hover:bg-[#B47F3D] hover:text-white ">Contact us</button>
           </Link>
         </div>

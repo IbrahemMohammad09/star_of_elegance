@@ -44,12 +44,7 @@ const OurProjects = () => {
     fetchData();
 
   },[])
-
-  useEffect(() => {
-    console.log("تم تحديث selectedProject:", selectedProject);
-
-  }, [selectedProject]);
-
+  
   const handlePrev = () => {
     setActiveImage((prev) => (prev === 0 ? imagesBefore.length - 1 : prev - 1));
   };

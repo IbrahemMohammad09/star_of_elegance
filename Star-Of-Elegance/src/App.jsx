@@ -43,7 +43,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/aboutus" element={<About />} />
+          <Route path="/about-us" element={<About />} />
           <Route path="/order-successful" element={<OrderSuccessful />} />
           <Route path="/message-successful" element={<MessageSuccessful />} />
           <Route path="/services" element={<Services />} />
