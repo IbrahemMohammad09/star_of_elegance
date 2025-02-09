@@ -18,12 +18,13 @@ export default function Form() {
 
     const [services, setServices] = useState([]);
     const [selectedId, setSelectedId] = useState("");
-    const [selectedName, setSelectedName] = useState(""); 
 
+    const [selectedName, setSelectedName] = useState(""); 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [text, setText] = useState(`I need to book this service (${serviceNameFinal})...`);
+    const [type, setType] = useState("restaurants");
     const [loading,setLoading] = useState(false);
     
     const [errors, setErrors] = useState({});
@@ -45,11 +46,13 @@ export default function Form() {
         fetchData();
       }, []);
 
-      const handleSelectChange = (event) => {
-        const selectedService = services.find(service => service.name === event.target.value);
-        setSelectedName(selectedService?.name || ""); 
-        setSelectedId(selectedService?.id || ""); 
-      };
+      useEffect(() => {
+        if (services.length > 0) {
+            const foundService = services.find(service => service.name === serviceNameFinal);
+            setSelectedName(foundService ? foundService.name : "");
+        }
+    }, [services, serviceNameFinal]);  
+
 
 
       const validateForm = () => {
@@ -73,14 +76,14 @@ export default function Form() {
             phone,
             service_name: selectedName,
             description: text,
-            status: "new"
+            service_type:type
         };
 
         try {
             const response = await axios.post(Api.POST.CREATEORDER, requestData);
                 navigate('/message-successful');
         } catch (error) {
-                // navigate('/error');
+                navigate('/error');
         } finally {
             setLoading(false);
         }
@@ -140,10 +143,14 @@ export default function Form() {
                             </div>
                             <div className="w-full">
                                 <label htmlFor="serviceType" className="font-medium text-lg text-black crimson">Select Your Service Type</label>
-                                <select className="w-full md:max-w-[341px] text-[#949494] source font-light mt-1 block text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" >
-                                    <option value="">Restaurants</option>
-                                    <option value="service1">Hotel</option>
-                                    <option value="service2">Residential</option>
+                                <select 
+                                    className="w-full md:max-w-[341px] text-[#949494] source font-light mt-1 block text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                                    onChange={(e) => setType(e.target.value)}
+                                    value={type}
+                                    >
+                                    <option value="restaurants">Restaurants</option>
+                                    <option value="hotels">Hotels</option>
+                                    <option value="residential">Residential</option>
                                 </select>
                             </div>
                         </div>
@@ -153,13 +160,14 @@ export default function Form() {
                             <select
                                 className="w-full  text-[#949494] source font-light text-2xl mt-1 bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3"
                                 value={selectedName} 
-                                onChange={handleSelectChange} 
+                                onChange={(e)=> setSelectedName(e.target.value)}
                                 >
                                 <option value={decodeURIComponent(serviceName)}>{decodeURIComponent(serviceName)}</option>
                                 {services.map(service => (
                                     <option key={service.id} value={service.name}>
                                         {service.name}
                                     </option>
+
                                     ))}
                             </select>
                             

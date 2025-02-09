@@ -15,13 +15,13 @@ import CurtainRight from "../assets/image/HomePage/HeroSection/curtains-R.png";
 import Sofa from "../assets/image/HomePage/HeroSection/Sofa.png";
 import Ch from "../assets/image/HomePage/HeroSection/c.png";
 import Light from "../assets/image/HomePage/HeroSection/light.png";
-
+import "./../pages/Responsive.css";
 const HeroSection = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
   // الحالة لتخزين حجم الشاشة
   const [screenSize, setScreenSize] = useState(() => {
     const width = window.innerWidth;
-    return width < 768
+    return width <= 768
       ? "small"
       : width < 1024
       ? "medium"
@@ -37,7 +37,7 @@ const HeroSection = () => {
     const handleResize = () => {
       const width = window.innerWidth;
 
-      if (width < 768) {
+      if (width <= 768) {
         setScreenSize("small");
       } else if (width < 1024) {
         setScreenSize("medium");
@@ -68,7 +68,7 @@ const HeroSection = () => {
 
   return (
     <div className="w-screen lg:w-full">
-      <div className="relative h-screen bg-gray-100 overflow-hidden shadow-lg shadow-gray-500/50">
+      <div className="relative xl:h-screen responsiveHigh  bg-gray-100 overflow-hidden shadow-lg shadow-gray-500/50">
         {/* Curtains Animation */}
         <motion.img
           src={CurtainLeft}
@@ -82,7 +82,7 @@ const HeroSection = () => {
             duration: 3,
             ease: "easeInOut",
           }}
-          className="absolute w-full top-0 left-0 h-screen object-cover z-40"
+          className="absolute h-full w-full xl:h-screen top-0 left-0  object-cover z-40"
         />
         <motion.img
           src={CurtainRight}
@@ -96,7 +96,7 @@ const HeroSection = () => {
             duration: 3,
             ease: "easeInOut",
           }}
-          className="absolute w-full top-0 right-0 h-screen object-cover z-40"
+          className="absolute h-full w-full top-0 right-0 xl:h-screen object-cover z-40"
         />
 
         {/* Apply animation for all screens */}
@@ -152,7 +152,7 @@ const HeroSection = () => {
                   stiffness: 100,
                   damping: 12,
                 }}
-                className=" md:flex md:mt-[350px] md:ml-[-360px] lg:mt-[220px] lg:ml-[50px] 2xl:ml-[-200px] 2xl:mt-[140px] xl:ml-[200px] transform -translate-x-1/2  "
+                className=" md:flex md:mt-[70%] md:ml-[-320px] lg:mt-[220px] lg:ml-[50px] 2xl:ml-[-200px] 2xl:mt-[140px] xl:ml-[200px] transform -translate-x-1/2  "
               >
                 {/* Left Chair */}
                 <motion.img
@@ -160,10 +160,16 @@ const HeroSection = () => {
                   alt="Left Chair"
                   className="absolute w-[300px] top-[500px] "
                   animate={
-                    screenSize === "medium"
+                    screenSize === "small"
                       ? {
                           width: animationComplete ? "10vh" : "10vh",
                           marginLeft: animationComplete ? "280px" : "280px",
+                          top: animationComplete ? "48%" : "48%",
+                        }
+                      : screenSize === "medium"
+                      ? {
+                          width: animationComplete ? "10vh" : "10vh",
+                          marginLeft: animationComplete ? "260px" : "260px",
                           top: animationComplete ? "48%" : "48%",
                         }
                       : screenSize === "large"
@@ -201,7 +207,14 @@ const HeroSection = () => {
                   alt="Sofa"
                   className="z-20"
                   animate={
-                    screenSize === "medium"
+                    screenSize === "small"
+                      ? {
+                          width: "40vh",
+                          height: "50%",
+                          marginLeft: "350px",
+                          top: "0px",
+                        }
+                      : screenSize === "medium"
                       ? {
                           width: "40vh",
                           height: "50%",
@@ -240,10 +253,16 @@ const HeroSection = () => {
                   alt="Right Chair"
                   className="absolute w-[300px] top-[500px]"
                   animate={
-                    screenSize === "medium"
+                    screenSize === "small"
                       ? {
                           width: "10vh",
                           marginLeft: "95%",
+                          top: "47%",
+                        }
+                      : screenSize === "medium"
+                      ? {
+                          width: "10vh",
+                          marginLeft: "96%",
                           top: "47%",
                         }
                       : screenSize === "large"
@@ -420,13 +439,10 @@ const HeroSection = () => {
                 {/* Icons */}
                 <div className="flex justify-center space-x-4 mt-4 z-40">
                   <div className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                    <FaFacebook className="text-sm" />
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100091949269247&mibextid=ZbWKwL"><FaFacebook className="text-sm" /></a>
                   </div>
                   <div className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                    <FaTwitter className="text-sm" />
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                    <FaInstagram className="text-sm" />
+                    <a target="_blank" href="https://www.instagram.com/starofelegance?igsh=c2V0NncyeXBjMmVh"><FaInstagram className="text-sm" /></a>
                   </div>
                 </div>
 
@@ -438,9 +454,9 @@ const HeroSection = () => {
               </div>
 
               {/* Scroll Indicator بدون Motion */}
-              <div className="mt-[-50px] sm:-mt-[100px] mr-[20px] ">
+              <div className="mt-[-17%]  mr-[20px]  ">
                 <Link to="Services" smooth={true} duration={1500} offset={0}>
-                  <div className="circle-container flex items-center justify-center border-2 rounded-full hover:cursor-pointer p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">
+                  <div className="circle-container  flex items-center justify-center border-2 rounded-full hover:cursor-pointer p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">
                     <div className="circle-text">
                       <span className="letter">S</span>
                       <span className="letter">C</span>
@@ -467,7 +483,7 @@ const HeroSection = () => {
                       <span className="letter">H</span>
                       <span className="letter">E</span>
                     </div>
-                    <FaChevronDown className="text-3xl text-[#8B5715] group-hover:text-white transition-all duration-300 mt-4 animate-bounce" />
+                    <FaChevronDown className="text-2xl text-[#8B5715] group-hover:text-white transition-all duration-300 mt-4 animate-bounce" />
                   </div>
                 </Link>
               </div>
@@ -508,7 +524,7 @@ const HeroSection = () => {
                 stiffness: 100,
                 damping: 12,
               }}
-              className=" ml-[0px] mt-[-500px] sm:mt-[-65%] md:mt-[-61%] lg:ml-[0px] lg:mt-[-550px] xl:left-1/3 xl:mt-[-750px] 2xl:mt-[-800px] transform -translate-x-1/2 text-center lg:z-50 xl:z-50 2xl:z-40"
+              className=" ml-[0px] mt-[-500px] sm:mt-[-65%] md:mt-[-65%] lg:ml-[0px] lg:mt-[-550px] xl:left-1/3 xl:mt-[-750px] 2xl:mt-[-800px] transform -translate-x-1/2 text-center lg:z-50 xl:z-50 2xl:z-40"
             >
               <h1 className="  md:text-5xl lg:text-5xl xl:text-7xl font-bold text-gray-800">
                 Star of Elegance
@@ -517,13 +533,10 @@ const HeroSection = () => {
               {/* Icons */}
               <div className=" flex justify-center items-center space-x-4 lg:mt-4 xl:mt-14 mt-4 ">
                 <div className="flex items-center justify-center z-40 w-12 h-12 2xl:w-16 2xl:h-16 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                  <FaFacebook className="text-2xl 2xl:text-3xl" />
-                </div>
-                <div className="flex items-center justify-center z-40 w-12 h-12 2xl:w-16 2xl:h-16 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                  <FaTwitter className="text-2xl 2xl:text-3xl" />
+                  <a target="_blank" href="https://www.facebook.com/profile.php?id=100091949269247&mibextid=ZbWKwL"><FaFacebook className="text-2xl 2xl:text-3xl" /></a>
                 </div>
                 <div className="flex items-center justify-center z-40 w-12 h-12 2xl:w-16 2xl:h-162xl:w-16 2xl:h-16 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                  <FaInstagram className="text-2xl 2xl:text-3xl" />
+                 <a target="_blank" href="https://www.instagram.com/starofelegance?igsh=c2V0NncyeXBjMmVh"> <FaInstagram className="text-2xl 2xl:text-3xl" /></a>
                 </div>
               </div>
               {/* Animated Line with Circle */}
@@ -557,7 +570,7 @@ const HeroSection = () => {
                 stiffness: 100,
                 damping: 12,
               }}
-              className=" ml-[0%]  sm:mt-[200px] md:mt-[350px] lg:mt-[300px] xl:mt-[330px] 2xl:mt-[320px]  transform -translate-x-1/2 flex flex-col items-center"
+              className=" ml-[0%]  sm:mt-[200px] md:mt-[45%] lg:mt-[300px] xl:mt-[330px] 2xl:mt-[320px]  transform -translate-x-1/2 flex flex-col items-center"
             >
               <Link to="Services" smooth={true} duration={1500} offset={0}>
                 <div className="circle-container flex items-center justify-center border-2 rounded-full hover:cursor-pointer p-4 text-[#8B5715] hover:bg-[#8B5715] hover:text-white transition-all duration-300 relative group">

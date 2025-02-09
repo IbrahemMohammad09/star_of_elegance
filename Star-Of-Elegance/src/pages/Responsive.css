@@ -1,0 +1,37 @@
+@media (max-width: 450px) {
+  .ourservicesCard1 {
+    width: 95%;
+  }
+  .ourservicesCard2 {
+    width: 90%;
+  }
+  .ourservicesCard3 {
+    width: 90%;
+  }
+  .ourservicesText1 {
+    padding: 0 80px;
+  }
+  .ourservicesText2 {
+    padding: 0 120px;
+  }
+  .ourservicesText3 {
+    padding: 0 90px;
+  }
+}
+
+@media ((min-width: 640px ) and (max-width :768px)) {
+  .ourProjectResponsive {
+    margin-bottom: -50%;
+  }
+}
+
+@media (width: 768px) {
+  .fixRespo {
+    margin-top: 300px;
+  }
+}
+@media (min-width: 1536px) {
+  .responsiveHigh {
+    height: fit-content;
+  }
+}

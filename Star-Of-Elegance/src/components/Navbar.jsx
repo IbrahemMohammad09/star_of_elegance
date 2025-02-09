@@ -17,7 +17,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-[1023px] p-4 lg:w-full top-0 left-0 z-50 bg-transparent  fixed">
+    <nav className="w-[1023px] p-0 lg:w-full top-0 left-0 z-50 bg-transparent  fixed">
       {/* Desktop Navbar */}
       <div className="hidden lg:flex justify-center">
         <div className="bg-white shadow-lg rounded-2xl 2xl:px-10 2xl:py-4 flex items-center justify-between lg:px-2 lg:py-2 w-[90%] max-w-[1200px]">
@@ -55,7 +55,7 @@ const Navbar = () => {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
-        className="lg:hidden fixed flex items-center space-x-2 bg-white text-black text-lg px-4 py-2 rounded-full shadow-md hover:bg-[#8B5715] hover:text-white transition left-4"
+        className="mt-4 lg:hidden fixed flex items-center space-x-2 bg-white text-black text-lg px-4 py-2 rounded-full shadow-md hover:bg-[#8B5715] hover:text-white transition left-4"
       >
         <FiMenu />
         <span>Menu</span>
@@ -63,7 +63,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <ul className="fixed top-[80px] left-[5%] w-[90%] lg:hidden flex flex-col items-center bg-white shadow-lg rounded-2xl z-50 divide-y divide-gray-200">
+        <ul className="fixed top-[80px] left-[5%] w-[80%] lg:hidden flex flex-col items-center bg-white shadow-lg rounded-2xl z-50 divide-y divide-gray-200">
           {navItems.map((item) => (
             <li key={item.name} className="w-full">
               <Link

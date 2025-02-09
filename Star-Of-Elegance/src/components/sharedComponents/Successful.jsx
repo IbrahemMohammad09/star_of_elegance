@@ -23,7 +23,7 @@ export default function Successful({ title, message, message2 }) {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.5 ,delay: 1 }}
             >
                 <GoCheckCircle className="text-7xl mb-10" />
             </motion.div>
