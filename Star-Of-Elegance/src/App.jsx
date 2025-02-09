@@ -31,7 +31,7 @@ function App() {
   const NotFoundRedirect = () => {
     const navigate = useNavigate();
     useEffect(() => {
-      navigate("/error", { replace: true });
+      navigate("/error");
     }, []);
     return null;
   };
@@ -52,12 +52,12 @@ function App() {
           <Route path="/our-projects" element={<OurProjects />} />
           <Route path="/view-project/:id" element={<OurProject />}/>
 
-          <Route path="/dashboard" element={<Login />} />
+          {/* <Route path="/dashboard" element={<Login />} />
           <Route path="/dashboard/home" element={<HomeDashoard />} />
           <Route path="/dashboard/services" element={<Service/>} />
           <Route path="/dashboard/services/view" element={<Services2/>} />
           <Route path="/dashboard/service/edit" element={<Services3/>} />
-          <Route path="/dashboard/services/detalis" element={<Services4/>} />
+          <Route path="/dashboard/services/detalis" element={<Services4/>} /> */}
 
           <Route path="/error" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundRedirect />} />

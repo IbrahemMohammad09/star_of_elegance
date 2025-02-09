@@ -51,7 +51,7 @@ const OurProjects = () => {
       }));
 
       setextractedList(extracted)
-      // console.log(extracted.name)
+
       
       } catch{
         navigate('/error');
