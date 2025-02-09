@@ -179,7 +179,7 @@ const ClientsReviews = () => {
           {/* Popup التقييم */}
           {showPopup && (
             <div className="z-50 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center animate-fadeIn">
-              <div className="bg-white p-8 rounded-3xl shadow-2xl lg:w-[400px] w-[340px] lg:h-[650px]  h-auto text-center animate-slideUp relative">
+              <div className="bg-white p-8 rounded-3xl shadow-2xl lg:w-[400px] w-[350px] lg:h-[650px]  h-auto text-center animate-slideUp relative">
                 {/* زر الإغلاق */}
                 <button
                   onClick={() => setShowPopup(false)}

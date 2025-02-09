@@ -439,13 +439,10 @@ const HeroSection = () => {
                 {/* Icons */}
                 <div className="flex justify-center space-x-4 mt-4 z-40">
                   <div className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                    <FaFacebook className="text-sm" />
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100091949269247&mibextid=ZbWKwL"><FaFacebook className="text-sm" /></a>
                   </div>
                   <div className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                    <FaTwitter className="text-sm" />
-                  </div>
-                  <div className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                    <FaInstagram className="text-sm" />
+                    <a target="_blank" href="https://www.instagram.com/starofelegance?igsh=c2V0NncyeXBjMmVh"><FaInstagram className="text-sm" /></a>
                   </div>
                 </div>
 
@@ -536,13 +533,10 @@ const HeroSection = () => {
               {/* Icons */}
               <div className=" flex justify-center items-center space-x-4 lg:mt-4 xl:mt-14 mt-4 ">
                 <div className="flex items-center justify-center z-40 w-12 h-12 2xl:w-16 2xl:h-16 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                  <FaFacebook className="text-2xl 2xl:text-3xl" />
-                </div>
-                <div className="flex items-center justify-center z-40 w-12 h-12 2xl:w-16 2xl:h-16 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                  <FaTwitter className="text-2xl 2xl:text-3xl" />
+                  <a target="_blank" href="https://www.facebook.com/profile.php?id=100091949269247&mibextid=ZbWKwL"><FaFacebook className="text-2xl 2xl:text-3xl" /></a>
                 </div>
                 <div className="flex items-center justify-center z-40 w-12 h-12 2xl:w-16 2xl:h-162xl:w-16 2xl:h-16 border-2 border-black rounded-full transition-all duration-300 hover:bg-black hover:border-black hover:text-white">
-                  <FaInstagram className="text-2xl 2xl:text-3xl" />
+                 <a target="_blank" href="https://www.instagram.com/starofelegance?igsh=c2V0NncyeXBjMmVh"> <FaInstagram className="text-2xl 2xl:text-3xl" /></a>
                 </div>
               </div>
               {/* Animated Line with Circle */}

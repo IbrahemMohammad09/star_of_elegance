@@ -11,7 +11,7 @@ const ProjectsSection = () => {
         <div className="container mx-auto xl:flex md:min-h-screen sm:h-auto flex-col items-start xl:gap-16 relative md:flex-row justify-start">
           {/* القسم الأيمن: العنوان والرابط */}
           <div className="flex flex-col  self-start xl:mt-0 md:mt-10 sm:mb-0 sm:mt-16">
-            <SectionHeader title="Our Projects" linkText="Show all" />
+            <SectionHeader title="Our Projects" linkText="Show all" link={'/our-projects'}/>
           </div>
 
           {/* القسم الأيسر: الصور */}
