@@ -28,13 +28,13 @@ const OurProject = lazy (() => import('./pages/OurProject'))
 function App() {
 
 
-  const NotFoundRedirect = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-      navigate("/error");
-    }, []);
-    return null;
-  };
+  // const NotFoundRedirect = () => {
+  //   const navigate = useNavigate();
+  //   useEffect(() => {
+  //     navigate("/error");
+  //   }, []);
+  //   return null;
+  // };
   
 
   return (
@@ -60,7 +60,8 @@ function App() {
           <Route path="/dashboard/services/detalis" element={<Services4/>} /> */}
 
           <Route path="/error" element={<NotFoundPage />} />
-          <Route path="*" element={<NotFoundRedirect />} />
+          <Route path="*" element={<Navigate to="/error" replace />} />
+
         </Routes>
       </Suspense>
     </BrowserRouter>
