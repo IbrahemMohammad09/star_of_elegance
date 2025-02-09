@@ -3,7 +3,12 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
 import Loading from "./pages/Loading";
 import ScrollToTop from "./components/sharedComponents/ScrollToTop";
-import SideBar from "./components/Dashboard/SharedComponents/SideBar";
+import HomeDashoard from "./components/Dashboard/Pages/Home";
+import Login from "./components/Dashboard/Pages/Login";
+import Services4 from "./components/Dashboard/Pages/Service4";
+import Services2 from "./components/Dashboard/Pages/Service2";
+import Services3 from "./components/Dashboard/Pages/Service3";
+import Service from "./components/Dashboard/Pages/Service";
 
 // استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
 const Home = lazy(() => import("./pages/Home"));
@@ -35,7 +40,12 @@ function App() {
           <Route path="/view-project/:id" element={<OurProject />}/>
           <Route path="*/" element={<Navigate to={'/error'} />} />
           <Route path="/error" element={<NotFoundPage />} />
-          <Route path="/side" element={<SideBar />} />
+          <Route path="/dashboard" element={<Login />} />
+          <Route path="/dashboard/home" element={<HomeDashoard />} />
+          <Route path="/servicesdash" element={<Services4/>} />
+          <Route path="/service2" element={<Services2/>} />
+          <Route path="/service3" element={<Services3/>} />
+          <Route path="/dashboard/services" element={<Service/>} />
         </Routes>
       </Suspense>
     </BrowserRouter>
