@@ -61,10 +61,10 @@ const Rate = () => {
                  ))}
                </td>
                <td className="px-4 py-5  space-x-2">
-                 <Link to = '/'><img className='w-4 cursor-pointer' src={Icon} alt="delete-icon" /></Link>
+                 <button><img className='w-4 cursor-pointer' src={Icon} alt="delete-icon" /></button>
                </td>
                <td className="px-4 py-2 cursor-pointer" onClick={() => ActiveStatus(item.id)}>
-                 {item.isActive ? <p className=' inter font-medium text-[#667085]'>Active</p> : <p className=' inter font-medium text-[#667085]'>Inactive</p>}
+                 {item.isActive ? <button className=' inter font-medium text-[#667085]'>Active</button> : <button className=' inter font-medium text-[#667085]'>Inactive</button>}
                   </td>
                   </tr>
                 ))}
