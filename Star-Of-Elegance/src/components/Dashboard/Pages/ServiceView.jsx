@@ -22,11 +22,11 @@ const services = [
     
 ];
 
-export default function Services2(){
+export default function ServiceView(){
     return<>
-        <div className="flex gap-16">
+        <div className="md:flex  gap-14">
             <SideBar/>
-        <div>
+        <div className="pl-14 md:pl-0">
             <p className=" mb-10 text-black font-bold text-2xl mt-32 Poppins ">Dashboard</p>
             <p className="font-semibold text-2xl mb-14 Poppins">Services</p>
             {services.map((service, index) => (
