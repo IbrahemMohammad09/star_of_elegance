@@ -155,10 +155,10 @@ const ClientsReviews = () => {
                         boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)",
                       }}
                     >
-                      <h3 className="text-2xl font-semibold text-gray-900">
+                      <h3 className="text-2xl  font-semibold text-gray-900">
                         {review.name}
                       </h3>
-                      <p className="text-gray-600 text-lg">{review.message}</p>
+                      <p className="text-gray-600 text-lg ">{review.message}</p>
                       <div className="flex justify-center text-2xl space-x-5">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <FaStar
@@ -262,7 +262,7 @@ const ClientsReviews = () => {
                       placeholder="Your Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
+                      className="w-full px-10 py-2 border rounded-lg  focus:ring-[#B47F3D]  focus:border-[#B47F3D]"
                     />
                   </div>
                   <div className="relative">
@@ -272,7 +272,7 @@ const ClientsReviews = () => {
                       placeholder="Leave feedback"
                       value={feedback}
                       onChange={(e) => setFeedback(e.target.value)}
-                      className="w-full h-full lg:h-[250px] px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
+                      className="w-full h-full lg:h-[250px] px-10 py-2 border rounded-lg  focus:ring-[#B47F3D] focus:border-[#B47F3D]"
                     />
                   </div>
                 </div>

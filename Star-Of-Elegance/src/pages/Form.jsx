@@ -2,6 +2,7 @@ import {  useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Title from "../components/sharedComponents/Title";
 import Footer from "../components/Footer";
+import './Form.css'
 import { useState,useEffect} from "react";
 import axios from "axios";
 import Api from "../constant/api";
@@ -108,7 +109,7 @@ export default function Form() {
                                 <label className="font-medium text-lg text-black crimson">Your Name</label>
                                 <input 
                                     type="text" 
-                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border  border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                                    className="w-full md:max-w-[341px] mt-1 font-light block shadow-lg text-2xl bg-white border  border-[#8B5715] rounded-lg p-3 h-14 source letter-spacing3" 
                                     placeholder="JAN"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
@@ -119,7 +120,7 @@ export default function Form() {
                                 <label className="font-medium text-lg text-black crimson">Email</label>
                                 <input 
                                     type="email" 
-                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 tt letter-spacing3" 
                                     placeholder="Example@Example.com" 
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -130,7 +131,7 @@ export default function Form() {
                         </div>
                         <div className="mt-4 flex flex-col md:flex-row gap-8">
                             <div className="w-full">
-                                <label className="font-medium text-lg text-black crimson">Phone</label>
+                                <label className="font-medium text-lg text-black crimson tt">Phone</label>
                                 <input 
                                     type="tel" 
                                     className="w-full  md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 

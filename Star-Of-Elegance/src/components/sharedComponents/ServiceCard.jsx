@@ -16,7 +16,7 @@ const ServiceCard = ({ service }) => {
             isEven ? "order-1 md:order-2" : "order-2 md:order-1" }`}>
             <p className="text-xl md:text-4xl text-center container-text md:text-start font-normal kanit">
               {service.name}</p>
-            <p className="text-lg md:text-2xl max-w-full w-80 md:w-96 nun font-normal ">
+            <p className="text-lg md:text-2xl max-w-full w-80 md:w-96 nun font-normal mb-3 md:mb-0 ">
               {service.description}</p>
             <Link to={`/book-your-service/${formattedTitle}`} className="flex gap-3 border border-1px border-[#B47F3D] w-60 py-2 px-10 md:w-72 md:py-4 md:px-12 mt-7 text-[#B47F3D] font-normal text-xl right-4 rounded-lg hover:bg-[#B47F3D] letter-spacing kanit hover:text-white kanit">
               Book Now <img src={vector} className="mt-4 md:mt-1" alt="icon"/>

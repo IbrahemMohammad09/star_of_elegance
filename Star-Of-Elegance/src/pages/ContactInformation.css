@@ -3,9 +3,7 @@ input::placeholder{
     opacity: 1;
     letter-spacing: 2%;
   }
-  .letter-spacing3{
-    letter-spacing: 2%;
-  }
+  
   @media(max-width:855px) {
     .container-contact-information{
         flex-direction: column;
