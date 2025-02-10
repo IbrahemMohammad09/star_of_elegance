@@ -108,7 +108,7 @@ export default function Form() {
                                 <label className="font-medium text-lg text-black crimson">Your Name</label>
                                 <input 
                                     type="text" 
-                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border  border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
                                     placeholder="JAN"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
@@ -133,7 +133,7 @@ export default function Form() {
                                 <label className="font-medium text-lg text-black crimson">Phone</label>
                                 <input 
                                     type="tel" 
-                                    className="w-full md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
+                                    className="w-full  md:max-w-[341px] mt-1 block shadow-lg text-2xl bg-white border border-[#8B5715] rounded-lg p-3 h-14 letter-spacing3" 
                                     placeholder="657-473-9783"
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
