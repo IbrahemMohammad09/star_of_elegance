@@ -1,10 +1,10 @@
 import SideBar from "../SharedComponents/SideBar"
 import lineservices from "../../../assets/image/Dashboard/Services/lineservices.svg"
 import { Link } from "react-router-dom";
+
 export default function ServiceEdit(){
     return<>
     <div className=" md:flex  gap-14">
-
       <SideBar/>
       <div className="pl-28 md:pl-0">
          <p className="font-bold text-2xl mt-16 mb-6 Poppins">Dashboard</p>

@@ -12,6 +12,7 @@ import Service from "./components/Dashboard/Pages/Service";
 import Rate from "./components/Dashboard/Pages/Rate";
 import { useEffect } from "react";
 import { useNavigate,Link } from "react-router-dom";
+import ViewMessages from "./components/Dashboard/Pages/ViewMessage";
 
 // استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
 const Home = lazy(() => import("./pages/Home"));
@@ -45,15 +46,18 @@ function App() {
           <Route path="/book-your-service/:service-name" element={<Form />} />
           <Route path="/our-projects" element={<OurProjects />} />
           <Route path="/view-project/:id" element={<OurProject />}/>
+
           <Route path="/dashboard" element={<Login />} />
           <Route path="/dashboard/home" element={<HomeDashoard />} />
           <Route path="/dashboard/services" element={<Service/>} />
           <Route path="/dashboard/services/view" element={<ServiceView/>} />
           <Route path="/dashboard/service/edit" element={<ServiceEdit/>} />
-          <Route path="/dashboard/services/detalis" element={<ServiceDetalis/>} />
-          <Route path="/rate" element={<Rate />}/>
-          <Route path="/error" element={<NotFoundPage />} />
-          <Route path="*" element={<Navigate to="/error" replace />} />
+          <Route path="/dashboard/services/edit/photo" element={<ServiceDetalis/>} />
+          <Route path="/dashboard/messages" element={<ViewMessages />} />
+          <Route path="/dashboard/rate" element={<Rate />}/>
+
+          {/* <Route path="/error" element={<NotFoundPage />} />
+          <Route path="*" element={<Navigate to="/error" replace />} /> */}
 
         </Routes>
       </Suspense>
