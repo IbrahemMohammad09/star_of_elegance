@@ -52,13 +52,13 @@ function App() {
           <Route path="/dashboard/home" element={<ProtectedRoute> <HomeDashoard /> </ProtectedRoute>} />
           <Route path="/dashboard/services" element={<ProtectedRoute><Service/></ProtectedRoute>} />
           <Route path="/dashboard/services/view" element={<ProtectedRoute><ServiceView/></ProtectedRoute>} />
-          <Route path="/dashboard/service/edit" element={<ProtectedRoute><ServiceEdit/></ProtectedRoute>} />
-          <Route path="/dashboard/services/edit/photo" element={<ProtectedRoute><ServiceDetalis/></ProtectedRoute>} />
+          <Route path="/dashboard/service/add" element={<ProtectedRoute><ServiceEdit/></ProtectedRoute>} />
+          <Route path="/dashboard/services/add/photo" element={<ProtectedRoute><ServiceDetalis/></ProtectedRoute>} />
           <Route path="/dashboard/messages" element={<ProtectedRoute><ViewMessages/></ProtectedRoute>} />
           <Route path="/dashboard/rate" element={<ProtectedRoute><Rate/></ProtectedRoute>}/>
 
-          {/* <Route path="/error" element={<NotFoundPage />} />
-          <Route path="*" element={<Navigate to="/error" replace />} /> */}
+          <Route path="/error" element={<NotFoundPage />} />
+          <Route path="*" element={<Navigate to="/error" replace />} />
 
         </Routes>
       </Suspense>
