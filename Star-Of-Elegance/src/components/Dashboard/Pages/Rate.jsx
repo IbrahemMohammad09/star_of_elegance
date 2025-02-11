@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Star from "../../../assets/image/Dashboard/Rate/Star.svg"
-import Icon from"../../../assets/image/Dashboard/Rate/Icon.svg"
 import SideBar from '../SharedComponents/SideBar';
 import right from "../../../assets/image/Dashboard/Rate/right.svg"
 import starempty from "../../../assets/image/Dashboard/Rate/starempty.svg"
 import left from "../../../assets/image/Dashboard/Rate/left.svg"
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 const Rate = () => {
  const initialData = [
@@ -61,7 +61,7 @@ const Rate = () => {
                  ))}
                </td>
                <td className="px-4 py-5  space-x-2">
-                 <button><img className='w-4 cursor-pointer' src={Icon} alt="delete-icon" /></button>
+                 <button><RiDeleteBin6Line className='text-[#667085]' /></button>
                </td>
                <td className="px-4 py-2 cursor-pointer" onClick={() => ActiveStatus(item.id)}>
                  {item.isActive ? <button className=' inter font-medium text-[#667085]'>Active</button> : <button className=' inter font-medium text-[#667085]'>Inactive</button>}
