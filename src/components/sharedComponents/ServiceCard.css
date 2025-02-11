@@ -1,0 +1,22 @@
+.border-1px{
+    border: 1px solid;
+  }
+.letter-spacing{
+  letter-spacing: 0.43em;
+}
+.width-1{
+  width: 1238px;
+}
+ @media(max-width:950px){
+  .container-CardService{
+    flex-direction: column;
+    align-items: center;
+  
+    
+  }
+  .container-text{
+    align-items: center;
+    text-align: center;
+  }
+ }
+ 

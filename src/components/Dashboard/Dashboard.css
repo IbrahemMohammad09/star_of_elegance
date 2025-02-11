@@ -1,0 +1,42 @@
+input::placeholder{
+    color: black !important;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+}
+@media(max-width:1200px){
+    .container-login{
+        flex-direction: column;
+    }
+    .container-form{
+        justify-content: center;
+        align-items: center;
+    }
+    .container-services2{
+      flex-direction: column;
+      width: 90%;
+    }
+    .child-services{
+      flex-direction: column;
+      gap: 10px;
+    }
+}
+.borderdas{
+    border: 2px dashed black;
+  }
+ /* @media (max-width:1200px){
+    .container-services2{
+      flex-direction: column;
+      width: 90%;
+    }
+    .child-services{
+      flex-direction: column;
+      gap: 10px;
+    }
+  }*/
+  @media(max-width:822px){
+    .container-card-dash{
+      flex-direction: column;
+      
+    }
+  }

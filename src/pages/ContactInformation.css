@@ -1,0 +1,11 @@
+input::placeholder{
+    color: #949494 !important;
+    opacity: 1 !important;
+    letter-spacing: 2% !important;
+  }
+  
+  @media(max-width:855px) {
+    .container-contact-information{
+        flex-direction: column;
+    }
+  }
