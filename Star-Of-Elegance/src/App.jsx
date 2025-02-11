@@ -13,6 +13,7 @@ import Rate from "./components/Dashboard/Pages/Rate";
 import { useEffect } from "react";
 import { useNavigate,Link } from "react-router-dom";
 import ViewMessages from "./components/Dashboard/Pages/ViewMessage";
+import ProtectedRoute from "./components/Dashboard/SharedComponents/ProtectedRoute ";
 
 // استخدم React.lazy لتحميل الصفحات بشكل ديناميكي
 const Home = lazy(() => import("./pages/Home"));
@@ -48,13 +49,13 @@ function App() {
           <Route path="/view-project/:id" element={<OurProject />}/>
 
           <Route path="/dashboard" element={<Login />} />
-          <Route path="/dashboard/home" element={<HomeDashoard />} />
-          <Route path="/dashboard/services" element={<Service/>} />
-          <Route path="/dashboard/services/view" element={<ServiceView/>} />
-          <Route path="/dashboard/service/edit" element={<ServiceEdit/>} />
-          <Route path="/dashboard/services/edit/photo" element={<ServiceDetalis/>} />
-          <Route path="/dashboard/messages" element={<ViewMessages />} />
-          <Route path="/dashboard/rate" element={<Rate />}/>
+          <Route path="/dashboard/home" element={<ProtectedRoute> <HomeDashoard /> </ProtectedRoute>} />
+          <Route path="/dashboard/services" element={<ProtectedRoute><Service/></ProtectedRoute>} />
+          <Route path="/dashboard/services/view" element={<ProtectedRoute><ServiceView/></ProtectedRoute>} />
+          <Route path="/dashboard/service/edit" element={<ProtectedRoute><ServiceEdit/></ProtectedRoute>} />
+          <Route path="/dashboard/services/edit/photo" element={<ProtectedRoute><ServiceDetalis/></ProtectedRoute>} />
+          <Route path="/dashboard/messages" element={<ProtectedRoute><ViewMessages/></ProtectedRoute>} />
+          <Route path="/dashboard/rate" element={<ProtectedRoute><Rate/></ProtectedRoute>}/>
 
           {/* <Route path="/error" element={<NotFoundPage />} />
           <Route path="*" element={<Navigate to="/error" replace />} /> */}
