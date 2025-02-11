@@ -2,11 +2,60 @@ import loginphoto from "../../../assets/image/Dashboard/login/loginphoto.svg";
 import { FaUser, FaLock} from 'react-icons/fa';
 import { LuEyeClosed } from "react-icons/lu";
 import { FaRegEye } from "react-icons/fa6";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import '../Dashboard.css'
+import Api from "../../../constant/api";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {useDispatch} from 'react-redux';
+import {login} from '../../../redux/authSlice'
+
 
 export default function Login() {
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const [userName , setUserName] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading , setLoading]= useState(false);
+
+
+
+    const handleSubmit = async (e) =>{
+
+        e.preventDefault();
+        setLoading(true);
+        
+        const requestData = {
+            "username": userName,
+            "password": password
+          }
+
+        try{
+            console.log("sadsd")
+            const response = await axios.post(Api.POST.LOGIN, requestData);
+
+            const message = response.data.state;
+
+            const token = response.data.data.token;
+            console.log(localStorage.getItem("adminToken"))
+            dispatch(login(token))
+
+            console.log("sadsd")
+            
+            console.log()
+            
+            if (message){
+                navigate ('/dashboard/home');
+            }else{
+                navigate('/')
+            }
+        } catch{
+            navigate('/')
+        }
+
+    }
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -29,6 +78,8 @@ export default function Login() {
                                     type="text"
                                     className=" w-full border-0 border-b-2  pb-5 border-black mt-4 focus:outline-none focus:border-b-2 focus:border-[#8B5715] pl-8" 
                                     placeholder=" | demo@email.com | "
+                                    value={userName}
+                                    onChange={(e)=>setUserName(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -42,6 +93,8 @@ export default function Login() {
                                     type={passwordVisible ? "text" : "password"}
                                     className="border-0 w-full border-b-2 border-black mt-4 pb-5 focus:outline-none focus:border-b-2 focus:border-[#8B5715] pl-8 "
                                     placeholder=" | ********* "
+                                    value={password}
+                                    onChange={(e)=>setPassword(e.target.value)}
                                 />
                                 <span
                                     className="absolute right-0  top-1/2 transform -translate-y-1/2 cursor-pointer  p-2"
@@ -51,7 +104,13 @@ export default function Login() {
                                 </span>
                             </div>
                         </div>
-                        <button type="submit" className="w-full bg-[#8B5715] mt-9 rounded-3xl text-white py-6 px-28 inter font-extrabold text-2xl hover:bg-white hover:text-[#8B5715] hover:border hover:border-[#8B5715]" >Login</button>
+                        <button 
+                            type="submit" 
+                            className="w-full bg-[#8B5715] mt-9 rounded-3xl text-white py-6 px-28 inter font-extrabold text-2xl hover:bg-white hover:text-[#8B5715] hover:border hover:border-[#8B5715]" 
+                            onClick={handleSubmit}
+                            >{
+                                loading?("Login..."):("login")
+                            }</button>
                     </form>
                 </div>
             </div>

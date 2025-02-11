@@ -15,8 +15,8 @@ const Api = {
         CREATEPROJECTBEFORPIC: url+'/api/projects/1/upload-before-pictures/',
         CREATEPROJECTAFTERPIC: url+'/api/projects/1/upload-after-pictures/',
         CREATEMESSAGE: url+'api/messages/create/',
-        CREATEORDER: url+'api/requests/create/'
-
+        CREATEORDER: url+'api/requests/create/',
+        LOGIN: url+'api/login/'
     },
     PUT: {
         UPDATESERVICE: url+'api/services/1/update/',

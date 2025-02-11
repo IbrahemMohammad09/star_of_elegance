@@ -8,9 +8,26 @@ import order from "../../../assets/image/Dashboard/SideBar/order.svg";
 import rating from "../../../assets/image/Dashboard/SideBar/rating.svg";
 import messages from "../../../assets/image/Dashboard/SideBar/messages.svg";
 import projectwhite from "../../../assets/image/Dashboard/SideBar/projectwhite.svg";
+import { useDispatch } from "react-redux";
+import {logout} from '../../../redux/authSlice';
+import { useNavigate } from "react-router-dom";
+import store from "../../../redux/store";
 
 export default function SideBar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+    
+    
+    const handleLogout = () =>{
+
+        dispatch(logout());
+        navigate("/dashboard");
+        
+        
+    }
 
     return (
         <>
@@ -26,30 +43,37 @@ export default function SideBar() {
                 </div>
                 
                 <img src={logo} className="w-32 mt-4" alt="logo" />
+                <button
+                    onClick={handleLogout}
+                    className="mt- w-[100px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
+                >
+                    log out 
+                </button>
+                
                 <div className="flex flex-col items-center gap-10 h-screen mt-6 px-4">
                     <div className="flex flex-col items-center">
-                        <img src={home} className="w-10" alt="icon-home" />
-                        <Link to="/" className="font-semibold text-base text-white Poppins">Home</Link>
+                        <Link to="/dashboard/home" className="font-semibold text-base text-white Poppins">
+                        <img src={home} className="w-10" alt="icon-home" />Home</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src={services} className="w-10" alt="icon-services" />
-                        <Link to="/" className="font-semibold text-base text-white Poppins">Services</Link>
+                        <Link to="/dashboard/services" className="font-semibold text-base text-white Poppins">
+                        <img src={services} className="w-10" alt="icon-services" />Services</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src={order} className="w-10" alt="icon-order" />
-                        <Link to="/" className="font-semibold text-base text-white Poppins">Orders</Link>
+                        <Link to="/" className="font-semibold text-base text-white Poppins">
+                        <img src={order} className="w-10" alt="icon-order" />Orders</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src={rating} className="w-10" alt="icon-rating" />
-                        <Link to="/" className="font-semibold text-base text-white Poppins">Rating</Link>
+                        <Link to="/dashboard/rate" className="font-semibold text-base text-white Poppins">
+                        <img src={rating} className="w-10" alt="icon-rating" />Rating</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src={messages} className="w-10" alt="icon-messages" />
-                        <Link to="/" className="font-semibold text-base text-white Poppins">Messages</Link>
+                        <Link to="/dashboard/messages" className="font-semibold text-base text-white Poppins">
+                        <img src={messages} className="w-10" alt="icon-messages" />Messages</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src={projectwhite} className="w-10" alt="icon-project" />
-                        <Link to="/" className="font-semibold text-base text-white Poppins">Projects</Link>
+                        <Link to="/" className="font-semibold text-base text-white Poppins">
+                        <img src={projectwhite} className="w-10" alt="icon-project" />Projects</Link>
                     </div>
                 </div>
             </div>
