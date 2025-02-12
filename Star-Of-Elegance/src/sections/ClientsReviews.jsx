@@ -4,6 +4,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "../pages/Responsive.css";
+
 import {
   FaStar,
   FaArrowLeft,
@@ -262,7 +263,7 @@ const ClientsReviews = () => {
                       placeholder="Your Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-10 py-2 border rounded-lg  focus:ring-[#B47F3D]  focus:border-[#B47F3D]"
+                      className="w-full px-10  py-2 border rounded-lg  focus:ring-[#B47F3D]  focus:border-[#B47F3D]"
                     />
                   </div>
                   <div className="relative">

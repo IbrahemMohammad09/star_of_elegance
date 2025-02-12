@@ -1,3 +1,7 @@
+input::placeholder{
+  color:#949494 !important;
+  opacity: 1 !important;
+}
 @media (max-width: 450px) {
   .ourservicesCard1 {
     width: 95%;
