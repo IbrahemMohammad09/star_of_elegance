@@ -10,8 +10,8 @@ import ServiceView from "./components/Dashboard/Pages/ServiceView";
 import ServiceEdit from "./components/Dashboard/Pages/ServiceEdit";
 import Service from "./components/Dashboard/Pages/Service";
 import Rate from "./components/Dashboard/Pages/Rate";
-import { useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+// import { useEffect } from "react";
+// import { useNavigate, Link } from "react-router-dom";
 // import ViewMessages from "./components/Dashboard/Pages/ViewMessage";
 import ProtectedRoute from "./components/Dashboard/SharedComponents/ProtectedRoute ";
 

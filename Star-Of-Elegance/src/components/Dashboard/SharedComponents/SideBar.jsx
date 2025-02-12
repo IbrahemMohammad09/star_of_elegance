@@ -43,13 +43,7 @@ export default function SideBar() {
                 </div>
                 
                 <img src={logo} className="w-32 mt-4" alt="logo" />
-                <button
-                    onClick={handleLogout}
-                    className="mt- w-[100px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
-                >
-                    log out 
-                </button>
-                
+
                 <div className="flex flex-col items-center gap-10 h-screen mt-6 px-4">
                     <div className="flex flex-col items-center">
                         <Link to="/dashboard/home" className="font-semibold text-base text-white Poppins">
@@ -75,6 +69,13 @@ export default function SideBar() {
                         <Link to="/dashboard/project" className="font-semibold text-base text-white Poppins">
                         <img src={projectwhite} className="w-10" alt="icon-project" />Projects</Link>
                     </div>
+
+                    <button
+                        onClick={handleLogout}
+                        className="mt- w-[100px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
+                        >
+                        log out 
+                    </button>
                 </div>
             </div>
         </>
