@@ -23,7 +23,7 @@ export default function HomeDahboard(){
                 <img src={servicesp}  className="w-6" alt="icon-services"/>
                 <p className="Poppins font-semibold text-base">Services</p>
             </Link>
-            <Link className=" flex gap-6 max-w-[315px] font-semibold text-base text-black rounded shadow-xl py-16 px-20 hover:border hover:border-[#B47F3E]">
+            <Link to={"/dashboard/project"} className=" flex gap-6 max-w-[315px] font-semibold text-base text-black rounded shadow-xl py-16 px-20 hover:border hover:border-[#B47F3E]">
                 <img src={project} alt="icon-project"/>
                 <p className="Poppins font-semibold text-base">Projects</p>
             </Link>

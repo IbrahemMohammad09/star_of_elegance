@@ -72,7 +72,7 @@ export default function SideBar() {
                         <img src={messages} className="w-10" alt="icon-messages" />Messages</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <Link to="/" className="font-semibold text-base text-white Poppins">
+                        <Link to="/dashboard/project" className="font-semibold text-base text-white Poppins">
                         <img src={projectwhite} className="w-10" alt="icon-project" />Projects</Link>
                     </div>
                 </div>
