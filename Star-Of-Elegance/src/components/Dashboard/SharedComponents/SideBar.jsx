@@ -11,7 +11,7 @@ import projectwhite from "../../../assets/image/Dashboard/SideBar/projectwhite.s
 import { useDispatch } from "react-redux";
 import {logout} from '../../../redux/authSlice';
 import { useNavigate } from "react-router-dom";
-import store from "../../../redux/store";
+
 
 export default function SideBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -54,20 +54,20 @@ export default function SideBar() {
                         <img src={services} className="w-10" alt="icon-services" />Services</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <Link to="/" className="font-semibold text-base text-white Poppins">
-                        <img src={order} className="w-10" alt="icon-order" />Orders</Link>
+                        <Link to="/dashboard/project" className="font-semibold text-base text-white Poppins">
+                        <img src={projectwhite} className="w-10" alt="icon-project" />Projects</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <Link to="/dashboard/rate" className="font-semibold text-base text-white Poppins">
-                        <img src={rating} className="w-10" alt="icon-rating" />Rating</Link>
+                        <Link to="/dashboard/order/order-view" className="font-semibold text-base text-white Poppins">
+                        <img src={order} className="w-10" alt="icon-order" />Orders</Link>
                     </div>
                     <div className="flex flex-col items-center">
                         <Link to="/dashboard/messages" className="font-semibold text-base text-white Poppins">
                         <img src={messages} className="w-10" alt="icon-messages" />Messages</Link>
                     </div>
                     <div className="flex flex-col items-center">
-                        <Link to="/dashboard/project" className="font-semibold text-base text-white Poppins">
-                        <img src={projectwhite} className="w-10" alt="icon-project" />Projects</Link>
+                        <Link to="/dashboard/rate" className="font-semibold text-base text-white Poppins">
+                        <img src={rating} className="w-10" alt="icon-rating" />Rating</Link>
                     </div>
 
                     <button

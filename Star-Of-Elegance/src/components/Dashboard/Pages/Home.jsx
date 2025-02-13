@@ -30,7 +30,7 @@ export default function HomeDahboard(){
         
         </div>
         <div className="flex flex-col md:flex-row gap-24 mx-4 mt-32 container-card-dash">
-            <Link className=" flex max-w-[315px] gap-6 font-semibold text-base text-black rounded shadow-xl py-16 px-20 hover:border hover:border-[#B47F3E]">
+            <Link to={"/dashboard/order/order-view"} className=" flex max-w-[315px] gap-6 font-semibold text-base text-black rounded shadow-xl py-16 px-20 hover:border hover:border-[#B47F3E]">
                 <img src={orderp} alt="icon-order"/>
                 <p className="Poppins font-semibold text-base">Orders</p>
             </Link>

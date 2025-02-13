@@ -26,9 +26,6 @@ const NotFoundPage = lazy(() => import("./pages/Error"));
 const Form = lazy(() => import("./pages/Form"));
 const OurProjects = lazy(() => import("./pages/OurProjects"));
 const OurProject = lazy(() => import("./pages/OurProject"));
-const DashboardOrder = lazy(() =>
-  import("./components/Dashboard/Pages/DashboardOrder")
-);
 const ViewOrder = lazy(() => import("./components/Dashboard/Pages/ViewOrder"));
 const EditOrder = lazy(() => import("./components/Dashboard/Pages/EditOrder"));
 const ViewMessage = lazy(() =>
@@ -46,7 +43,9 @@ const ProjectAdd = lazy(() =>
 const ProjectAddPhoto = lazy(() =>
   import("./components/Dashboard/Pages/ProjectAddPhoto")
 );
+
 function App() {
+
   return (
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
@@ -113,10 +112,35 @@ function App() {
             }
           />
           <Route
-            path="/dashboard/order"
+            path="/dashboard/project"
             element={
               <ProtectedRoute>
-                <DashboardOrder />
+                <DashboardProject />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/project/view"
+            element={
+              <ProtectedRoute>
+                <ProjectView />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/project/add"
+            element={
+              <ProtectedRoute>
+                <ProjectAdd />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/dashboard/project/add/photo"
+            element={
+              <ProtectedRoute>
+                <ProjectAddPhoto />
               </ProtectedRoute>
             }
           />
@@ -149,39 +173,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <Rate />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/project"
-            element={
-              <ProtectedRoute>
-                <DashboardProject />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/project/view"
-            element={
-              <ProtectedRoute>
-                <ProjectView />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/project/add"
-            element={
-              <ProtectedRoute>
-                <ProjectAdd />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/dashboard/project/add/photo"
-            element={
-              <ProtectedRoute>
-                <ProjectAddPhoto />
               </ProtectedRoute>
             }
           />
