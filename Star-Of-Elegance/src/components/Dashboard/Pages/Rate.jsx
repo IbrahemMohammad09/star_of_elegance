@@ -20,6 +20,7 @@ const Rate = () => {
       try {
         const response = await axios.get(Api.GET.RATESLIST);
         setInitialData(response.data);
+        console.log(initialData)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -63,8 +64,9 @@ const Rate = () => {
               <tr className='bg-[#F9FAFB] border border-[#EAECF0]'>
                 <th className="px-4 py-2 text-[#667085] inter font-medium text-xs text-left">Name</th>
                 <th className="px-4 py-2 text-[#667085] inter font-medium text-xs text-left">Text Message</th>
+                <th className="px-4 py-2 text-[#667085] inter font-medium text-xs text-left">Status</th>
                 <th className="px-4 py-2 text-[#667085] inter font-medium text-xs text-center">Rate</th>
-                <th className="px-4 py-2 text-[#667085] inter font-medium text-xs text-left"></th>
+                
               </tr>
             </thead>
             <tbody>
@@ -72,6 +74,7 @@ const Rate = () => {
                 <tr key={item.id} className="border-b">
                   <td className="px-4 py-2 inter font-medium text-sm text-[#101828]">{item.name}</td>
                   <td className="px-4 py-2 inter font-medium text-xs text-[#667085]">{item.message}</td>
+                  <td className="px-4 py-2 inter font-medium text-xs text-[#667085]">{item.state}</td>
                   <td className="px-4 py-2 text-center">
                     {Array(5).fill().map((_, index) => (
                       <img key={index} src={index < item.rate ? starImages.filled : starImages.empty} alt="star" className="inline w-4" />
