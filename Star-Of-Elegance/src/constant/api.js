@@ -4,6 +4,7 @@ const Api = {
     GET: {
         SERVICELIST: url+'api/services/',
         RATESLIST: url+'api/rates/',
+        RATESALLLIST: url+'api/rates/all',
         PROJECTSLIST: url+'api/projects',
         MESSAGELIST: url+'api/messages/',
         ORDERLIST: url+'api/requests/'

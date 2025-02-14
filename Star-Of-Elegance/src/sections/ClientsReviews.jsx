@@ -24,7 +24,6 @@ const ClientsReviews = () => {
   const [hoverRating, setHoverRating] = useState(0);
   const [name, setName] = useState("");
   const [feedback, setFeedback] = useState("");
-  // const [swiper, setSwiper] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -41,7 +40,7 @@ const ClientsReviews = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(Api.GET.RATESLIST);
-        setReviews(response.data);
+        setReviews(response.data.reverse());
       } catch {
         <Navigate to={"/error"} />;
       } finally {
@@ -88,10 +87,10 @@ const ClientsReviews = () => {
         name,
         message: feedback,
         rate: rating,
+        state : false
       });
 
       setSuccess("Your review has been submitted successfully!");
-      setReviews([...reviews, response.data]);
       setShowPopup(false);
       setName("");
       setFeedback("");

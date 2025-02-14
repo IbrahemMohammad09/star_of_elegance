@@ -18,15 +18,15 @@ const Rate = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(Api.GET.RATESLIST);
-        setInitialData(response.data);
+        const response = await axios.get(Api.GET.RATESALLLIST);
+        setInitialData(response.data.reverse());
         console.log(initialData)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, []);
+  }, [initialData]);
 
   const totalPages = Math.ceil(initialData.length / ITEMS_PER_PAGE);
 
@@ -52,6 +52,46 @@ const Rate = () => {
     empty: starempty,
   };
 
+  const stateChange = async (id, itemState,name,message,rate) => {
+    try {
+        const response = await axios.put(
+            `https://starofelegance.pythonanywhere.com/api/rates/${id}/update/`,
+            { id : id,
+              name : name,
+              message : message,
+              rate : rate,
+              state: itemState,
+             },
+            { headers: { "Content-Type": "application/json" } }
+        );
+
+        setInitialData(prevData =>
+            prevData.map(item => 
+                item.id === id ? { ...item, state: itemState } : item
+            )
+        );
+
+    } catch (error) {
+      
+    }
+};
+
+const deleteRate = async (id) => {
+  const response = await axios.delete(`https://starofelegance.pythonanywhere.com/api/rates/${id}/delete/`)
+  fetchData();
+}
+
+const deleteItem =(id,name)=>{
+
+  const confirmDelete = window.confirm(`Are you sure you want to delete the rate sent from ${name}?`);
+
+  if (confirmDelete) {
+    deleteRate(id)
+      alert(`${name}'s order was deleted`);
+  } 
+}
+
+
   return (
     <div className="md:flex gap-14">
       <SideBar />
@@ -74,14 +114,30 @@ const Rate = () => {
                 <tr key={item.id} className="border-b">
                   <td className="px-4 py-2 inter font-medium text-sm text-[#101828]">{item.name}</td>
                   <td className="px-4 py-2 inter font-medium text-xs text-[#667085]">{item.message}</td>
-                  <td className="px-4 py-2 inter font-medium text-xs text-[#667085]">{item.state}</td>
+                  <td  className="px-4 py-2 inter font-medium text-xs text-[#667085]" >
+                      {item.state ? (
+                        <button onClick={()=>stateChange(item.id,!item.state,item.name,item.message,item.rate)}>
+                          <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full flex items-center">
+                            <span className="w-2 h-2 bg-green-700 rounded-full mr-2"></span>
+                            active
+                          </span>
+                        </button>
+                        ) : (
+                        <button onClick={()=>stateChange(item.id,!item.state,item.name,item.message,item.rate)}>
+                          <span className="bg-[#FFEDDB] text-[#FF850B] px-3 py-1 rounded-full flex items-center">
+                            <span className="w-2 h-2 bg-[#FF850B] rounded-full mr-2"></span>
+                            inactive
+                          </span>
+                        </button>
+                        )}
+                  </td>
                   <td className="px-4 py-2 text-center">
                     {Array(5).fill().map((_, index) => (
                       <img key={index} src={index < item.rate ? starImages.filled : starImages.empty} alt="star" className="inline w-4" />
                     ))}
                   </td>
                   <td className="px-4 py-5 space-x-2">
-                    <button><RiDeleteBin6Line className='text-[#667085]' /></button>
+                    <button onClick={()=>deleteItem(item.id,item.name)}><RiDeleteBin6Line className='text-[#667085]' /></button>
                   </td>
                 </tr>
               ))}
