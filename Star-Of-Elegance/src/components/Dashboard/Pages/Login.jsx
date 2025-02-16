@@ -33,18 +33,12 @@ export default function Login() {
           }
 
         try{
-            console.log("sadsd")
             const response = await axios.post(Api.POST.LOGIN, requestData);
 
             const message = response.data.state;
 
             const token = response.data.data.token;
-            console.log(localStorage.getItem("adminToken"))
             dispatch(login(token))
-
-            console.log("sadsd")
-            
-            console.log()
             
             if (message){
                 navigate ('/dashboard/home');

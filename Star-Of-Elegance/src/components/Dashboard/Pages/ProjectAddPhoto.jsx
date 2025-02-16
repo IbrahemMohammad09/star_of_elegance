@@ -39,16 +39,16 @@ export default function ProjectAddPhoto() {
                   alt="Before"
                   className="w-full h-full object-cover"
                 />
-              ) : (
-                <span className="text-gray-500">Upload</span>
-              )}
-              <input
-                type="file"
-                className="hidden"
-                onChange={(e) => handleImageChange(e, setBeforeImage)}
-              />
-            </label>
-          </div>
+                ) : (
+                  <span className="text-gray-500">Upload</span>
+                )}
+                <input
+                  type="file"
+                  className="hidden"
+                  onChange={(e) => handleImageChange(e, setBeforeImage)}
+                />
+              </label>
+            </div>
 
           <div className="text-center">
             <p className="font-bold text-lg mb-2">After</p>

@@ -13,13 +13,10 @@ const authSlice = createSlice({
       login: (state, action) => {
         state.isAuthenticated = true;
         localStorage.setItem("adminToken", action.payload);
-        console.log("User logged in, token:", localStorage.getItem("adminToken")); // ✅ تحقق من وجود التوكن
       },
       logout: (state) => {
-        console.log("Logging out..."); // تحقق من استدعاء الدالة
         state.isAuthenticated = false;
         localStorage.removeItem("adminToken");
-        console.log("User logged out, token removed:", localStorage.getItem("adminToken")); // ✅ تحقق من حذف التوكن
       },
     },
   });

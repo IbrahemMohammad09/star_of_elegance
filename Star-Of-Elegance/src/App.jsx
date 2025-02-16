@@ -27,7 +27,7 @@ const Form = lazy(() => import("./pages/Form"));
 const OurProjects = lazy(() => import("./pages/OurProjects"));
 const OurProject = lazy(() => import("./pages/OurProject"));
 const ViewOrder = lazy(() => import("./components/Dashboard/Pages/ViewOrder"));
-const EditOrder = lazy(() => import("./components/Dashboard/Pages/EditOrder"));
+// const EditOrder = lazy(() => import("./components/Dashboard/Pages/EditOrder"));
 const ViewMessage = lazy(() =>
   import("./components/Dashboard/Pages/ViewMessages")
 );
@@ -43,6 +43,7 @@ const ProjectAdd = lazy(() =>
 const ProjectAddPhoto = lazy(() =>
   import("./components/Dashboard/Pages/ProjectAddPhoto")
 );
+const ServiceAdd = lazy(()=> import("./components/Dashboard/Pages/ServiceAdd"))
 
 function App() {
 
@@ -99,12 +100,20 @@ function App() {
             path="/dashboard/service/add"
             element={
               <ProtectedRoute>
+                <ServiceAdd />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/service/edit/:id"
+            element={
+              <ProtectedRoute>
                 <ServiceEdit />
               </ProtectedRoute>
             }
           />
           <Route
-            path="/dashboard/services/add/photo"
+            path="/dashboard/services/add/photo/:id"
             element={
               <ProtectedRoute>
                 <ServiceDetalis />
@@ -152,14 +161,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
+          {/* <Route
             path="/dashboard/order/edit"
             element={
               <ProtectedRoute>
                 <EditOrder />
               </ProtectedRoute>
             }
-          />
+          /> */}
           <Route
             path="/dashboard/messages"
             element={
