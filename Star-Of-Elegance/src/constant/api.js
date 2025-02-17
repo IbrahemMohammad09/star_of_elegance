@@ -12,7 +12,7 @@ const Api = {
     POST: {
         CREATESERVICE: url+'api/services/create/',
         CREATERATE: url+'api/rates/create/',
-        CREATEPROJECT: url+'api/projects/create',
+        CREATEPROJECT: url+'api/projects/create/',
         CREATEPROJECTBEFORPIC: url+'/api/projects/1/upload-before-pictures/',
         CREATEPROJECTAFTERPIC: url+'/api/projects/1/upload-after-pictures/',
         CREATEMESSAGE: url+'api/messages/create/',

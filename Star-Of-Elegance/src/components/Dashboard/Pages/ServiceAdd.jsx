@@ -15,10 +15,12 @@ export default function ServiceAdd(){
             const response = await axios.post(Api.POST.CREATESERVICE, 
                 {
                     name : name,
-                    description : description
+                    description : description,
+                    "before_pictures": null,
+                    "after_pictures": null
                 }) 
                 const selectedId = response.data.id;
-                navigate("/dashboard/services/add/photo/"+selectedId);
+                navigate("/dashboard/services/add/photo/:id"+selectedId);
                 
         } catch{
             navigate('/error')

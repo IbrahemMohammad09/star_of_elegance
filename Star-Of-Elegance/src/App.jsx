@@ -147,7 +147,7 @@ function App() {
           />
 
           <Route
-            path="/dashboard/project/add/photo"
+            path="/dashboard/project/add/photo/:id"
             element={
               <ProtectedRoute>
                 <ProjectAddPhoto />

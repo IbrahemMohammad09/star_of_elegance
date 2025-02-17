@@ -52,9 +52,8 @@ const OurProjects = () => {
 
       setextractedList(extracted)
 
-      
       } catch{
-        navigate('/error');
+        // navigate('/error');
       } finally {
         setLoading(false);
       }
