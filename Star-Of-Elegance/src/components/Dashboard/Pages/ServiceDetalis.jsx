@@ -1,17 +1,16 @@
 import lineservices from "../../../assets/image/Dashboard/Services/lineservices.svg";
-import vector from "../../../assets/image/Dashboard/services/vector.svg";
 import SideBar from "../SharedComponents/SideBar";
 import "../Dashboard.css";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function ServiceDetalis() {
     const [image, setImage] = useState(null);
     const [file, setFile] = useState(null); // لتخزين الملف الأصلي
     const { id } = useParams(); 
-
-    console.log(id); // عرض المعرف في الكونسول
+    const navigate = useNavigate();
+    
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
@@ -24,7 +23,7 @@ export default function ServiceDetalis() {
 
     const uploadImage = async () => {
         if (!file) {
-            alert("يرجى اختيار صورة أولاً!");
+            alert("Please choose a picture first!");
             return;
         }
 
@@ -41,11 +40,10 @@ export default function ServiceDetalis() {
                     },
                 }
             );
-            console.log("تم الرفع بنجاح", response.data);
-            alert("تم رفع الصورة بنجاح!");
+            alert("Uploaded successfully");
+            navigate('/dashboard/services/view')
         } catch (error) {
-            console.error("خطأ أثناء رفع الصورة:", error);
-            alert("حدث خطأ أثناء رفع الصورة!");
+            alert("uploading image failed");
         }
     };
 
@@ -76,7 +74,7 @@ export default function ServiceDetalis() {
                                 onClick={uploadImage} 
                                 className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                             >
-                                رفع الصورة
+                                Upload picture
                             </button>
                         )}
                     </div>

@@ -24,7 +24,7 @@ export default function ServiceView() {
             }
         };
         fetchData();
-    }, []);
+    }, [services]);
 
     // حساب عدد الصفحات
     const totalPages = Math.ceil(services.length / servicesPerPage);
@@ -38,6 +38,23 @@ export default function ServiceView() {
     const nextPage = () => setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
     const prevPage = () => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
 
+    const deleteService = async (id) =>{
+        try{
+            const response = await axios.delete(`http://starofelegance.pythonanywhere.com/api/services/${id}/delete/`);
+        } catch{}
+    }
+
+    const deleteItem =(id,name)=>{
+
+        const confirmDelete = window.confirm(`Are you sure you want to delete this service ${name} ?`);
+    
+        if (confirmDelete) {
+            deleteService(id)
+            alert(`this service:${name} has been deleted`);
+            fetchData();
+        } 
+    }
+
     return (
         <div className="md:flex gap-14">
             <SideBar />
@@ -45,7 +62,7 @@ export default function ServiceView() {
                 <p className="mb-10 text-black font-bold text-2xl mt-32 Poppins">Dashboard</p>
                 <p className="font-semibold text-2xl mb-14 Poppins">Services</p>
                 {currentServices.map((service, index) => (
-                    <div key={index} className="flex flex-col md:flex-row gap-24 md:w-[1100px] justify-center items-center mb-20 container-services2">
+                    <div key={index} className="flex flex-col md:flex-row gap-10 md:w-[1100px] justify-center items-center mb-20 container-services2">
                         <div className="flex bg-[#D9D9D9] rounded-lg child-services">
                             <img className="w-[350px] h-[320px]" src={service.picture} alt={service.name} />
                             <div className="pl-8">
@@ -53,9 +70,11 @@ export default function ServiceView() {
                                 <p className="font-normal text-xl text-black nun mb-14">{service.description}</p>
                             </div>
                         </div>
-                        <div className="bg-[#D9D9D9] flex justify-center items-center w-44 gap-3.5 px-1.5 h-14 rounded-lg">
+                        <div onClick={()=>deleteItem(service.id,service.name)} className=" hover:cursor-pointer bg-[#D9D9D9] flex justify-center items-center w-44 gap-3.5  h-14 rounded-lg">
                             <img src={deleteicon} className="w-8" alt="icon" />
-                            <img onClick={() => navigate("/dashboard/service/edit/" + service.id)} src={edit} className="w-8" alt="icon" />
+                        </div>
+                        <div onClick={() => navigate("/dashboard/service/edit/" + service.id)} className=" hover:cursor-pointer bg-[#D9D9D9] flex justify-center items-center w-44 gap-3.5  h-14 rounded-lg">
+                            <img src={edit} className="w-8" alt="icon" />    
                         </div>
                     </div>
                 ))}

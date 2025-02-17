@@ -105,14 +105,6 @@ function App() {
             }
           />
           <Route
-            path="/dashboard/service/edit/:id"
-            element={
-              <ProtectedRoute>
-                <ServiceEdit />
-              </ProtectedRoute>
-            }
-          />
-          <Route
             path="/dashboard/services/add/photo/:id"
             element={
               <ProtectedRoute>
@@ -120,6 +112,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/dashboard/service/edit/:id"
+            element={
+              <ProtectedRoute>
+                <ServiceEdit />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="/dashboard/project"
             element={

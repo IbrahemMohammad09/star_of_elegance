@@ -8,20 +8,17 @@ import { useNavigate } from "react-router-dom";
 export default function ServiceAdd(){
     const [name,setName] = useState("");
     const [description,setDescription] = useState("");
-    const [id , setId] = useState(90);
     const navigate = useNavigate();
 
     const addService = async () =>{
         try{
-            // const response = await axios.post(Api.POST.CREATESERVICE, 
-            //     {
-            //         name : name,
-            //         description : description
-            //     }) 
-            //     setId(response.data.id)
-                setId(30);
-                console.log(id)
-                navigate("/dashboard/services/add/photo/"+id);
+            const response = await axios.post(Api.POST.CREATESERVICE, 
+                {
+                    name : name,
+                    description : description
+                }) 
+                const selectedId = response.data.id;
+                navigate("/dashboard/services/add/photo/"+selectedId);
                 
         } catch{
             navigate('/error')
