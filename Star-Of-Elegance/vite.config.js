@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
     include: ["swiper"]
-  }
+  },
+  base: '/static/', // أو المسار الذي يناسب إعدادات Django
 });
