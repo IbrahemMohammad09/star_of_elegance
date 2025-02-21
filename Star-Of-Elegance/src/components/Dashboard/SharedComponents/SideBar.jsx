@@ -36,7 +36,8 @@ export default function SideBar() {
                 <FiMenu className="text-[#8B5715] text-3xl cursor-pointer" onClick={() => setIsOpen(true)} />
             </div>
             
-            <div className={`bg-[#8B5715] w-64 flex flex-col items-center gap-6 fixed top-0 left-0 h-full z-50 transition-transform transform ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:relative md:w-28`}>
+            <div className={`bg-[#8B5715] w-50 flex flex-col items-center gap-6 fixed top-0 left-0 h-full z-50 transition-transform transform ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:relative md:w-28 overflow-y-auto max-h-screen overscroll-contain`}>
+
                 {/* close icon*/}
                 <div className="w-full  p-4 md:hidden">
                     <FiX className="text-white text-3xl cursor-pointer" onClick={() => setIsOpen(false)} />
@@ -72,7 +73,7 @@ export default function SideBar() {
 
                     <button
                         onClick={handleLogout}
-                        className="mt- w-[100px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
+                        className="mb-8 w-[100px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
                         >
                         log out 
                     </button>
