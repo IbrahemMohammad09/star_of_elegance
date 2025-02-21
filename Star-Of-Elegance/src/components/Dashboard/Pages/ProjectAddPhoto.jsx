@@ -4,6 +4,7 @@ import axios from "axios";
 import lineservices from "../../../assets/image/Dashboard/Services/lineservices.svg";
 import SideBar from "../SharedComponents/SideBar";
 import "../Dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectAddPhoto() {
   const { id } = useParams(); // استخراج ID المشروع من الـ URL
@@ -13,6 +14,7 @@ export default function ProjectAddPhoto() {
   const [afterFile, setAfterFile] = useState(null);
   const [existingBeforeImages, setExistingBeforeImages] = useState([]);
   const [existingAfterImages, setExistingAfterImages] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -25,7 +27,7 @@ export default function ProjectAddPhoto() {
         }
       })
       .catch((error) => console.error("Error fetching project data:", error));
-  }, [id]);
+  }, [id,existingBeforeImages,existingAfterImages]);
 
   const handleImageChange = (event, setImage, setFile) => {
     const file = event.target.files[0];
@@ -61,12 +63,14 @@ export default function ProjectAddPhoto() {
         );
       }
 
-      alert("تم رفع الصور بنجاح!");
+      alert("Images uploaded successfully!");
+      setAfterImage(null);
+      setBeforeImage(null);
     } catch (error) {
-      console.error("خطأ أثناء رفع الصور:", error);
-      alert("حدث خطأ أثناء رفع الصور.");
+      alert("An error occurred while uploading images.");
     }
   };
+
 
   return (
     <div className="md:flex gap-14">
@@ -83,7 +87,7 @@ export default function ProjectAddPhoto() {
           <div className="text-center">
             <p className="font-bold text-lg mb-2">Before</p>
             {existingBeforeImages.map((img, index) => (
-              <img key={index} src={img} alt="Before" className="w-[350px] h-[350px] object-cover" />
+              <img key={index} src={img} alt="Before" className="w-[350px] h-[350px] mb-4 object-cover" />
             ))}
             <label className="cursor-pointer border-dashed border-2 border-gray-300 p-16 flex items-center justify-center">
               {beforeImage ? (
@@ -98,7 +102,7 @@ export default function ProjectAddPhoto() {
           <div className="text-center">
             <p className="font-bold text-lg mb-2">After</p>
             {existingAfterImages.map((img, index) => (
-              <img key={index} src={img} alt="After" className="w-[350px] h-[350px] object-cover" />
+              <img key={index} src={img} alt="After" className="w-[350px] h-[350px] mb-4 object-cover" />
             ))}
             <label className="cursor-pointer border-dashed border-2 border-gray-300 p-16 flex items-center justify-center">
               {afterImage ? (
@@ -110,8 +114,11 @@ export default function ProjectAddPhoto() {
             </label>
           </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-10 flex flex-row">
           <button onClick={handleUpload} className="font-extrabold text-xl text-white px-20 py-4 bg-[#B47F3E] rounded-2xl hover:bg-white hover:text-[#B47F3E] transition-all duration-200 hover:border-[#B47F3E] hover:border-2">
+            upload photos
+          </button>
+          <button onClick={()=>navigate("/dashboard/project/view")} className="font-extrabold text-xl text-white mx-4 px-20 py-4 bg-[#B47F3E] rounded-2xl hover:bg-white hover:text-[#B47F3E] transition-all duration-200 hover:border-[#B47F3E] hover:border-2">
             Finish
           </button>
         </div>
