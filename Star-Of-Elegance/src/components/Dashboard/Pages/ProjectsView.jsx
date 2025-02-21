@@ -40,7 +40,7 @@ export default function ProjectsView() {
 
     const deleteService = async (id) =>{
         try{
-            const response = await axios.delete(`http://starofelegance.pythonanywhere.com/api/projects/${id}/delete/`);
+            const response = await axios.delete(`https://starofelegance.com/api/projects/${id}/delete/`);
         } catch{}
     }
 

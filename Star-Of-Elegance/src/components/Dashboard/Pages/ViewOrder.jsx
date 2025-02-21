@@ -35,7 +35,7 @@ function ViewOrder() {
 
   const deleteorder = async (id) =>{
     try{
-      await axios.delete(`http://starofelegance.pythonanywhere.com/api/requests/${id}/delete/`) 
+      await axios.delete(`https://starofelegance.com/api/requests/${id}/delete/`) 
       fetchData()
     }catch{}
   }
@@ -63,7 +63,7 @@ function ViewOrder() {
       try{
         const newStatus = status === "new" ? "finished" : "new";
 
-        response = await axios.put(`https://starofelegance.pythonanywhere.com/api/requests/${id}/update/`,
+        response = await axios.put(`https://starofelegance.com/api/requests/${id}/update/`,
           {
             name : name,
             email : email,

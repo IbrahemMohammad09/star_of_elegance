@@ -32,7 +32,7 @@ export default function ServiceDetalis() {
 
         try {
             const response = await axios.post(
-                `https://starofelegance.pythonanywhere.com/api/services/${id}/upload-picture/`,
+                `https://starofelegance.com/api/services/${id}/upload-picture/`,
                 formData,
                 {
                     headers: {

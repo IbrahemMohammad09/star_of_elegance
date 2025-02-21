@@ -55,7 +55,7 @@ const Rate = () => {
   const stateChange = async (id, itemState,name,message,rate) => {
     try {
         const response = await axios.put(
-            `https://starofelegance.pythonanywhere.com/api/rates/${id}/update/`,
+            `https://starofelegance.com/api/rates/${id}/update/`,
             { id : id,
               name : name,
               message : message,
@@ -77,7 +77,7 @@ const Rate = () => {
 };
 
 const deleteRate = async (id) => {
-  const response = await axios.delete(`https://starofelegance.pythonanywhere.com/api/rates/${id}/delete/`)
+  const response = await axios.delete(`https://starofelegance.com/api/rates/${id}/delete/`)
   fetchData();
 }
 

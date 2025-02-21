@@ -1,4 +1,4 @@
-const url = "https://starofelegance.pythonanywhere.com/"
+const url = "https://starofelegance.com/"
 
 const Api = {
     GET: {

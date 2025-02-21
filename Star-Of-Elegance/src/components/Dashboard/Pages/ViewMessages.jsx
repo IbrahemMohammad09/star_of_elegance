@@ -38,7 +38,7 @@ function ViewMessages() {
 
   const deleteMessage = async (id) =>{
     try{
-      await axios.delete(`http://starofelegance.pythonanywhere.com/api/messages/${id}/delete/`) 
+      await axios.delete(`https://starofelegance.com/api/messages/${id}/delete/`) 
       fetchData()
     }catch{}
   }

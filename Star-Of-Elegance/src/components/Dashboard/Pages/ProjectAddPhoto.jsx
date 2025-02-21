@@ -18,7 +18,7 @@ export default function ProjectAddPhoto() {
 
   useEffect(() => {
     axios
-      .get("https://starofelegance.pythonanywhere.com/api/projects/")
+      .get("https://starofelegance.com/api/projects/")
       .then((response) => {
         const project = response.data.find((p) => p.id === Number(id));
         if (project) {

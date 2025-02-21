@@ -40,7 +40,7 @@ export default function ServiceView() {
 
     const deleteService = async (id) =>{
         try{
-            const response = await axios.delete(`http://starofelegance.pythonanywhere.com/api/services/${id}/delete/`);
+            const response = await axios.delete(`https://starofelegance.com/api/services/${id}/delete/`);
         } catch{}
     }
 

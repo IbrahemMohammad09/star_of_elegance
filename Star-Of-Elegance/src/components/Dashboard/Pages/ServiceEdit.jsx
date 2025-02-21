@@ -39,7 +39,7 @@ export default function ServiceEdit() {
   // تحديث الخدمة
   const saveEdit = async () => {
     try {
-      await axios.put(`https://starofelegance.pythonanywhere.com/api/services/${id}/update/`, {
+      await axios.put(`https://starofelegance.com/api/services/${id}/update/`, {
         name: name,
         description: description,
       }, {
@@ -65,7 +65,7 @@ export default function ServiceEdit() {
 
     try {
       await axios.post(
-        `https://starofelegance.pythonanywhere.com/api/services/${id}/upload-picture/`,
+        `https://starofelegance.com/api/services/${id}/upload-picture/`,
         formData,
         {
           headers: {
