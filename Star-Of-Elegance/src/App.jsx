@@ -68,8 +68,8 @@ function App() {
             <Route key={path} path={path} element={<ProtectedRoute><Component /></ProtectedRoute>} />
           ))}
           
-          <Route path="/error" element={<NotFoundPage />} />
-          <Route path="*" element={<Navigate to="/error" replace />} />
+          {/* <Route path="/error" element={<NotFoundPage />} />
+          <Route path="*" element={<Navigate to="/error" replace />} /> */}
           
         </Routes>
       </Suspense>
