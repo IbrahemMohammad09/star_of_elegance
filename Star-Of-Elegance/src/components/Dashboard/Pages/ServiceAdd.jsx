@@ -16,11 +16,9 @@ export default function ServiceAdd(){
                 {
                     name : name,
                     description : description,
-                    "before_pictures": null,
-                    "after_pictures": null
                 }) 
                 const selectedId = response.data.id;
-                navigate("/dashboard/services/add/photo/:id"+selectedId);
+                navigate("/dashboard/services/add/photo/"+selectedId);
                 
         } catch{
             navigate('/error')
