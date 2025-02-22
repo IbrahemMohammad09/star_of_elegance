@@ -31,12 +31,12 @@ function ViewOrder() {
     };
 
     fetchData();
-  }, [order]);
+  }, []);
 
   const deleteorder = async (id) =>{
     try{
       await axios.delete(`https://starofelegance.com/api/requests/${id}/delete/`) 
-      fetchData()
+
     }catch{}
   }
 
@@ -47,6 +47,7 @@ function ViewOrder() {
     if (confirmDelete) {
         deleteorder(id)
         alert(`${name}'s order was deleted`);
+        fetchData()
     } 
 }
 
@@ -73,7 +74,7 @@ function ViewOrder() {
             status : newStatus,
             service_type : service_type,
           },{ headers: { "Content-Type": "application/json" } })
-          
+          fetchData();
       } catch{}
   }
 

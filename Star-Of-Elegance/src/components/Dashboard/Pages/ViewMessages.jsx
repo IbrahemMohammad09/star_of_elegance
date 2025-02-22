@@ -25,7 +25,7 @@ function ViewMessages() {
       }
     };
     fetchData();
-  }, [message]);
+  }, []);
 
   const toggleExpand = (id) => {
     setExpandedRow(expandedRow === id ? null : id);
@@ -39,7 +39,7 @@ function ViewMessages() {
   const deleteMessage = async (id) =>{
     try{
       await axios.delete(`https://starofelegance.com/api/messages/${id}/delete/`) 
-      fetchData()
+
     }catch{}
   }
   
@@ -50,6 +50,7 @@ function ViewMessages() {
       if (confirmDelete) {
           deleteMessage(id)
           alert(`${name}'s message was deleted`);
+          fetchData()
       } 
   }
 

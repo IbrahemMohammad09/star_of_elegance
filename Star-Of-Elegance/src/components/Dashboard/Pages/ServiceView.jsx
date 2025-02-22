@@ -24,7 +24,7 @@ export default function ServiceView() {
             }
         };
         fetchData();
-    }, [services]);
+    }, []);
 
     // حساب عدد الصفحات
     const totalPages = Math.ceil(services.length / servicesPerPage);

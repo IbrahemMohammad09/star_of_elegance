@@ -5,7 +5,6 @@ import right from "../../../assets/image/Dashboard/Rate/right.svg";
 import starempty from "../../../assets/image/Dashboard/Rate/starempty.svg";
 import left from "../../../assets/image/Dashboard/Rate/left.svg";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
 import axios from 'axios';
 import Api from '../../../constant/api';
 
@@ -20,13 +19,12 @@ const Rate = () => {
       try {
         const response = await axios.get(Api.GET.RATESALLLIST);
         setInitialData(response.data.reverse());
-        console.log(initialData)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, [initialData]);
+  }, []);
 
   const totalPages = Math.ceil(initialData.length / ITEMS_PER_PAGE);
 
@@ -71,6 +69,8 @@ const Rate = () => {
             )
         );
 
+        fetchData();
+
     } catch (error) {
       
     }
@@ -78,7 +78,6 @@ const Rate = () => {
 
 const deleteRate = async (id) => {
   const response = await axios.delete(`https://starofelegance.com/api/rates/${id}/delete/`)
-  fetchData();
 }
 
 const deleteItem =(id,name)=>{
@@ -87,7 +86,8 @@ const deleteItem =(id,name)=>{
 
   if (confirmDelete) {
     deleteRate(id)
-      alert(`${name}'s order was deleted`);
+    alert(`${name}'s order was deleted`);
+    fetchData();
   } 
 }
 
