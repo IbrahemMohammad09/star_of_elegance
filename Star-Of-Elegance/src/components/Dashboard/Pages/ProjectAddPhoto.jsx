@@ -45,7 +45,7 @@ export default function ProjectAddPhoto() {
         beforeFormData.append("before_pictures", beforeFile);
 
         await axios.post(
-          `https://starofelegance.pythonanywhere.com/api/projects/${id}/upload-before-pictures/`,
+          `https://starofelegance.com/api/projects/${id}/upload-before-pictures/`,
           beforeFormData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -57,7 +57,7 @@ export default function ProjectAddPhoto() {
         afterFormData.append("after_pictures", afterFile);
 
         await axios.post(
-          `https://starofelegance.pythonanywhere.com/api/projects/${id}/upload-after-pictures/`,
+          `https://starofelegance.com/api/projects/${id}/upload-after-pictures/`,
           afterFormData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
