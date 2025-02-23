@@ -28,7 +28,7 @@ export default function ServiceDetalis() {
         }
 
         const formData = new FormData();
-        formData.append("picture", file); // "picture" هو اسم الحقل المتوقع من API
+        formData.append("image", file); // "picture" هو اسم الحقل المتوقع من API
 
         try {
             const response = await axios.post(
