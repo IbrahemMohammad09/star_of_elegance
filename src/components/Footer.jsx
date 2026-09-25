@@ -101,7 +101,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="bg-white">
+        {/* <div className="bg-white">
           <p className="text-black font-normal  text-center pt-4 pb-4 nun">
             © Copyright by{" "}
             <a
@@ -114,7 +114,7 @@ export default function Footer() {
             </a>{" "}
             – All rights reserved.
           </p>
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "../pages/Responsive.css";
@@ -13,33 +14,98 @@ import {
   FaComment,
   FaUserAlt,
 } from "react-icons/fa";
-import Api from "../constant/api";
-import axios from "axios";
-import { Navigate } from "react-router-dom";
-import Loading from "../pages/Loading";
+
+// ==================================================
+// BACKEND IMPORTS - DISABLED FOR NOW
+// ==================================================
+// import Api from "../constant/api";
+// import axios from "axios";
+// import { Navigate } from "react-router-dom";
+// import Loading from "../pages/Loading";
+
+// ==================================================
+// STATIC REVIEWS
+// ==================================================
+
+const STATIC_REVIEWS = [
+  {
+    name: "Michael Johnson",
+    message:
+      "Excellent service! My car looks absolutely amazing. Highly recommended.",
+    rate: 5,
+  },
+  {
+    name: "Sarah Williams",
+    message:
+      "Very professional service and great attention to detail. I am really happy with the result.",
+    rate: 5,
+  },
+  {
+    name: "Daniel Smith",
+    message:
+      "Amazing detailing service. The car looks brand new again!",
+    rate: 4,
+  },
+  {
+    name: "Emma Brown",
+    message:
+      "Great experience from start to finish. Friendly team and excellent work.",
+    rate: 5,
+  },
+  {
+    name: "James Wilson",
+    message:
+      "Professional, clean and high quality service. Definitely coming back.",
+    rate: 5,
+  },
+];
 
 const ClientsReviews = () => {
+  // ==================================================
+  // POPUP STATES
+  // ==================================================
+
   const [showPopup, setShowPopup] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
+
   const [name, setName] = useState("");
   const [feedback, setFeedback] = useState("");
-  const [loading, setLoading] = useState(true);
+
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [reviews, setReviews] = useState([]);
+
+  // ==================================================
+  // STATIC DATA
+  // ==================================================
+
+  const [reviews, setReviews] = useState(STATIC_REVIEWS);
+
+  // ==================================================
+  // RESPONSIVE STATES
+  // ==================================================
 
   const [isMobileView, setIsMobileView] = useState(false);
   const [isSwiperEnabled, setIsSwiperEnabled] = useState(false);
 
+  // ==================================================
+  // SWIPER NAVIGATION
+  // ==================================================
+
   const swiperNavPrev = useRef(null);
   const swiperNavNext = useRef(null);
 
+  // ==================================================
+  // BACKEND FETCH - DISABLED FOR NOW
+  // ==================================================
+
+  /*
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(Api.GET.RATESLIST);
+
         setReviews(response.data.reverse());
       } catch {
         <Navigate to={"/error"} />;
@@ -50,6 +116,11 @@ const ClientsReviews = () => {
 
     fetchData();
   }, []);
+  */
+
+  // ==================================================
+  // RESPONSIVE HANDLER
+  // ==================================================
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,8 +142,14 @@ const ClientsReviews = () => {
     };
   }, [reviews]);
 
+  // ==================================================
+  // SUBMIT REVIEW
+  // ==================================================
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validation
     if (!name || !feedback || rating === 0) {
       setError("All fields are required!");
       return;
@@ -82,117 +159,210 @@ const ClientsReviews = () => {
     setError(null);
     setSuccess(null);
 
+    // ==================================================
+    // BACKEND SUBMIT - DISABLED FOR NOW
+    // ==================================================
+
+    /*
     try {
       const response = await axios.post(Api.POST.CREATERATE, {
         name,
         message: feedback,
         rate: rating,
-        state : false
+        state: false,
       });
 
       setSuccess("Your review has been submitted successfully!");
+
       setShowPopup(false);
       setName("");
       setFeedback("");
       setRating(0);
+
     } catch (err) {
       setError("An error occurred while sending.");
+
     } finally {
       setSubmitting(false);
     }
+    */
+
+    // ==================================================
+    // FRONTEND ONLY
+    // Add review locally for testing
+    // ==================================================
+
+    setTimeout(() => {
+      const newReview = {
+        name: name,
+        message: feedback,
+        rate: rating,
+      };
+
+      setReviews((currentReviews) => [
+        ...currentReviews,
+        newReview,
+      ]);
+
+      setSuccess("Thank you for your review!");
+
+      setShowPopup(false);
+      setName("");
+      setFeedback("");
+      setRating(0);
+      setHoverRating(0);
+
+      setSubmitting(false);
+    }, 500);
   };
+
+  // ==================================================
+  // REVIEW CARD
+  // ==================================================
+
+  const ReviewCard = ({ review }) => {
+    return (
+      <div
+        className="border-4 mt-10 border-[#B47F3D] p-8 rounded-xl text-center bg-white mx-auto max-w-[300px] h-[400px] flex flex-col justify-between"
+        style={{
+          boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)",
+        }}
+      >
+        <h3 className="text-2xl font-semibold text-gray-900">
+          {review.name}
+        </h3>
+
+        <p className="text-gray-600 text-lg">
+          {review.message}
+        </p>
+
+        <div className="flex justify-center text-2xl space-x-5">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <FaStar
+              key={i}
+              className={
+                i < review.rate
+                  ? "text-[#F6973F]"
+                  : "text-[#F6973F] opacity-30"
+              }
+            />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  // ==================================================
+  // UI
+  // ==================================================
 
   return (
     <div>
-      {loading ? (
-        <Loading />
-      ) : (
-        <section className="fixRespo mt-10 md:-mt-0 sm:mt-52 md:px-20 bg-white text-center relative">
-          <h2 className="text-5xl font-bold text-[#B47F3D] mb-12">
-            Our Clients Reviews
-          </h2>
+      <section className="fixRespo mt-10 md:-mt-0 sm:mt-52 md:px-20 bg-white text-center relative">
 
-          {/* السلايدر */}
-          <div className="relative sm:max-w-[50%] lg:max-w-[90%] mx-auto">
-            {/* الأسهم خارج السلايدر */}
-            <button
-              ref={swiperNavPrev}
-              className="absolute left-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
+        {/* ==================================================
+            TITLE
+        ================================================== */}
+
+        <h2 className="text-5xl font-bold text-[#B47F3D] mb-12">
+          Our Clients Reviews
+        </h2>
+
+        {/* ==================================================
+            REVIEWS SLIDER
+        ================================================== */}
+
+        <div className="relative sm:max-w-[50%] lg:max-w-[90%] mx-auto">
+
+          {/* Previous Button */}
+
+          <button
+            ref={swiperNavPrev}
+            className="absolute left-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
+          >
+            <FaArrowLeft className="text-sm sm:text-sm md:text-xl lg:text-3xl" />
+          </button>
+
+          {/* Next Button */}
+
+          <button
+            ref={swiperNavNext}
+            className="absolute right-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
+          >
+            <FaArrowRight className="text-sm sm:text-sm md:text-xl lg:text-3xl" />
+          </button>
+
+          {/* ==================================================
+              SWIPER
+          ================================================== */}
+
+          {isSwiperEnabled ? (
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={40}
+              slidesPerView={reviews.length === 1 ? "auto" : 1}
+              centeredSlides={reviews.length === 1}
+              breakpoints={{
+                768: {
+                  slidesPerView: 1,
+                },
+                1024: {
+                  slidesPerView: 2,
+                },
+                1280: {
+                  slidesPerView: 3,
+                },
+                1536: {
+                  slidesPerView: 4,
+                },
+              }}
+              className="pb-10 h-[600px] flex justify-center"
+              navigation={{
+                prevEl: swiperNavPrev.current,
+                nextEl: swiperNavNext.current,
+              }}
             >
-              <FaArrowLeft className="text-sm sm:text-sm md:text-xl lg:text-3xl" />
-            </button>
+              {reviews.map((review, index) => (
+                <SwiperSlide
+                  key={index}
+                  className="flex justify-center"
+                >
+                  <ReviewCard review={review} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
 
-            <button
-              ref={swiperNavNext}
-              className="absolute right-[-100px] top-1/2 transform -translate-y-1/2 border-2 border-[#B47F3D] text-[#B47F3D] p-5 rounded-full shadow-lg bg-white hover:bg-[#B47F3D] hover:text-white transition-all z-10 hidden md:block"
-            >
-              <FaArrowRight className="text-sm sm:text-sm md:text-xl lg:text-3xl" />
-            </button>
+            /* ==================================================
+               DESKTOP STATIC VIEW
+            ================================================== */
 
-            {isSwiperEnabled ? (
-              <Swiper
-                modules={[Navigation]}
-                spaceBetween={40}
-                slidesPerView={reviews.length === 1 ? "auto" : 1}
-                centeredSlides={reviews.length === 1}
-                breakpoints={{
-                  768: { slidesPerView: 1 },
-                  1024: { slidesPerView: 2 },
-                  1280: { slidesPerView: 3 },
-                  1536: { slidesPerView: 4 },
-                }}
-                className="pb-10 h-[600px] flex justify-center"
-                navigation={{
-                  prevEl: swiperNavPrev.current,
-                  nextEl: swiperNavNext.current,
-                }}
-              >
-                {reviews.map((review, index) => (
-                  <SwiperSlide key={index} className="flex justify-center">
-                    <div
-                      className="border-4 mt-10 border-[#B47F3D] p-8 rounded-xl text-center bg-white mx-auto max-w-[300px] h-[400px] flex flex-col justify-between"
-                      style={{
-                        boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)",
-                      }}
-                    >
-                      <h3 className="text-2xl  font-semibold text-gray-900">
-                        {review.name}
-                      </h3>
-                      <p className="text-gray-600 text-lg ">{review.message}</p>
-                      <div className="flex justify-center text-2xl space-x-5">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <FaStar
-                            key={i}
-                            className={
-                              i < review.rate
-                                ? "text-[#F6973F]"
-                                : "text-[#F6973F] opacity-30"
-                            }
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            ) : (
-              <div className="flex justify-center gap-10 h-[600px] pb-10 mx-auto">
-                {reviews.slice(0, 3).map((review, index) => (
-                  <div
-                    key={index}
-                    className={`border-4 mt-10 border-[#B47F3D] p-8 rounded-xl text-center bg-white mx-auto max-w-[300px] h-[400px] flex flex-col justify-between`}
-                    style={{
-                      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)",
-                      marginLeft: index === 1 ? "30px" : "0", // محاذاة الكرت الثاني
-                      marginRight: index === 1 ? "30px" : "0", // محاذاة الكرت الثاني
-                    }}
-                  >
-                    <h3 className="text-2xl font-semibold text-gray-900">
-                      {review.name}
-                    </h3>
-                    <p className="text-gray-600 text-lg">{review.message}</p>
-                    <div className="flex justify-center text-2xl space-x-5">
-                      {Array.from({ length: 5 }).map((_, i) => (
+            <div className="flex justify-center gap-10 h-[600px] pb-10 mx-auto">
+
+              {reviews.slice(0, 3).map((review, index) => (
+                <div
+                  key={index}
+                  className="border-4 mt-10 border-[#B47F3D] p-8 rounded-xl text-center bg-white mx-auto max-w-[300px] h-[400px] flex flex-col justify-between"
+                  style={{
+                    boxShadow:
+                      "0px 10px 20px rgba(0, 0, 0, 0.3)",
+                    marginLeft:
+                      index === 1 ? "30px" : "0",
+                    marginRight:
+                      index === 1 ? "30px" : "0",
+                  }}
+                >
+                  <h3 className="text-2xl font-semibold text-gray-900">
+                    {review.name}
+                  </h3>
+
+                  <p className="text-gray-600 text-lg">
+                    {review.message}
+                  </p>
+
+                  <div className="flex justify-center text-2xl space-x-5">
+                    {Array.from({ length: 5 }).map(
+                      (_, i) => (
                         <FaStar
                           key={i}
                           className={
@@ -201,44 +371,77 @@ const ClientsReviews = () => {
                               : "text-[#F6973F] opacity-30"
                           }
                         />
-                      ))}
-                    </div>
+                      )
+                    )}
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
+                </div>
+              ))}
 
-          {/* زر التقييم */}
-          <button
-            onClick={() => setShowPopup(true)}
-            className="mt-4 px-6 py-3 w-[318px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
-          >
-            Rate Us
-          </button>
+            </div>
+          )}
+        </div>
 
-          {/* Popup التقييم */}
-          {showPopup && (
-            <div className="z-50 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center animate-fadeIn">
-              <div className="bg-white p-8 rounded-3xl shadow-2xl lg:w-[400px] w-[350px] lg:h-[650px]  h-auto text-center animate-slideUp relative">
-                {/* زر الإغلاق */}
-                <button
-                  onClick={() => setShowPopup(false)}
-                  className="absolute top-4 left-4 text-gray-500 hover:text-red-500 transition-all"
-                >
-                  <FaTimes size={24} />
-                </button>
+        {/* ==================================================
+            RATE US BUTTON
+        ================================================== */}
 
-                <h2 className="text-3xl font-bold text-[#B47F3D] mb-4">
-                  Thank You
-                </h2>
-                <p className="text-gray-600 text-lg mb-6">
-                  Please rate our service
-                </p>
+        <button
+          onClick={() => {
+            setShowPopup(true);
+            setError(null);
+            setSuccess(null);
+          }}
+          className="mt-4 px-6 py-3 w-[318px] border-4 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
+        >
+          Rate Us
+        </button>
 
-                {/* التقييم بالنجوم */}
-                <div className="flex justify-center mb-6 text-2xl space-x-3">
-                  {Array.from({ length: 5 }).map((_, i) => (
+        {/* ==================================================
+            SUCCESS MESSAGE
+        ================================================== */}
+
+        {success && (
+          <p className="text-green-600 mt-4 text-lg">
+            {success}
+          </p>
+        )}
+
+        {/* ==================================================
+            REVIEW POPUP
+        ================================================== */}
+
+        {showPopup && (
+          <div className="z-50 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center animate-fadeIn">
+
+            <div className="bg-white p-8 rounded-3xl shadow-2xl lg:w-[400px] w-[350px] lg:h-[650px] h-auto text-center animate-slideUp relative">
+
+              {/* Close Button */}
+
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 left-4 text-gray-500 hover:text-red-500 transition-all"
+              >
+                <FaTimes size={24} />
+              </button>
+
+              {/* Title */}
+
+              <h2 className="text-3xl font-bold text-[#B47F3D] mb-4">
+                Thank You
+              </h2>
+
+              <p className="text-gray-600 text-lg mb-6">
+                Please rate our service
+              </p>
+
+              {/* ==================================================
+                  STAR RATING
+              ================================================== */}
+
+              <div className="flex justify-center mb-6 text-2xl space-x-3">
+
+                {Array.from({ length: 5 }).map(
+                  (_, i) => (
                     <FaStar
                       key={i}
                       className={
@@ -246,50 +449,92 @@ const ClientsReviews = () => {
                           ? "text-[#F6973F]"
                           : "text-gray-300"
                       }
-                      onMouseEnter={() => setHoverRating(i + 1)}
-                      onMouseLeave={() => setHoverRating(0)}
-                      onClick={() => setRating(i + 1)}
+                      onMouseEnter={() =>
+                        setHoverRating(i + 1)
+                      }
+                      onMouseLeave={() =>
+                        setHoverRating(0)
+                      }
+                      onClick={() =>
+                        setRating(i + 1)
+                      }
                     />
-                  ))}
-                </div>
+                  )
+                )}
 
-                {/* إدخال البريد والتعليق */}
-                <div className="space-y-4">
-                  <div className="relative">
-                    <FaUserAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="w-full px-10  py-2 border rounded-lg  focus:ring-[#B47F3D]  focus:border-[#B47F3D]"
-                    />
-                  </div>
-                  <div className="relative">
-                    <FaComment className="absolute left-3 top-6 transform -translate-y-1/2 text-gray-400" />
-                    <textarea
-                      maxLength={200}
-                      placeholder="Leave feedback"
-                      value={feedback}
-                      onChange={(e) => setFeedback(e.target.value)}
-                      className="w-full h-full lg:h-[250px] px-10 py-2 border rounded-lg  focus:ring-[#B47F3D] focus:border-[#B47F3D]"
-                    />
-                  </div>
-                </div>
-
-                {/* زر الإرسال */}
-                <button
-                  onClick={handleSubmit}
-                  className="mt-6 px-6 py-3 w-full border-2 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all"
-                >
-                  {submitting ? "Submitting..." : "Submit"}
-                </button>
-                {error && <p className="text-[#B47F3D] mt-2">{error}</p>}
               </div>
+
+              {/* ==================================================
+                  NAME INPUT
+              ================================================== */}
+
+              <div className="space-y-4">
+
+                <div className="relative">
+
+                  <FaUserAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={name}
+                    onChange={(e) =>
+                      setName(e.target.value)
+                    }
+                    className="w-full px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
+                  />
+
+                </div>
+
+                {/* ==================================================
+                    FEEDBACK
+                ================================================== */}
+
+                <div className="relative">
+
+                  <FaComment className="absolute left-3 top-6 transform -translate-y-1/2 text-gray-400" />
+
+                  <textarea
+                    maxLength={200}
+                    placeholder="Leave feedback"
+                    value={feedback}
+                    onChange={(e) =>
+                      setFeedback(e.target.value)
+                    }
+                    className="w-full h-full lg:h-[250px] px-10 py-2 border rounded-lg focus:ring-[#B47F3D] focus:border-[#B47F3D]"
+                  />
+
+                </div>
+
+              </div>
+
+              {/* ==================================================
+                  SUBMIT
+              ================================================== */}
+
+              <button
+                onClick={handleSubmit}
+                disabled={submitting}
+                className="mt-6 px-6 py-3 w-full border-2 border-[#B47F3D] text-[#B47F3D] text-lg font-medium rounded-3xl shadow-md bg-white hover:bg-[#B47F3D] hover:text-white transition-all disabled:opacity-50"
+              >
+                {submitting
+                  ? "Submitting..."
+                  : "Submit"}
+              </button>
+
+              {/* ERROR */}
+
+              {error && (
+                <p className="text-red-500 mt-2">
+                  {error}
+                </p>
+              )}
+
             </div>
-          )}
-        </section>
-      )}
+          </div>
+        )}
+
+      </section>
     </div>
   );
 };
