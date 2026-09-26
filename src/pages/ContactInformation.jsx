@@ -11,8 +11,10 @@ import linecontact from '../assets/image/linecontact.svg'
 import './ContactInformation.css'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Api from "../constant/api";
-import axios from "axios";
+
+// BACKEND IMPORTS - DISABLED FOR STATIC MODE
+// import Api from "../constant/api";
+// import axios from "axios";
 
 
 export default function ContactInformation(){
@@ -24,7 +26,6 @@ export default function ContactInformation(){
    const [text, setText] = useState("");
 
    const [error,setError] = useState("");
-   const [loading, setLoading]= useState(false)
 
    const validateForm = () => {
       let newErrors = {};
@@ -37,27 +38,16 @@ export default function ContactInformation(){
       return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
    e.preventDefault();
    if (!validateForm()) return;
-   setLoading(true);
 
-   const requestData = {
-       name,
-       email,
-       phone,
-       text
-   };
+   // BACKEND REQUEST KEPT FOR REFERENCE:
+   // const requestData = { name, email, phone, text };
+   // await axios.post(Api.POST.CREATEMESSAGE, requestData);
 
-   try {
-       const response = await axios.post(Api.POST.CREATEMESSAGE, requestData);
-         navigate ('/order-successful')
-   } catch (error) {
-         // navigate ('/error')
-
-   } finally {
-       setLoading(false);
-   }
+   // Static mode: show the existing success screen without sending data.
+   navigate('/message-successful');
 };
 
 

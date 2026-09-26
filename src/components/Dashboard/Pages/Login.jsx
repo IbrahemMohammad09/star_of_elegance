@@ -2,14 +2,18 @@ import loginphoto from "../../../assets/image/Dashboard/login/loginphoto.svg";
 import { FaUser, FaLock} from 'react-icons/fa';
 import { LuEyeClosed } from "react-icons/lu";
 import { FaRegEye } from "react-icons/fa6";
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import '../Dashboard.css'
-import Api from "../../../constant/api";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import {login} from '../../../redux/authSlice'
 
+// BACKEND IMPORTS - DISABLED FOR STATIC LOGIN
+// import Api from "../../../constant/api";
+// import axios from "axios";
+
+// Static credentials are visible in the built frontend; this is a visual gate only.
+const ADMIN_CREDENTIALS = { username: "admin", password: "admin123" };
 
 export default function Login() {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -19,6 +23,7 @@ export default function Login() {
     const [userName , setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [loading , setLoading]= useState(false);
+    const [loginError, setLoginError] = useState("");
 
 
 
@@ -26,28 +31,19 @@ export default function Login() {
 
         e.preventDefault();
         setLoading(true);
-        
-        const requestData = {
-            "username": userName,
-            "password": password
-          }
+        setLoginError("");
 
-        try{
-            const response = await axios.post(Api.POST.LOGIN, requestData);
+        // BACKEND LOGIN KEPT FOR REFERENCE:
+        // const response = await axios.post(Api.POST.LOGIN, { username: userName, password });
+        // dispatch(login(response.data.data.token));
 
-            const message = response.data.state;
-
-            const token = response.data.data.token;
-            dispatch(login(token))
-            
-            if (message){
-                navigate ('/dashboard/home');
-            }else{
-                navigate('/')
-            }
-        } catch{
-            navigate('/')
+        if (userName === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+            dispatch(login("static-admin-session"));
+            navigate('/dashboard/home');
+        } else {
+            setLoginError("Incorrect username or password.");
         }
+        setLoading(false);
 
     }
 
@@ -61,7 +57,7 @@ export default function Login() {
                 <img src={loginphoto} className="max-w[700px] " />
                 <div className="md:pt-40 flex flex-col mb-7 container-form">
                     <p className="text-center font-normal text-7xl text-[#241E1E] inter mb-12">Welcome</p>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="flex flex-col mb-10">
                             <label className="font-semibold text-2xl inter text-black">User Name</label>
                             <div className="relative">
@@ -98,10 +94,10 @@ export default function Login() {
                                 </span>
                             </div>
                         </div>
+                        {loginError && <p role="alert" className="text-red-600 mt-4">{loginError}</p>}
                         <button 
                             type="submit" 
                             className="w-full bg-[#8B5715] mt-9 rounded-3xl text-white py-6 px-28 inter font-extrabold text-2xl hover:bg-white hover:text-[#8B5715] hover:border hover:border-[#8B5715]" 
-                            onClick={handleSubmit}
                             >{
                                 loading?("Login..."):("login")
                             }</button>

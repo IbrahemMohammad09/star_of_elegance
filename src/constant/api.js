@@ -1,3 +1,7 @@
+/*
+BACKEND API CONFIGURATION - PRESERVED FOR FUTURE REFERENCE.
+All API calls are disabled in static mode.
+
 const url = "https://starofelegance.com/"
 
 const Api = {
@@ -37,3 +41,4 @@ const Api = {
 
 
 export default Api;
+*/

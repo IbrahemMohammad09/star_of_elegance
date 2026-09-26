@@ -3,56 +3,45 @@ import Navbar from "../components/Navbar";
 import Title from "../components/sharedComponents/Title";
 import Footer from "../components/Footer";
 import './Form.css'
-import { useState,useEffect} from "react";
-import axios from "axios";
-import Api from "../constant/api";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import serviceImage1 from "../assets/image/HomePage/OurServices/image1.jpg";
+import serviceImage2 from "../assets/image/HomePage/OurServices/image2.jpeg";
+import serviceImage3 from "../assets/image/HomePage/OurServices/image3.jpeg";
+
+// BACKEND IMPORTS - DISABLED FOR STATIC MODE
+// import axios from "axios";
+// import Api from "../constant/api";
+
+const STATIC_SERVICES = [
+  { id: 1, name: "Custom Furniture Design", image: serviceImage1 },
+  { id: 2, name: "Interior Furniture Solutions", image: serviceImage2 },
+  { id: 3, name: "Bespoke Furniture", image: serviceImage3 },
+];
 
 
 export default function Form() {
-    const [serviceNames, setServiceNames] = useState([]);
-
     const navigate = useNavigate();
 
     const { "service-name": serviceName } = useParams(); 
-    const serviceNameFinal = encodeURIComponent(serviceName.replace(/-/g, " ").replace(/\s+/g, " ")).replace(/%20/g, " ");
+    const serviceNameFinal = decodeURIComponent(serviceName || "").replace(/-/g, " ").replace(/\s+/g, " ");
+    const services = STATIC_SERVICES;
 
-    const [services, setServices] = useState([]);
-    const [selectedId, setSelectedId] = useState("");
-
-    const [selectedName, setSelectedName] = useState(""); 
+    const [selectedName, setSelectedName] = useState(() => {
+        const initialName = decodeURIComponent(serviceName || "").replace(/-/g, " ").replace(/\s+/g, " ");
+        return STATIC_SERVICES.find((service) => service.name.toLowerCase() === initialName.toLowerCase())?.name || "";
+    });
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [text, setText] = useState(`I need to book this service (${serviceNameFinal})...`);
     const [type, setType] = useState("restaurants");
-    const [loading,setLoading] = useState(false);
     
     const [errors, setErrors] = useState({});
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get(Api.GET.SERVICELIST);
-            setServices(response.data);
-            const extractedData = response.data.map(({ id, name }) => ({ id, name }));
-            setServiceNames(extractedData);
-          } catch {
-            navigate('/error');
-          } finally {
-            setLoading(false); 
-          }
-        };
-    
-        fetchData();
-      }, []);
-
-      useEffect(() => {
-        if (services.length > 0) {
-            const foundService = services.find(service => service.name === serviceNameFinal);
-            setSelectedName(foundService ? foundService.name : "");
-        }
-    }, [services, serviceNameFinal]);  
+    // BACKEND SERVICE FETCH KEPT FOR REFERENCE:
+    // const response = await axios.get(Api.GET.SERVICELIST);
+    // setServices(response.data);
 
 
 
@@ -66,29 +55,17 @@ export default function Form() {
         return Object.keys(newErrors).length === 0;
     };
 
-      const handleSubmit = async (e) => {
+      const handleSubmit = (e) => {
         e.preventDefault();
         if (!validateForm()) return;
-        setLoading(true);
 
-        const requestData = {
-            name,
-            email,
-            phone,
-            service_name: selectedName,
-            description: text,
-            service_type:type
-        };
-
-        try {
-            const response = await axios.post(Api.POST.CREATEORDER, requestData);
-                navigate('/message-successful');
-        } catch (error) {
-                navigate('/error');
-        } finally {
-            setLoading(false);
-        }
-    };
+        // BACKEND ORDER REQUEST KEPT FOR REFERENCE:
+        // await axios.post(Api.POST.CREATEORDER, {
+        //   name, email, phone, service_name: selectedName,
+        //   description: text, service_type: type,
+        // });
+        navigate('/order-successful');
+      };
 
 
     return (

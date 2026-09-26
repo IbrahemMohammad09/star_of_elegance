@@ -1,30 +1,26 @@
-import servicephoto from "../../../assets/image/Dashboard/services/servicephoto.svg";
-import edit from "../../../assets/image/Dashboard/services/edit.svg";
 import deleteicon from "../../../assets/image/Dashboard/services/deleteicon.svg";
 import SideBar from "../SharedComponents/SideBar";
 import "../Dashboard.css";
-import axios from "axios";
-import Api from "../../../constant/api";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+// BACKEND IMPORTS - DISABLED FOR STATIC DASHBOARD
+// import axios from "axios";
+// import Api from "../../../constant/api";
+// import { useEffect } from "react";
+
+const STATIC_PROJECTS = [
+    { id: 1, name: "Custom Living Room", description: "A tailored living room with elegant furniture and warm finishes.", before_pictures: [], after_pictures: [] },
+    { id: 2, name: "Restaurant Interior", description: "A welcoming restaurant interior with comfortable seating and refined details.", before_pictures: [], after_pictures: [] },
+    { id: 3, name: "Hotel Suite Furnishing", description: "A coordinated suite furnished for comfort and a polished guest experience.", before_pictures: [], after_pictures: [] },
+];
 
 export default function ProjectsView() {
-    const [services, setServices] = useState([]);
+    const [services] = useState(STATIC_PROJECTS);
     const [currentPage, setCurrentPage] = useState(1);
     const servicesPerPage = 2;
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(Api.GET.PROJECTSLIST);
-                setServices(response.data.reverse());
-            } catch {
-                navigate("/error");
-            }
-        };
-        fetchData();
-    }, []);
+    // BACKEND FETCH KEPT FOR REFERENCE:
+    // const response = await axios.get(Api.GET.PROJECTSLIST);
+    // setServices(response.data.reverse());
 
     // حساب عدد الصفحات
     const totalPages = Math.ceil(services.length / servicesPerPage);
@@ -38,22 +34,8 @@ export default function ProjectsView() {
     const nextPage = () => setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
     const prevPage = () => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
 
-    const deleteService = async (id) =>{
-        try{
-            const response = await axios.delete(`https://starofelegance.com/api/projects/${id}/delete/`);
-        } catch{}
-    }
-
-    const deleteItem =(id,name)=>{
-
-        const confirmDelete = window.confirm(`Are you sure you want to delete this project ${name} ?`);
-    
-        if (confirmDelete) {
-            deleteService(id)
-            alert(`this project:${name} has been deleted`);
-            fetchData();
-        } 
-    }
+    // BACKEND DELETE KEPT FOR REFERENCE:
+    // await axios.delete(`https://starofelegance.com/api/projects/${id}/delete/`);
 
     return (
         <div className="md:flex gap-14">
@@ -64,15 +46,15 @@ export default function ProjectsView() {
                 {currentServices.map((service, index) => (
                     <div key={index} className="flex flex-col md:flex-row gap-10 md:w-[1100px] justify-center items-center mb-20 container-services2">
                         <div className="flex bg-[#D9D9D9] rounded-lg child-services">
-                            <img className="w-[350px] h-[320px]" src={service.before_pictures?.[0] || "https://via.placeholder.com/350x320"}  alt={service.name} />
+                            {service.before_pictures?.[0] ? <img className="w-[350px] h-[320px] object-cover" src={service.before_pictures[0]} alt={service.name} /> : <div className="w-[350px] h-[320px] bg-gray-200 flex items-center justify-center text-gray-500">Project image</div>}
                             <div className="pl-8">
                                 <p className="font-normal text-3xl text-black kanit mb-12">{service.name}</p>
                                 <p className="font-normal text-xl text-black nun mb-14">{service.description}</p>
                             </div>
                         </div>
-                        <div onClick={()=>deleteItem(service.id,service.name)} className=" hover:cursor-pointer bg-[#D9D9D9] flex justify-center items-center w-44 gap-3.5  h-14 rounded-lg">
+                        <button type="button" disabled title="Static preview only" className="opacity-50 cursor-not-allowed bg-[#D9D9D9] flex justify-center items-center w-44 gap-3.5 h-14 rounded-lg">
                             <img src={deleteicon} className="w-8" alt="icon" />
-                        </div>
+                        </button>
                         {/* <div onClick={() => navigate("/dashboard/service/edit/" + service.id)} className=" hover:cursor-pointer bg-[#D9D9D9] flex justify-center items-center w-44 gap-3.5  h-14 rounded-lg">
                             <img src={edit} className="w-8" alt="icon" />    
                         </div> */}

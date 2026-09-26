@@ -11,7 +11,7 @@ export default function OrderSuccessful(){
         <Title/>
         <Successful 
             title="Order Successful" 
-            message="Your request has been sent successfully." 
+            message="This static preview does not send or store your request."
             message2="Thank you for choosing us! "                 
         />
     </div>

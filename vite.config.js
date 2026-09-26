@@ -7,5 +7,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ["swiper"]
   },
-  base: '/static/', // أو المسار الذي يناسب إعدادات Django
+  // base: '/static/', // أو المسار الذي يناسب إعدادات Django
 });

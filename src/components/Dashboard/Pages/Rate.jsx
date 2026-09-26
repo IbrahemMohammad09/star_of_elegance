@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Star from "../../../assets/image/Dashboard/Rate/Star.svg";
 import SideBar from '../SharedComponents/SideBar';
 import right from "../../../assets/image/Dashboard/Rate/right.svg";
 import starempty from "../../../assets/image/Dashboard/Rate/starempty.svg";
 import left from "../../../assets/image/Dashboard/Rate/left.svg";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import axios from 'axios';
-import Api from '../../../constant/api';
+
+// BACKEND IMPORTS - DISABLED FOR STATIC DASHBOARD
+// import axios from 'axios';
+// import Api from '../../../constant/api';
+// import { useEffect } from 'react';
+
+const STATIC_RATES = [
+  { id: 1, name: "Olivia Martin", message: "Beautiful craftsmanship and a very professional team.", rate: 5, state: true },
+  { id: 2, name: "Noah Anderson", message: "The furniture fits our space perfectly. Excellent service.", rate: 5, state: true },
+  { id: 3, name: "Sophia Taylor", message: "Great attention to detail and a smooth experience.", rate: 4, state: false },
+];
 
 const ITEMS_PER_PAGE = 7; // عدد العناصر في كل صفحة
 
 const Rate = () => {
-  const [initialData, setInitialData] = useState([]);
+  const [initialData] = useState(STATIC_RATES);
   const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(Api.GET.RATESALLLIST);
-        setInitialData(response.data.reverse());
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
+  // BACKEND FETCH KEPT FOR REFERENCE:
+  // const response = await axios.get(Api.GET.RATESALLLIST);
+  // setInitialData(response.data.reverse());
 
   const totalPages = Math.ceil(initialData.length / ITEMS_PER_PAGE);
 
@@ -50,46 +51,12 @@ const Rate = () => {
     empty: starempty,
   };
 
-  const stateChange = async (id, itemState,name,message,rate) => {
-    try {
-        const response = await axios.put(
-            `https://starofelegance.com/api/rates/${id}/update/`,
-            { id : id,
-              name : name,
-              message : message,
-              rate : rate,
-              state: itemState,
-             },
-            { headers: { "Content-Type": "application/json" } }
-        );
-
-        setInitialData(prevData =>
-            prevData.map(item => 
-                item.id === id ? { ...item, state: itemState } : item
-            )
-        );
-
-        fetchData();
-
-    } catch (error) {
-      
-    }
-};
-
-const deleteRate = async (id) => {
-  const response = await axios.delete(`https://starofelegance.com/api/rates/${id}/delete/`)
-}
-
-const deleteItem =(id,name)=>{
-
-  const confirmDelete = window.confirm(`Are you sure you want to delete the rate sent from ${name}?`);
-
-  if (confirmDelete) {
-    deleteRate(id)
-    alert(`${name}'s order was deleted`);
-    fetchData();
-  } 
-}
+// BACKEND UPDATE KEPT FOR REFERENCE:
+// await axios.put(`https://starofelegance.com/api/rates/${id}/update/`, {
+//   id, name, message, rate, state: itemState,
+// }, { headers: { "Content-Type": "application/json" } });
+// BACKEND DELETE KEPT FOR REFERENCE:
+// await axios.delete(`https://starofelegance.com/api/rates/${id}/delete/`);
 
 
   return (
@@ -116,14 +83,14 @@ const deleteItem =(id,name)=>{
                   <td className="px-4 py-2 inter font-medium text-xs text-[#667085]">{item.message}</td>
                   <td  className="px-4 py-2 inter font-medium text-xs text-[#667085]" >
                       {item.state ? (
-                        <button onClick={()=>stateChange(item.id,!item.state,item.name,item.message,item.rate)}>
+                        <button type="button" disabled title="Static preview only" className="cursor-not-allowed">
                           <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full flex items-center">
                             <span className="w-2 h-2 bg-green-700 rounded-full mr-2"></span>
                             active
                           </span>
                         </button>
                         ) : (
-                        <button onClick={()=>stateChange(item.id,!item.state,item.name,item.message,item.rate)}>
+                        <button type="button" disabled title="Static preview only" className="cursor-not-allowed">
                           <span className="bg-[#FFEDDB] text-[#FF850B] px-3 py-1 rounded-full flex items-center">
                             <span className="w-2 h-2 bg-[#FF850B] rounded-full mr-2"></span>
                             inactive
@@ -137,7 +104,7 @@ const deleteItem =(id,name)=>{
                     ))}
                   </td>
                   <td className="px-4 py-5 space-x-2">
-                    <button onClick={()=>deleteItem(item.id,item.name)}><RiDeleteBin6Line className='text-[#667085]' /></button>
+                    <button type="button" disabled title="Static preview only" aria-label="Delete disabled in static preview" className="opacity-50 cursor-not-allowed"><RiDeleteBin6Line className='text-[#667085]' /></button>
                   </td>
                 </tr>
               ))}

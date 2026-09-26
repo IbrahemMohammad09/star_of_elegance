@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  isAuthenticated: !!localStorage.getItem("adminToken"), // تحقق إذا كان المستخدم قد سجل دخول
-};
+const STATIC_ADMIN_TOKEN = "static-admin-session";
 
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-      isAuthenticated: !!localStorage.getItem("adminToken"),
+      isAuthenticated: localStorage.getItem("adminToken") === STATIC_ADMIN_TOKEN,
     },
     reducers: {
       login: (state, action) => {

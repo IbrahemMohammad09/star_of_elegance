@@ -1,31 +1,29 @@
 import React from "react";
 import { MdOutlineDeleteSweep } from "react-icons/md";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import SideBar from "../SharedComponents/SideBar";
 
-import axios from "axios";
-import Api from "../../../constant/api";
-import { useNavigate } from "react-router-dom";
+
+// BACKEND IMPORTS - DISABLED FOR STATIC DASHBOARD
+// import axios from "axios";
+// import Api from "../../../constant/api";
+// import { useNavigate } from "react-router-dom";
+
+const STATIC_MESSAGES = [
+  { id: 1, name: "Olivia Martin", email: "olivia@example.com", phone: "+1 647 555 0101", text: "I would like to learn more about custom furniture for my home." },
+  { id: 2, name: "Noah Anderson", email: "noah@example.com", phone: "+1 647 555 0102", text: "Could you please contact me about an interior design consultation?" },
+  { id: 3, name: "Sophia Taylor", email: "sophia@example.com", phone: "+1 647 555 0103", text: "I saw your portfolio and would like to discuss a restaurant furnishing project." },
+];
 
 function ViewMessages() {
   const [expandedRow, setExpandedRow] = useState(null);
-  const [message, setMessage] = useState([]);
+  const [message] = useState(STATIC_MESSAGES);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7;
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(Api.GET.MESSAGELIST);
-        setMessage(response.data.reverse());
-      } catch (error) {
-        navigate('/error')
-      }
-    };
-    fetchData();
-  }, []);
+  // BACKEND FETCH KEPT FOR REFERENCE:
+  // const response = await axios.get(Api.GET.MESSAGELIST);
+  // setMessage(response.data.reverse());
 
   const toggleExpand = (id) => {
     setExpandedRow(expandedRow === id ? null : id);
@@ -36,23 +34,8 @@ function ViewMessages() {
   const currentMessages = message.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(message.length / itemsPerPage);
 
-  const deleteMessage = async (id) =>{
-    try{
-      await axios.delete(`https://starofelegance.com/api/messages/${id}/delete/`) 
-
-    }catch{}
-  }
-  
-  const deleteItem =(id,name)=>{
-
-      const confirmDelete = window.confirm(`Are you sure you want to delete the message sent from ${name}?`);
-
-      if (confirmDelete) {
-          deleteMessage(id)
-          alert(`${name}'s message was deleted`);
-          fetchData()
-      } 
-  }
+  // BACKEND DELETE KEPT FOR REFERENCE:
+  // await axios.delete(`https://starofelegance.com/api/messages/${id}/delete/`);
 
   return (
     <>
@@ -93,7 +76,7 @@ function ViewMessages() {
                         {item.text}
                       </td>
                       <td className="p-3 py-6">
-                        <button onClick={()=> deleteItem(item.id,item.name)} >
+                        <button type="button" disabled title="Static preview only" aria-label="Delete disabled in static preview" className="opacity-50 cursor-not-allowed">
                           <MdOutlineDeleteSweep className="text-gray-500 text-2xl cursor-pointer" />
                         </button>
                       </td>

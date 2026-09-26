@@ -31,31 +31,31 @@ const STATIC_REVIEWS = [
   {
     name: "Michael Johnson",
     message:
-      "Excellent service! My car looks absolutely amazing. Highly recommended.",
+      "Excellent craftsmanship and a beautiful finish. The furniture fits our home perfectly.",
     rate: 5,
   },
   {
     name: "Sarah Williams",
     message:
-      "Very professional service and great attention to detail. I am really happy with the result.",
+      "A professional team with great attention to detail. We are delighted with the result.",
     rate: 5,
   },
   {
     name: "Daniel Smith",
     message:
-      "Amazing detailing service. The car looks brand new again!",
+      "The custom pieces look wonderful and feel solidly made. Highly recommended.",
     rate: 4,
   },
   {
     name: "Emma Brown",
     message:
-      "Great experience from start to finish. Friendly team and excellent work.",
+      "A smooth experience from start to finish. Friendly team and excellent work.",
     rate: 5,
   },
   {
     name: "James Wilson",
     message:
-      "Professional, clean and high quality service. Definitely coming back.",
+      "Thoughtful design, quality materials, and beautiful work. We would gladly return.",
     rate: 5,
   },
 ];
@@ -86,7 +86,6 @@ const ClientsReviews = () => {
   // RESPONSIVE STATES
   // ==================================================
 
-  const [isMobileView, setIsMobileView] = useState(false);
   const [isSwiperEnabled, setIsSwiperEnabled] = useState(false);
 
   // ==================================================
@@ -125,10 +124,8 @@ const ClientsReviews = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1280) {
-        setIsMobileView(true);
         setIsSwiperEnabled(true);
       } else {
-        setIsMobileView(false);
         setIsSwiperEnabled(reviews.length >= 4);
       }
     };
@@ -204,7 +201,7 @@ const ClientsReviews = () => {
         newReview,
       ]);
 
-      setSuccess("Thank you for your review!");
+      setSuccess("Thank you! This preview does not store reviews permanently.");
 
       setShowPopup(false);
       setName("");

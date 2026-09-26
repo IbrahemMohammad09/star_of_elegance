@@ -1,18 +1,26 @@
 import { MdOutlineDeleteSweep } from "react-icons/md";
 // import { FiEdit3 } from "react-icons/fi";
 import { FaLongArrowAltDown, FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DashboardOrderTitle from "../SharedComponents/DashboardOrder";
 import SideBar from "../SharedComponents/SideBar";
-import axios from "axios";
-import Api from "../../../constant/api";
 import React from 'react';
 
+// BACKEND IMPORTS - DISABLED FOR STATIC DASHBOARD
+// import axios from "axios";
+// import Api from "../../../constant/api";
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+
+const STATIC_ORDERS = [
+  { id: 1, name: "Olivia Martin", email: "olivia@example.com", phone: "+1 647 555 0101", service_name: "Custom Furniture Design", description: "Looking for a custom dining table and matching chairs.", service_type: "residential", status: "new" },
+  { id: 2, name: "Noah Anderson", email: "noah@example.com", phone: "+1 647 555 0102", service_name: "Interior Furniture Solutions", description: "Please contact me about furnishing a boutique hotel lobby.", service_type: "hotels", status: "finished" },
+  { id: 3, name: "Sophia Taylor", email: "sophia@example.com", phone: "+1 647 555 0103", service_name: "Bespoke Furniture", description: "I need a consultation for a new restaurant seating area.", service_type: "restaurants", status: "new" },
+];
+
 function ViewOrder() {
-  const navigate = useNavigate();
   const [expandedRow, setExpandedRow] = useState(null);
-  const [order, setOrder] = useState([]);
+  const [order] = useState(STATIC_ORDERS);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7; // عدد العناصر في كل صفحة
 
@@ -20,36 +28,17 @@ function ViewOrder() {
     setExpandedRow(expandedRow === id ? null : id);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(Api.GET.ORDERLIST);
-        setOrder(response.data.reverse());
-      } catch (error) {
-        navigate('/error')
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const deleteorder = async (id) =>{
-    try{
-      await axios.delete(`https://starofelegance.com/api/requests/${id}/delete/`) 
-
-    }catch{}
-  }
-
-  const deleteItem =(id,name)=>{
-
-    const confirmDelete = window.confirm(`Are you sure you want to delete the order sent from ${name}?`);
-
-    if (confirmDelete) {
-        deleteorder(id)
-        alert(`${name}'s order was deleted`);
-        fetchData()
-    } 
-}
+  // BACKEND FETCH KEPT FOR REFERENCE:
+  // const response = await axios.get(Api.GET.ORDERLIST);
+  // setOrder(response.data.reverse());
+  // BACKEND DELETE KEPT FOR REFERENCE:
+  // await axios.delete(`https://starofelegance.com/api/requests/${id}/delete/`);
+  // BACKEND STATUS UPDATE KEPT FOR REFERENCE:
+  // const newStatus = status === "new" ? "finished" : "new";
+  // await axios.put(`https://starofelegance.com/api/requests/${id}/update/`, {
+  //   name, email, phone, service_name, description,
+  //   status: newStatus, service_type,
+  // }, { headers: { "Content-Type": "application/json" } });
 
   // حساب عدد الصفحات
   const totalPages = Math.ceil(order.length / itemsPerPage);
@@ -58,25 +47,6 @@ function ViewOrder() {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = order.slice(indexOfFirstItem, indexOfLastItem);
-
-  const stateChange = async (id,name,email,phone,service_name,description,status,service_type) =>{
-
-      try{
-        const newStatus = status === "new" ? "finished" : "new";
-
-        response = await axios.put(`https://starofelegance.com/api/requests/${id}/update/`,
-          {
-            name : name,
-            email : email,
-            phone : phone,
-            service_name : service_name,
-            description : description,
-            status : newStatus,
-            service_type : service_type,
-          },{ headers: { "Content-Type": "application/json" } })
-          fetchData();
-      } catch{}
-  }
 
   return (
     <div className="md:flex h-screen gap-14">
@@ -119,14 +89,14 @@ function ViewOrder() {
                     <td className="p-3">
                       <div className="flex items-center space-x-2">
                         {item.status === "new" ? (
-                          <button onClick={()=>stateChange(item.id , item.name ,item.email,item.phone,item.service_name,item.description,item.status,item.service_type)}>
+                          <button type="button" disabled title="Static preview only" className="cursor-not-allowed">
                             <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full flex items-center">
                               <span className="w-2 h-2 bg-green-700 rounded-full mr-2"></span>
                               New
                             </span> 
                           </button>
                         ) : (
-                          <button onClick={()=>stateChange(item.id , item.name ,item.email,item.phone,item.service_name,item.description,item.status,item.service_type)}>
+                          <button type="button" disabled title="Static preview only" className="cursor-not-allowed">
                             <span className="bg-[#FFEDDB] text-[#FF850B] px-3 py-1 rounded-full flex items-center">
                               <span className="w-2 h-2 bg-[#FF850B] rounded-full mr-2"></span>
                               Finish
@@ -136,7 +106,7 @@ function ViewOrder() {
                       </div>
                     </td>
                     <td className="p-3 py-6 flex space-x-4">
-                      <MdOutlineDeleteSweep onClick={()=>deleteItem(item.id,item.name)} className="text-gray-500 text-2xl cursor-pointer" />
+                      <MdOutlineDeleteSweep aria-label="Delete disabled in static preview" className="text-gray-500 text-2xl opacity-50" />
                       {/* <FiEdit3
                         className="text-gray-500 text-2xl cursor-pointer"
                         onClick={() => navigate("/dashboard/order/edit")}

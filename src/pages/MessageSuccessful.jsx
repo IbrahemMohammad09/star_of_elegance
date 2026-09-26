@@ -11,7 +11,7 @@ export default function MessageSuccessful () {
         <Title/>
             <Successful 
                 title="message Successful" 
-                message="Thanks so much for contacting us" 
+                message="Static preview only: your message was not sent or stored."
             />
     </div>
     <Footer/>
