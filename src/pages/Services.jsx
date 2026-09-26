@@ -4,7 +4,12 @@ import Title from "../components/sharedComponents/Title";
 import Footer from "../components/Footer";
 import MainTitle from "../components/sharedComponents/MainTitle";
 
-import { useEffect, useState } from "react";
+import image1 from "../assets/image/HomePage/OurServices/image1.JPG";
+import image2 from "../assets/image/HomePage/OurServices/image2.JPEG";
+import image3 from "../assets/image/HomePage/OurServices/image3.JPEG";
+
+
+import { useState } from "react";
 
 // ==================================================
 // BACKEND IMPORTS - DISABLED FOR NOW
@@ -25,7 +30,7 @@ const STATIC_SERVICES = [
     title: "Custom Furniture Design",
     description:
       "We create unique furniture designs tailored to your space, style, and personal vision, turning your ideas into elegant and functional pieces.",
-    image: `${import.meta.env.BASE_URL}images/custom-furniture.jpg`,
+    image: image1,
   },
   {
     id: 2,
@@ -33,7 +38,7 @@ const STATIC_SERVICES = [
     title: "Interior Furniture Solutions",
     description:
       "We provide carefully designed furniture solutions that complement your interior and create a harmonious balance between beauty, comfort, and functionality.",
-    image: `${import.meta.env.BASE_URL}images/interior-solutions.jpg`,
+    image: image2,
   },
   {
     id: 3,
@@ -41,31 +46,7 @@ const STATIC_SERVICES = [
     title: "Bespoke Furniture",
     description:
       "Every detail is designed specifically for you. From dimensions and materials to finishes and style, we create furniture that reflects your unique taste.",
-    image: `${import.meta.env.BASE_URL}images/bespoke-furniture.jpg`,
-  },
-  {
-    id: 4,
-    name: "Furniture Renovation",
-    title: "Furniture Renovation",
-    description:
-      "We give existing furniture a new life through professional restoration, refinishing, and thoughtful design improvements while preserving its character.",
-    image: `${import.meta.env.BASE_URL}images/furniture-renovation.jpg`,
-  },
-  {
-    id: 5,
-    name: "Furniture Consultation",
-    title: "Furniture Consultation",
-    description:
-      "Our consultation service helps you choose the right design, materials, colors, and dimensions to bring your furniture vision to life.",
-    image: `${import.meta.env.BASE_URL}images/consultation.jpg`,
-  },
-  {
-    id: 6,
-    name: "Design & Craftsmanship",
-    title: "Design & Craftsmanship",
-    description:
-      "We combine modern design concepts with high-quality craftsmanship to create furniture pieces that are elegant, durable, and made to last.",
-    image: `${import.meta.env.BASE_URL}images/craftsmanship.jpg`,
+    image: image3,
   },
 ];
 
@@ -74,7 +55,7 @@ const STATIC_SERVICES = [
 // ==================================================
 
 const Services = () => {
-  const [services, setServices] = useState(STATIC_SERVICES);
+  const [services] = useState(STATIC_SERVICES);
 
   // ==================================================
   // BACKEND FETCH - DISABLED FOR NOW
