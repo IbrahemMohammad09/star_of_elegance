@@ -1,5 +1,5 @@
 import SideBar from "../SharedComponents/SideBar";
-import lineservices from "../../../assets/image/Dashboard/Services/lineservices.svg";
+import lineservices from "../../../assets/image/Dashboard/services/lineservices.svg";
 
 // BACKEND IMPORTS - DISABLED FOR STATIC DASHBOARD
 // import axios from "axios";

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import lineservices from "../../../assets/image/Dashboard/Services/lineservices.svg";
+import lineservices from "../../../assets/image/Dashboard/services/lineservices.svg";
 import SideBar from "../SharedComponents/SideBar";
 import "../Dashboard.css";
 

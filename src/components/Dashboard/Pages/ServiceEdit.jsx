@@ -1,5 +1,5 @@
 import SideBar from "../SharedComponents/SideBar";
-import lineservices from "../../../assets/image/Dashboard/Services/lineservices.svg";
+import lineservices from "../../../assets/image/Dashboard/services/lineservices.svg";
 import { useParams } from "react-router-dom";
 
 // BACKEND IMPORTS - DISABLED FOR STATIC DASHBOARD
