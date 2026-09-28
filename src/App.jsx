@@ -35,7 +35,7 @@ const DashboardPages = {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Suspense fallback={<Loading />}>
         <ScrollToTop />
         <Routes>
