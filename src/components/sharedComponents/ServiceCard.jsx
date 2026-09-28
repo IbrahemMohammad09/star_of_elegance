@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./ServiceCard.css";
-import vector from "../../assets/image/Services/vector.svg";
+import vector from "../../assets/image/Services/Vector.svg";
 
 // ==================================================
 // BACKEND IMPORTS - DISABLED FOR NOW
