@@ -4,9 +4,9 @@ import Title from "../components/sharedComponents/Title";
 import Footer from "../components/Footer";
 import MainTitle from "../components/sharedComponents/MainTitle";
 
-import image1 from "../assets/image/HomePage/OurServices/image1.JPG";
-import image2 from "../assets/image/HomePage/OurServices/image2.JPEG";
-import image3 from "../assets/image/HomePage/OurServices/image3.JPEG";
+import image1 from "../assets/image/HomePage/OurServices/image1.jpg";
+import image2 from "../assets/image/HomePage/OurServices/image2.jpeg";
+import image3 from "../assets/image/HomePage/OurServices/image3.jpeg";
 
 
 import { useState } from "react";
