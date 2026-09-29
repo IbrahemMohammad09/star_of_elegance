@@ -65,34 +65,33 @@ export default function Footer() {
               <div className="flex items-center text-white mb-4">
                 <MdOutlineEmail className="text-xl  hover:text-black" />
                 <a
-                  href="mailto:info@starofelegance.com"
+                  href="mailto:hello@example.invalid"
                   className="ml-2 font-normal sm:text-lg text-sm  hover:text-black dm"
                 >
-                  info@starofelegance.com
+                  hello@example.invalid
                 </a>
               </div>
               <div className="flex items-center text-white mb-4">
                 <SlLocationPin className="text-xl  hover:text-black" />
                 <a
                   target="_blank"
-                  href="https://maps.app.goo.gl/rBVmmq94q5HMqbiX7"
+                  href="https://example.invalid/location"
                   className="ml-2 font-normal sm:text-lg text-sm dm hover:text-black"
                 >
-                  2480 Cawthra RD Unit 19 
-                  CANADA . ON
+                  123 Example Street, Sample City
                 </a>
               </div>
               <div className="flex gap-4 mt-4">
-                <a target="_blank" href="https://www.facebook.com/profile.php?id=100091949269247&mibextid=ZbWKwL" className="text-white text-2xl  hover:text-black ">
+                <a target="_blank" rel="noreferrer" href="https://example.invalid/facebook" className="text-white text-2xl  hover:text-black ">
                   <GrFacebookOption />
                 </a>
-                <a target="_blank" href="https://www.instagram.com/starofelegance?igsh=c2V0NncyeXBjMmVh" className="text-white text-2xl  hover:text-black">
+                <a target="_blank" rel="noreferrer" href="https://example.invalid/instagram" className="text-white text-2xl  hover:text-black">
                   <FaInstagram />
                 </a>
-                <a target="_blank" href="https://wa.me/16476840048" className="text-white text-2xl  hover:text-black">
+                <a target="_blank" rel="noreferrer" href="https://wa.me/9999999999" className="text-white text-2xl  hover:text-black">
                   <RiWhatsappFill />
                 </a>
-                <a target="_blank" href="https://wa.me/+16478861705" className="text-white text-2xl  hover:text-black">
+                <a target="_blank" rel="noreferrer" href="https://wa.me/9999999999" className="text-white text-2xl  hover:text-black">
                   <RiWhatsappFill />
                 </a>
 

@@ -61,23 +61,23 @@ export default function ContactInformation(){
             <div className="flex flex-col items-start gap-6 border border-[#8B5715] rounded-lg md:p-12 pt-24 pb-24 sm:pb-60 px-6 md:px-16">
                <p className="text-[#8B5715] font-semibold text-2xl md:text-4xl  syne">Contact Information</p>
                <div className="flex gap-2 items-center">
-                  <a href="https://maps.app.goo.gl/WPtv3ir4bm2RDDxY7" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
+                  <a href="https://example.invalid/location" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
                      <SlLocationPin /></a>
-                  <a href="https://maps.app.goo.gl/j3hx8hqcWpAVqANK9" target="_blank" className="font-medium text-base md:text-lg text-black montserrat">2480 Cawthra RD Unit 19</a>
+                  <a href="https://example.invalid/location" target="_blank" rel="noreferrer" className="font-medium text-base md:text-lg text-black montserrat">123 Example Street, Sample City</a>
                </div>
                <div className="flex gap-2 items-center">
-                  <a href="mailto:info@starofelegance.com" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
+                  <a href="mailto:hello@example.invalid" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
                      <MdOutlineEmail /></a>
-                  < a href = "mailto:starofelegance@gmail.com" className="font-medium text-base md:text-lg text-black montserrat">info@starofelegance.com</a>
+                  < a href = "mailto:hello@example.invalid" className="font-medium text-base md:text-lg text-black montserrat">hello@example.invalid</a>
                </div>
                <div className="flex gap-4">
-                  <a target="_blank" href="https://www.instagram.com/starofelegance?igsh=c2V0NncyeXBjMmVh" className="text-2xl text-[#8B5715] hover:text-white hover:bg-[#8B5715] border border-[#8B5715] rounded-full p-3">
+                  <a target="_blank" rel="noreferrer" href="https://example.invalid/instagram" className="text-2xl text-[#8B5715] hover:text-white hover:bg-[#8B5715] border border-[#8B5715] rounded-full p-3">
                      <FaInstagram /></a>
-                  <a target="_blank" href="https://www.facebook.com/profile.php?id=100091949269247&mibextid=ZbWKwL" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
+                  <a target="_blank" rel="noreferrer" href="https://example.invalid/facebook" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
                      <FaSquareFacebook /></a>
-                  <a target="_blank" href="https://wa.me/+16476840048" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
+                  <a target="_blank" rel="noreferrer" href="https://wa.me/9999999999" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
                      <RiWhatsappFill /></a>
-                  <a target="_blank" href="https://wa.me/+16478861705" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
+                  <a target="_blank" rel="noreferrer" href="https://wa.me/9999999999" className="text-2xl text-[#8B5715]  hover:text-white hover:bg-[#8B5715]  border border-[#8B5715] rounded-full p-3">
                   <RiWhatsappFill /></a>
                </div>
             </div>
